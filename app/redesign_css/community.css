@@ -1,0 +1,164 @@
+/*
+ * Baseform
+ * Copyright (C) 2018  Baseform
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
+.community {
+    background: white;
+    position: relative;
+}
+
+.community .grid {
+    border-top: 2px solid #3366CC;
+    padding: 66px 0 64px;
+}
+
+.community .line {
+    position: relative;
+}
+.community .column {
+    width: calc((100% - 30px) / 2);
+    display: inline-block;
+    position: relative;
+    vertical-align: top;
+    /*top: 50%;
+    -ms-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%); 
+    transform: translateY(-50%);*/
+}
+
+.community .column.rigthColumn {
+    margin-left: 30px;
+}
+
+.community .communityTitle {
+    font-size: 36px;
+    font-family:  'Montserrat Regular', Arial;
+    font-weight: normal;
+    color: #3366cc;
+    word-wrap: break-word;
+}
+
+.community .communityDescription {
+    margin: 20px 0;
+    font-size: 18px;
+    font-family:  'Montserrat Regular', Arial;
+    font-weight: normal;
+    color: black;
+    line-height: 24px;
+    max-width: 390px;
+}
+.community .communityDimensions li {
+    font-size: 18px;
+    font-family:  'Montserrat Bold', Arial;
+    font-weight: normal;
+    color: black;
+    list-style: none;
+    margin-bottom: 10px;
+    padding-left: 24px;
+    position: relative;
+}
+
+.community .communityDimensions li:before {
+    content: '';
+    position: absolute;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background-color: black;
+    left: 0;
+}
+
+.community .communityDimensions.legend {
+    display: none;
+}
+
+.community .communityDimensions li.red:before {
+    background-color: #ff9999;
+}
+.community .communityDimensions li.green:before {
+    background-color: #99cc99;
+}
+.community .communityDimensions li.blue:before {
+    background-color: #99ccff;
+}
+
+@media (max-width: 958px) {
+    .community .column {
+        width: 90%;
+        margin: 0 auto;
+        text-align: center;
+    }
+    .community .line {
+        text-align: center;
+    }
+    .community .column.rigthColumn {
+        width: 70%;
+    }
+    .community .communityDimensions:not(.legend) {
+        display: none;
+    }
+    .community .communityDimensions.legend {
+        margin-top: 40px;
+        display: block;
+    }
+    .community .column.rigthColumn {
+        margin-left: 0;
+    }
+    .community .column:first-of-type {
+        margin-top: 0;
+    }
+
+    .community .column.column.rigthColumn {
+    }
+
+    .community .column .communityDescription {
+        max-width: 90%;
+        margin: 20px auto;
+    }
+
+    .community .communityDimensions {
+        width: 70%;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    .community .communityDimensions li {
+        display: inline-block;
+        margin-left: 10px;
+    }
+
+}
+
+@media (max-width: 500px) {
+    .community .column.rigthColumn {
+        width: 90%;
+    }
+}
+
+.communityDescription.rtl {
+    margin-left: calc(100% - 390px);
+}
+
+.communityDimensions.rtl li {
+    padding-left: 0;
+    padding-right: 24px;
+}
+
+.communityDimensions.rtl li:before {
+    left: auto;
+    right: 0;
+}

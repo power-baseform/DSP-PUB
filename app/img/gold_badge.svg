@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="46.36px" height="59.18px" viewBox="0 0 46.36 59.18" enable-background="new 0 0 46.36 59.18" xml:space="preserve">
+<polygon fill="#ED1C24" points="11.181,59.182 23.181,50.182 23.181,23.181 11.181,23.181 "/>
+<polygon fill="#C1272D" points="35.181,59.182 23.181,50.182 23.181,23.181 35.181,23.181 "/>
+<polygon opacity="0.24" enable-background="new    " points="35.181,34.889 11.181,34.889 11.181,41.998 14.181,41.479 
+	16.969,49.072 23.181,43.889 29.392,49.072 32.181,41.479 35.181,41.998 "/>
+<polygon fill="#D2B600" points="23.181,5.181 29.393,-0.001 32.181,7.593 40.151,6.211 38.769,14.181 46.362,16.97 41.181,23.181 
+	46.362,29.393 38.769,32.182 40.151,40.152 32.181,38.77 29.392,46.363 23.181,41.182 16.969,46.363 14.181,38.77 6.21,40.152 
+	7.593,32.182 -0.001,29.393 5.181,23.181 -0.001,16.97 7.593,14.181 6.21,6.211 14.181,7.593 16.97,-0.001 "/>
+<radialGradient id="SVGID_1_" cx="14.6807" cy="13.8184" r="12.0002" gradientTransform="matrix(1 0 0 -1 8.5 37)" gradientUnits="userSpaceOnUse">
+	<stop  offset="0" style="stop-color:#D2D08C"/>
+	<stop  offset="1" style="stop-color:#D2B600"/>
+</radialGradient>
+<circle fill="url(#SVGID_1_)" cx="23.181" cy="23.181" r="12"/>
+</svg>

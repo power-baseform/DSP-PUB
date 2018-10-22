@@ -1,0 +1,79 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="com.baseform.apps.power.PowerUtils" %>
+<%@ page import="com.baseform.apps.power.frontend.FrontendUtils" %>
+<%@ page import="com.baseform.apps.power.processo.Processo" %>
+<%@ page import="java.util.ResourceBundle" %>
+<%@ page import="com.baseform.apps.power.frontend.PowerPubManager" %>
+<%--
+  ~ Baseform
+  ~ Copyright (C) 2018  Baseform
+  ~
+  ~ This program is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ This program is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with this program.  If not, see <https://www.gnu.org/licenses/>.
+  --%>
+
+<head>
+   <link rel="stylesheet" type="text/css" href="js/calendar/assets/calendar.css"/>
+    <script type="text/javascript" src="js/calendar/yahoo-dom-event.js"></script>
+    <script type="text/javascript" src="js/calendar/calendar-min.js"></script>
+    <meta charset="utf-8">
+    <%
+        response.setCharacterEncoding("UTF-8");
+
+        final PowerPubManager powerPubManager = (PowerPubManager) PublicManager.get(request);
+        final ResourceBundle frontendDefaultBundle = powerPubManager.getDefaultLangBundle();
+        final ResourceBundle currentLangBundle = powerPubManager.getCurrentLangBundle();
+    %>
+
+    <title><%=request.getSession().getServletContext().getInitParameter("deployment_name")%> <%=PowerUtils.getTitle(powerPubManager.getCurrentLocale(),curr_syst, powerPubManager.getDc(request))%></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta property="fb:app_id" content="<%=request.getSession().getServletContext().getInitParameter("fb_appid")%>"/>
+    <meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id" content="<%=request.getSession().getServletContext().getInitParameter("google_id")%>">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+    <%
+        if(processo!=null){
+    %>
+    <meta property="og:title" content="<%=processo.getTitulo()%>">
+    <meta property="og:url" content="<%=processo.getPublicURL(request)%>">
+    <meta property="og:image" content="<%=config.getServletContext().getInitParameter("server_href")%><%=processo.getThumbnail() != null && !processo.getThumbnail().isNew()? "/thumb?size=med&id="+processo.getThumbnail().getId():"/img/default_img.png"%>"/>
+    <meta property="og:description" content="<%=processo.getDescricao()%>"/>
+    <meta name="description" content="<%=processo.getDescricao()%>">
+    <%
+        }
+    %>
+
+
+    <link href="redesign_css/resets.css" rel="stylesheet" type="text/css">
+    <link href="redesign_css/fonts.css" rel="stylesheet" type="text/css">
+    <link href="redesign_css/application.css" rel="stylesheet" type="text/css">
+    <link href="redesign_css/popup.css" rel="stylesheet" type="text/css">
+
+    <script src="redesign_js/translations.js"></script>
+    <script src="redesign_js/main.js"></script>
+    <script src="redesign_js/api.js"></script>
+    <script src="redesign_js/PowerSocial.js"></script>
+
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+    <script>
+        window.translations = new Translations(<%= powerPubManager.getTranslations() %>, "<%= powerPubManager.getCurrentLocale().getLanguage() %>");
+        window.POWERController = new POWERController("<%=request.getSession().getServletContext().getInitParameter("analytics_tracking")%>","<%=request.getSession().getServletContext().getInitParameter("fb_appid")%>", <%= powerPubManager.getParticipante() != null%>);
+
+        <% if (powerPubManager.getFailedLogin()) { %>
+            POWERController.getModal('loginPopup.jsp', { activeTab: 'login'});
+        <% }%>
+    </script>
+</head>

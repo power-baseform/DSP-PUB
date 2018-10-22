@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data-map xmlns="http://cayenne.apache.org/schema/3.0/modelMap"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://cayenne.apache.org/schema/3.0/modelMap http://cayenne.apache.org/schema/3.0/modelMap.xsd"
+  project-version="3.0.0.1">
+	<property name="defaultPackage" value="com.baseform.apps.power.participante"/>
+	<property name="defaultSchema" value="participantes"/>
+	<db-entity name="comentario_ficheiro" schema="participantes">
+		<db-attribute name="fkcomentario" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+		<db-attribute name="mime" type="VARCHAR" length="255"/>
+		<db-attribute name="nomeFicheiro" type="VARCHAR" length="255"/>
+		<db-attribute name="size" type="INTEGER"/>
+	</db-entity>
+	<db-entity name="messages" schema="participantes">
+		<db-attribute name="about" type="VARCHAR" isMandatory="true" length="500"/>
+		<db-attribute name="body" type="CLOB"/>
+		<db-attribute name="date" type="TIMESTAMP"/>
+		<db-attribute name="fkparticipante" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+		<db-attribute name="sistema" type="VARCHAR" isMandatory="true" length="50"/>
+		<db-attribute name="status" type="INTEGER"/>
+	</db-entity>
+	<db-entity name="participante" schema="participantes">
+		<db-attribute name="activo" type="BOOLEAN"/>
+		<db-attribute name="age_bracket" type="VARCHAR" length="50"/>
+		<db-attribute name="check_key" type="VARCHAR" length="50"/>
+		<db-attribute name="data_registo" type="TIMESTAMP"/>
+		<db-attribute name="education_level" type="VARCHAR" length="50"/>
+		<db-attribute name="email" type="VARCHAR" isMandatory="true" length="100"/>
+		<db-attribute name="gamification" type="CLOB"/>
+		<db-attribute name="gender" type="VARCHAR" length="50"/>
+		<db-attribute name="md5pwd" type="VARCHAR" length="255"/>
+		<db-attribute name="metadata" type="CLOB"/>
+		<db-attribute name="nome" type="VARCHAR" isMandatory="true" length="255"/>
+		<db-attribute name="number_children" type="VARCHAR" length="50"/>
+		<db-attribute name="pkid" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+		<db-attribute name="profession" type="VARCHAR" length="50"/>
+		<db-attribute name="provider" type="VARCHAR" length="50"/>
+		<db-attribute name="token" type="VARCHAR" length="3000"/>
+		<db-attribute name="uid" type="VARCHAR" length="50"/>
+	</db-entity>
+	<db-entity name="participante_imagem" schema="participantes">
+		<db-attribute name="fkparticipante" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+		<db-attribute name="mime" type="VARCHAR" length="255"/>
+		<db-attribute name="nomeFicheiro" type="VARCHAR" length="255"/>
+		<db-attribute name="size" type="INTEGER"/>
+	</db-entity>
+	<db-entity name="r_like_comentario" schema="participantes">
+		<db-attribute name="fkcomentario" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="fkparticipante" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+		<db-attribute name="score" type="INTEGER" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="r_participante_comentario" schema="participantes">
+		<db-attribute name="comentario" type="VARCHAR" length="1500"/>
+		<db-attribute name="data" type="TIMESTAMP"/>
+		<db-attribute name="dislikes" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="fkparticipante" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="fkprocesso" type="INTEGER"/>
+		<db-attribute name="fkresponseto" type="INTEGER"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+		<db-attribute name="likes" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="publico" type="BOOLEAN"/>
+		<db-attribute name="status" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="tipo" type="VARCHAR" isMandatory="true" length="50"/>
+		<db-attribute name="title" type="VARCHAR" length="200"/>
+	</db-entity>
+	<db-entity name="r_participante_evento" schema="participantes">
+		<db-attribute name="data" type="TIMESTAMP"/>
+		<db-attribute name="fkevento" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="fkparticipante" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="r_participante_not_tipologia" schema="participantes">
+		<db-attribute name="fkparticipante" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="fkscope" type="INTEGER" isMandatory="true" length="50"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="r_participante_processo" schema="participantes">
+		<db-attribute name="data" type="TIMESTAMP"/>
+		<db-attribute name="fkparticipante" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="fkprocesso" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+		<db-attribute name="is_following" type="BOOLEAN" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="r_participante_sistema" schema="participantes">
+		<db-attribute name="data_login" type="TIMESTAMP" isMandatory="true"/>
+		<db-attribute name="fkparticipante" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="fksistema" type="VARCHAR" isMandatory="true" length="10"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+	</db-entity>
+	<obj-entity name="ComentarioFicheiro" className="com.baseform.apps.power.participante.ComentarioFicheiro" dbEntityName="comentario_ficheiro">
+		<obj-attribute name="mime" type="java.lang.String" db-attribute-path="mime"/>
+		<obj-attribute name="nomeFicheiro" type="java.lang.String" db-attribute-path="nomeFicheiro"/>
+		<obj-attribute name="size" type="java.lang.Integer" db-attribute-path="size"/>
+	</obj-entity>
+	<obj-entity name="Messages" className="com.baseform.apps.power.participante.Messages" dbEntityName="messages">
+		<obj-attribute name="about" type="java.lang.String" db-attribute-path="about"/>
+		<obj-attribute name="body" type="java.lang.String" db-attribute-path="body"/>
+		<obj-attribute name="date" type="java.util.Date" db-attribute-path="date"/>
+		<obj-attribute name="sistema" type="java.lang.String" db-attribute-path="sistema"/>
+		<obj-attribute name="status" type="java.lang.Integer" db-attribute-path="status"/>
+	</obj-entity>
+	<obj-entity name="Participante" className="com.baseform.apps.power.participante.Participante" dbEntityName="participante">
+		<obj-attribute name="activo" type="java.lang.Boolean" db-attribute-path="activo"/>
+		<obj-attribute name="ageBracket" type="java.lang.String" db-attribute-path="age_bracket"/>
+		<obj-attribute name="checkKey" type="java.lang.String" db-attribute-path="check_key"/>
+		<obj-attribute name="dataRegisto" type="java.util.Date" db-attribute-path="data_registo"/>
+		<obj-attribute name="educationLevel" type="java.lang.String" db-attribute-path="education_level"/>
+		<obj-attribute name="email" type="java.lang.String" db-attribute-path="email"/>
+		<obj-attribute name="gamification" type="java.lang.String" db-attribute-path="gamification"/>
+		<obj-attribute name="gender" type="java.lang.String" db-attribute-path="gender"/>
+		<obj-attribute name="md5pwd" type="java.lang.String" db-attribute-path="md5pwd"/>
+		<obj-attribute name="metadata" type="java.lang.String" db-attribute-path="metadata"/>
+		<obj-attribute name="nome" type="java.lang.String" db-attribute-path="nome"/>
+		<obj-attribute name="numberChildren" type="java.lang.String" db-attribute-path="number_children"/>
+		<obj-attribute name="profession" type="java.lang.String" db-attribute-path="profession"/>
+		<obj-attribute name="provider" type="java.lang.String" db-attribute-path="provider"/>
+		<obj-attribute name="token" type="java.lang.String" db-attribute-path="token"/>
+		<obj-attribute name="uid" type="java.lang.String" db-attribute-path="uid"/>
+	</obj-entity>
+	<obj-entity name="ParticipanteImagem" className="com.baseform.apps.power.participante.ParticipanteImagem" dbEntityName="participante_imagem">
+		<obj-attribute name="mime" type="java.lang.String" db-attribute-path="mime"/>
+		<obj-attribute name="nomeFicheiro" type="java.lang.String" db-attribute-path="nomeFicheiro"/>
+		<obj-attribute name="size" type="java.lang.Integer" db-attribute-path="size"/>
+	</obj-entity>
+	<obj-entity name="RLikeComentario" className="com.baseform.apps.power.participante.RLikeComentario" dbEntityName="r_like_comentario">
+		<obj-attribute name="score" type="java.lang.Integer" db-attribute-path="score"/>
+	</obj-entity>
+	<obj-entity name="RParticipanteComentario" className="com.baseform.apps.power.participante.RParticipanteComentario" dbEntityName="r_participante_comentario">
+		<obj-attribute name="comentario" type="java.lang.String" db-attribute-path="comentario"/>
+		<obj-attribute name="data" type="java.util.Date" db-attribute-path="data"/>
+		<obj-attribute name="dislikes" type="java.lang.Integer" db-attribute-path="dislikes"/>
+		<obj-attribute name="likes" type="java.lang.Integer" db-attribute-path="likes"/>
+		<obj-attribute name="publico" type="java.lang.Boolean" db-attribute-path="publico"/>
+		<obj-attribute name="status" type="java.lang.Integer" db-attribute-path="status"/>
+		<obj-attribute name="tipo" type="java.lang.String" db-attribute-path="tipo"/>
+		<obj-attribute name="title" type="java.lang.String" db-attribute-path="title"/>
+	</obj-entity>
+	<obj-entity name="RParticipanteEvento" className="com.baseform.apps.power.participante.RParticipanteEvento" dbEntityName="r_participante_evento">
+		<obj-attribute name="data" type="java.util.Date" db-attribute-path="data"/>
+	</obj-entity>
+	<obj-entity name="RParticipanteNotTipologia" className="com.baseform.apps.power.participante.RParticipanteNotTipologia" dbEntityName="r_participante_not_tipologia">
+	</obj-entity>
+	<obj-entity name="RParticipanteProcesso" className="com.baseform.apps.power.participante.RParticipanteProcesso" dbEntityName="r_participante_processo">
+		<obj-attribute name="data" type="java.util.Date" db-attribute-path="data"/>
+		<obj-attribute name="isFollowing" type="java.lang.Boolean" db-attribute-path="is_following"/>
+	</obj-entity>
+	<obj-entity name="RParticipanteSistema" className="com.baseform.apps.power.participante.RParticipanteSistema" dbEntityName="r_participante_sistema">
+		<obj-attribute name="dataLogin" type="java.util.Date" db-attribute-path="data_login"/>
+		<obj-attribute name="fksistema" type="java.lang.String" db-attribute-path="fksistema"/>
+	</obj-entity>
+	<db-relationship name="comentario" source="comentario_ficheiro" target="r_participante_comentario" toMany="false">
+		<db-attribute-pair source="fkcomentario" target="id"/>
+	</db-relationship>
+	<db-relationship name="participante" source="messages" target="participante" toMany="false">
+		<db-attribute-pair source="fkparticipante" target="pkid"/>
+	</db-relationship>
+	<db-relationship name="comentario" source="participante" target="r_participante_comentario" toMany="true">
+		<db-attribute-pair source="pkid" target="fkparticipante"/>
+	</db-relationship>
+	<db-relationship name="community_rprocessos" source="participante" target="community_processo" toMany="true">
+		<db-attribute-pair source="pkid" target="participante_fk"/>
+	</db-relationship>
+	<db-relationship name="gotitSections" source="participante" target="got_it_section" toMany="true">
+		<db-attribute-pair source="pkid" target="fk_participante"/>
+	</db-relationship>
+	<db-relationship name="imagem" source="participante" target="participante_imagem" toMany="false">
+		<db-attribute-pair source="pkid" target="fkparticipante"/>
+	</db-relationship>
+	<db-relationship name="likes" source="participante" target="r_like_comentario" toMany="true">
+		<db-attribute-pair source="pkid" target="fkparticipante"/>
+	</db-relationship>
+	<db-relationship name="messages" source="participante" target="messages" toMany="true">
+		<db-attribute-pair source="pkid" target="fkparticipante"/>
+	</db-relationship>
+	<db-relationship name="notificacoes_tipologia" source="participante" target="r_participante_not_tipologia" toMany="true">
+		<db-attribute-pair source="pkid" target="fkparticipante"/>
+	</db-relationship>
+	<db-relationship name="participacao_sistema" source="participante" target="r_participante_sistema" toMany="true">
+		<db-attribute-pair source="pkid" target="fkparticipante"/>
+	</db-relationship>
+	<db-relationship name="participante_evento" source="participante" target="r_participante_evento" toMany="true">
+		<db-attribute-pair source="pkid" target="fkparticipante"/>
+	</db-relationship>
+	<db-relationship name="processos_acompanhados" source="participante" target="r_participante_processo" toMany="true">
+		<db-attribute-pair source="pkid" target="fkparticipante"/>
+	</db-relationship>
+	<db-relationship name="resposta_participante" source="participante" target="resposta" toMany="true">
+		<db-attribute-pair source="pkid" target="fkparticipante"/>
+	</db-relationship>
+	<db-relationship name="participante" source="participante_imagem" target="participante" toMany="false">
+		<db-attribute-pair source="fkparticipante" target="pkid"/>
+	</db-relationship>
+	<db-relationship name="comentario" source="r_like_comentario" target="r_participante_comentario" toMany="false">
+		<db-attribute-pair source="fkcomentario" target="id"/>
+	</db-relationship>
+	<db-relationship name="participante" source="r_like_comentario" target="participante" toMany="false">
+		<db-attribute-pair source="fkparticipante" target="pkid"/>
+	</db-relationship>
+	<db-relationship name="ficheiro" source="r_participante_comentario" target="comentario_ficheiro" toMany="false">
+		<db-attribute-pair source="id" target="fkcomentario"/>
+	</db-relationship>
+	<db-relationship name="participante" source="r_participante_comentario" target="participante" toMany="false">
+		<db-attribute-pair source="fkparticipante" target="pkid"/>
+	</db-relationship>
+	<db-relationship name="processo" source="r_participante_comentario" target="processo" toMany="false">
+		<db-attribute-pair source="fkprocesso" target="pkid"/>
+	</db-relationship>
+	<db-relationship name="response" source="r_participante_comentario" target="r_participante_comentario" toMany="true">
+		<db-attribute-pair source="id" target="fkresponseto"/>
+	</db-relationship>
+	<db-relationship name="response_to" source="r_participante_comentario" target="r_participante_comentario" toMany="false">
+		<db-attribute-pair source="fkresponseto" target="id"/>
+	</db-relationship>
+	<db-relationship name="evento" source="r_participante_evento" target="evento" toMany="false">
+		<db-attribute-pair source="fkevento" target="id"/>
+	</db-relationship>
+	<db-relationship name="participante" source="r_participante_evento" target="participante" toMany="false">
+		<db-attribute-pair source="fkparticipante" target="pkid"/>
+	</db-relationship>
+	<db-relationship name="participante" source="r_participante_not_tipologia" target="participante" toMany="false">
+		<db-attribute-pair source="fkparticipante" target="pkid"/>
+	</db-relationship>
+	<db-relationship name="scope" source="r_participante_not_tipologia" target="scope" toMany="false">
+		<db-attribute-pair source="fkscope" target="id"/>
+	</db-relationship>
+	<db-relationship name="participante" source="r_participante_processo" target="participante" toMany="false">
+		<db-attribute-pair source="fkparticipante" target="pkid"/>
+	</db-relationship>
+	<db-relationship name="processo" source="r_participante_processo" target="processo" toMany="false">
+		<db-attribute-pair source="fkprocesso" target="pkid"/>
+	</db-relationship>
+	<db-relationship name="participante" source="r_participante_sistema" target="participante" toMany="false">
+		<db-attribute-pair source="fkparticipante" target="pkid"/>
+	</db-relationship>
+	<obj-relationship name="comentario" source="ComentarioFicheiro" target="RParticipanteComentario" deleteRule="Nullify" db-relationship-path="comentario"/>
+	<obj-relationship name="participante" source="Messages" target="Participante" deleteRule="Nullify" db-relationship-path="participante"/>
+	<obj-relationship name="comentario" source="Participante" target="RParticipanteComentario" deleteRule="Deny" db-relationship-path="comentario"/>
+	<obj-relationship name="gotitSections" source="Participante" target="GotItSection" deleteRule="Deny" db-relationship-path="gotitSections"/>
+	<obj-relationship name="imagem" source="Participante" target="ParticipanteImagem" deleteRule="Deny" db-relationship-path="imagem"/>
+	<obj-relationship name="likes" source="Participante" target="RLikeComentario" deleteRule="Deny" db-relationship-path="likes"/>
+	<obj-relationship name="messages" source="Participante" target="Messages" deleteRule="Deny" db-relationship-path="messages"/>
+	<obj-relationship name="notificacoesTipologia" source="Participante" target="RParticipanteNotTipologia" deleteRule="Deny" db-relationship-path="notificacoes_tipologia"/>
+	<obj-relationship name="participacaoSistema" source="Participante" target="RParticipanteSistema" deleteRule="Deny" db-relationship-path="participacao_sistema"/>
+	<obj-relationship name="participanteEvento" source="Participante" target="RParticipanteEvento" deleteRule="Deny" db-relationship-path="participante_evento"/>
+	<obj-relationship name="processosAcompanhados" source="Participante" target="RParticipanteProcesso" deleteRule="Deny" db-relationship-path="processos_acompanhados"/>
+	<obj-relationship name="respostaParticipante" source="Participante" target="Resposta" deleteRule="Deny" db-relationship-path="resposta_participante"/>
+	<obj-relationship name="participante" source="ParticipanteImagem" target="Participante" deleteRule="Nullify" db-relationship-path="participante"/>
+	<obj-relationship name="comentario" source="RLikeComentario" target="RParticipanteComentario" deleteRule="Nullify" db-relationship-path="comentario"/>
+	<obj-relationship name="participante" source="RLikeComentario" target="Participante" deleteRule="Nullify" db-relationship-path="participante"/>
+	<obj-relationship name="ficheiro" source="RParticipanteComentario" target="ComentarioFicheiro" deleteRule="Deny" db-relationship-path="ficheiro"/>
+	<obj-relationship name="participante" source="RParticipanteComentario" target="Participante" deleteRule="Nullify" db-relationship-path="participante"/>
+	<obj-relationship name="processo" source="RParticipanteComentario" target="Processo" deleteRule="Nullify" db-relationship-path="processo"/>
+	<obj-relationship name="response" source="RParticipanteComentario" target="RParticipanteComentario" deleteRule="Deny" db-relationship-path="response"/>
+	<obj-relationship name="responseTo" source="RParticipanteComentario" target="RParticipanteComentario" deleteRule="Nullify" db-relationship-path="response_to"/>
+	<obj-relationship name="evento" source="RParticipanteEvento" target="Evento" deleteRule="Nullify" db-relationship-path="evento"/>
+	<obj-relationship name="participante" source="RParticipanteEvento" target="Participante" deleteRule="Nullify" db-relationship-path="participante"/>
+	<obj-relationship name="participante" source="RParticipanteNotTipologia" target="Participante" deleteRule="Nullify" db-relationship-path="participante"/>
+	<obj-relationship name="scope" source="RParticipanteNotTipologia" target="Scope" deleteRule="Nullify" db-relationship-path="scope"/>
+	<obj-relationship name="participante" source="RParticipanteProcesso" target="Participante" deleteRule="Nullify" db-relationship-path="participante"/>
+	<obj-relationship name="processo" source="RParticipanteProcesso" target="Processo" deleteRule="Nullify" db-relationship-path="processo"/>
+	<obj-relationship name="participante" source="RParticipanteSistema" target="Participante" deleteRule="Nullify" db-relationship-path="participante"/>
+</data-map>

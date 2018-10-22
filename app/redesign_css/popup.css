@@ -1,0 +1,385 @@
+/*
+ * Baseform
+ * Copyright (C) 2018  Baseform
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
+.popup {
+    width: 264px;
+    height: 224px;
+    background-color: #eaeffa;
+    padding: 18px;
+    position: absolute;
+    border: 1px solid #3366CC;
+    z-index: 9999;
+}
+
+.popup .popupIntro {
+    font-size: 14px;
+    font-family: "Montserrat Regular", Arial;
+    font-weight: normal;
+    color: white;
+    display: inline;
+}
+
+.popup .here {
+    font-size: 14px;
+    font-family: "Montserrat Regular", Arial;
+    font-weight: bold;
+    color: white;
+    text-decoration: underline;
+    display: inline;
+}
+.popup.popupLogin {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    width: 50%;
+    padding: 25px;
+    height:auto;
+    background-color: rgba(51,102,204,0.9);
+    max-width: 600px;
+}
+
+.popup .fbLogin {
+    display: inline-block;
+    width: calc(50% - 12px);
+    height: 48px;
+    border: 1px solid #99ccff;
+    background: #99ccff;
+    color: #1A3264;
+    margin: 0 auto;
+    text-decoration: none;
+    font-family: "Montserrat Regular", Arial;
+    text-align: center;
+    line-height: 48px;
+    font-size: 24px;
+}
+
+.popup .socialLogin {
+    color: white;
+    font-family: "Montserrat Regular", Arial;
+    margin: 16px 0;
+    text-align: center;
+}
+
+.popup .googleLogin {
+    display: inline-block;
+    width: calc(50% - 12px);
+    height: 48px;
+    border: 1px solid #99ccff;
+    background: #99ccff;
+    color: #1A3264;
+    margin: 0 auto;
+    text-decoration: none;
+    font-family: "Montserrat Regular", Arial;
+    text-align: center;
+    line-height: 48px;
+    margin-left: 20px;
+    font-size: 24px;
+}
+
+.popup.popupLogin.onTop {
+    position: fixed;
+    top: -200px;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%);
+    padding: 25px;
+    height:auto;
+    background-color: rgba(51,102,204,0.9);
+    transition: top 1s ease;
+    z-index: 5;
+    width: 974px;
+}
+.popup.popupLogin.onTop.positioned {
+    top: 72px;
+}
+
+.popup.popupLogin.onTop .closePopup {
+    font-size: 20px;
+    top: 15px;
+    right: 10px;
+}
+
+.popup.popupLogin.onTop  p {
+    color: white;
+    font-family: "Montserrat Regular", Arial;
+    font-size: 18px;
+    line-height: 22px;
+}
+.popup.popupLogin .register {
+    color: white;
+    padding-bottom: 15px;
+}
+.popup.popupLogin input {
+    border: 1px solid #99ccff;
+    height: 46px;
+    line-height: 46px;
+    font-size: 24px;
+    color: #99ccff;
+    padding: 0 16px;
+    background-color: rgba(0,0,0,0.4);
+    font-family: 'Montserrat Regular', Arial;
+    margin: 8px 0;
+    width: calc(100% - 34px);
+    -webkit-text-fill-color: #99ccff !important;
+    margin-bottom: 14px;
+}
+
+.popup.popupLogin  input:-webkit-autofill,
+.popup.popupLogin  input:-webkit-autofill:hover,
+.popup.popupLogin  input:-webkit-autofill:focus,
+.popup.popupLogin  input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 1000px #1A3264 inset !important;
+}
+
+.popup.popupLogin label {
+    color:#99ccff;;
+    font-size: 12px;
+    font-family: 'Montserrat Bold', Arial;
+    font-weight: normal;
+    text-transform: uppercase;
+    display: block;
+}
+
+.popup.popupLogin .legal-checkbox {
+    height:38px;
+}
+
+.popup.popupLogin .legal-checkbox input {
+    display: none;
+}
+
+.popup.popupLogin .legal-checkbox label {
+    padding-left: 40px;
+    padding-top:12px;
+    position: relative;
+    color: white;
+    text-transform: none;
+    font-size: 12px;
+    line-height: 16px;
+    font-family: "Montserrat Regular", Arial;
+}
+
+.popup.popupLogin .legal-checkbox label a {
+    color: white;
+}
+
+.popup.popupLogin .legal-checkbox label:after {
+    content: '';
+    height: 24px;
+    width: 24px;
+    position: absolute;
+    left: 0;
+    top: 6px;
+    border: 2px solid white;
+    font-size: 18px;
+    line-height: 24.5px;
+    text-align: center;
+    color: white;
+}
+
+.popup.popupLogin .legal-checkbox label.active:after {
+    content: '✕';
+}
+
+.popup.popupLogin ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:     #3366cc;
+}
+.popup.popupLogin :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:     #3366cc;
+    opacity:  1;
+}
+.popup.popupLogin ::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:     #3366cc;
+    opacity:  1;
+}
+.popup.popupLogin :-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color:     #3366cc;
+}
+.popup.popupLogin    :-ms-input-placeholder { /* Microsoft Edge */
+    color:     #3366cc;
+}
+
+.popup.popupLogin .submit {
+    color: #3366cc;
+    background: white;
+    font-family: 'Montserrat Regular', Arial;
+    font-size: 24px;
+    height: 48px;
+    width: 100%;
+    border: none;
+    outline: none;
+    margin-top: 16px;
+    display: block;
+    line-height: 48px;
+    text-align: center;
+    text-decoration: none;
+}
+
+/*<div class="popup sharePopup">*/
+/*<ul class="social">*/
+/*<li class="facebook"></li>*/
+/*<li class="google"></li>*/
+/*<li class="twitter"></li>*/
+/*<li class="email"></li>*/
+/*</ul>*/
+/*</div>*/
+
+.popup.sharePopup {
+    height: auto;
+    width: auto;
+}
+.social {
+    list-style: none;
+    display: inline-block;
+    width: 135px;
+    left: -135px;
+    position: absolute;
+    transition: left 0.3s;
+}
+.social.active {
+    left: 30px;
+}
+.social li:first-of-type {
+    margin-top: 0;
+}
+.social li {
+    display: inline-block;
+    cursor: pointer;
+    background-size: contain;
+    list-style: none;
+    margin-top:0;
+}
+.social svg {
+    width: 24px;
+    height: 24px;
+}
+.popup .social .facebook {
+    background-image: url("../img/fb_btn.png");
+}
+
+.popup .social .twitter {
+    background-image: url("../img/twit_btn.png");
+}
+.popup .social .google {
+    background-image: url("../img/gg_btn.png");
+}
+.popup .social .email {
+    background-image: url("../img/mail_btn.png");
+}
+
+.popup .social li:hover {
+    opacity: 0.6;
+}
+.popup.popupLogin .closePopup {
+    position: absolute;
+    top: 29px;
+    right: 25px;
+    display: block;
+    height: 19px;
+    width: 44px;
+    line-height: 16px;
+    text-decoration: none;
+    font-family: "Montserrat Regular", Arial;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+}
+.popup.popupLogin .closePopup:after {
+    content: "✕";
+    position: absolute;
+}
+.popup .points {
+    color: white;
+    font-family: "Montserrat Regular", Arial;
+    padding: 20px 25px;
+    font-size: 20px;
+    text-align: center;
+    line-height: 22px;
+}
+.popup .communityDimensionsHome {
+    margin-top: 50px;
+}
+.popup .communityDimensionsHome li{
+    color: white;
+}
+.popup .captcha {
+    width: 200px;
+    height: 34px;
+    margin: 8px 0;
+}
+
+.popup .tabs {
+    list-style: none;
+    text-align: center;
+}
+.popup .error {
+    color: white;
+    font-family: "Montserrat Regular", Arial;
+    padding: 10px 0;
+    text-align: center;
+}
+.popup .tabs .tab {
+    display: inline-block;
+    font-size: 24px;
+    font-family: "Fredoka One", Arial;
+    padding: 10px 0;
+    color: #99ccff;
+    font-weight: 100;
+    cursor: pointer;
+}
+.popup .tabs .tab.separator {
+    margin: 0 10px;
+    color: white;
+    font-size: 36px;
+    cursor: auto;
+}
+.popup .tabs .tab.active {
+    font-size: 36px;
+    color: white;
+    cursor: auto;
+}
+.overlay {
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+@media (max-width: 1040px) {
+    .popup.popupLogin.onTop {
+        width: 80%;
+    }
+}
+@media (max-width: 500px) {
+    .popup .captcha {
+        width: 100%;
+    }
+}

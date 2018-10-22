@@ -1,0 +1,71 @@
+<%@ page import="java.util.Calendar" %>
+<%@ page import="com.baseform.apps.power.frontend.PowerPubManager" %>
+<%@ page import="com.baseform.apps.power.frontend.PublicManager" %>
+<%@ page import="com.baseform.apps.power.PowerUtils" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%--
+  ~ Baseform
+  ~ Copyright (C) 2018  Baseform
+  ~
+  ~ This program is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ This program is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with this program.  If not, see <https://www.gnu.org/licenses/>.
+  --%>
+
+<% PowerPubManager pm = (PowerPubManager) PublicManager.get(request); %>
+<link href="redesign_css/footer.css" rel="stylesheet" type="text/css">
+<div class="section footer">
+    <div class="grid freeGrow">
+        <div class="line">
+            <div class="column">
+                <a href="https://creativecommons.org/licenses/by/4.0/" target="blank">
+                    <img src="redesign_images/cc.png" class="licenseImage" alt="license">
+                    <p class="license">This web's content licence is a <br/><span class="licenseName">Creative Commons Attribution 4.0 Int.</span></p>
+                </a>
+                <a class="legalLink first" target="blank" href="terms_of_service.jsp"><%=PowerUtils.localizeKey("terms.of.use",pm.getCurrentLangBundle(),pm.getDefaultLangBundle())%></a>
+                <a class="legalLink" target="blank" href="privacy_policy.jsp"><%=PowerUtils.localizeKey("privacy.policy",pm.getCurrentLangBundle(),pm.getDefaultLangBundle())%></a>
+            </div><!----><div class="column rigthColumn">
+            <a href="http://www.power-h2020.eu/" target="blank" class="logo">Power</a>
+            <a href="./?location=stats" class="footerStatsLinks"><%=PowerUtils.localizeKey("view.stats",pm.getCurrentLangBundle(),pm.getDefaultLangBundle())%></a>
+            <p class="copyright">Project funded by the EU under the Call H2020-ICT10c-2015, GA n.687809.<br/>
+                Copyright © <%= Calendar.getInstance().get(Calendar.YEAR)%> POWER.</p>
+        </div>
+        </div>
+    </div>
+    <a href="#" id="googleLoginHidden" style="display: none;"></a>
+</div>
+
+<script>
+    $(window).on("load", function(e) {
+        gapi.signin2.render('googleLoginHidden', {
+            'scope': 'profile email',
+            'width': 0,
+            'height': 0,
+            'onsuccess': googleLogin,
+            'longtitle': false,
+            'theme': 'dark'
+        });
+
+        window.POWER = new PowerApi();
+    });
+
+    function googleLogin(googleUser) {
+        if (<%= pm.getParticipante() == null%>) {
+            $.get("loginGoogle.jsp", {token: googleUser.getAuthResponse().id_token }).done(function(data){
+                if (JSON.parse(data.trim()).success)
+                    location.reload();
+            });
+        } else {
+            $(".closePopup").trigger("click");
+        }
+    }
+</script>

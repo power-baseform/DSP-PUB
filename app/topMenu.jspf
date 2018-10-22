@@ -1,0 +1,79 @@
+<%@ page import="com.baseform.apps.power.PowerUtils" %>
+<%@ page import="com.baseform.apps.power.frontend.FrontendUtils" %>
+<%@ page import="com.baseform.apps.power.frontend.PowerPubManager" %>
+<%@ page import="com.baseform.apps.power.participante.Participante" %>
+<%@ page import="com.baseform.apps.power.utils.RequestParameters" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.Locale" %>
+<%@ page import="java.util.ResourceBundle" %>
+<%@ page import="org.apache.cayenne.DataObjectUtils" %>
+<%@ page import="com.baseform.apps.power.frontend.PublicManager" %>
+<%--
+  ~ Baseform
+  ~ Copyright (C) 2018  Baseform
+  ~
+  ~ This program is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ This program is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with this program.  If not, see <https://www.gnu.org/licenses/>.
+  --%>
+
+<link href="redesign_css/head.css" rel="stylesheet" type="text/css">
+<%
+    PowerPubManager pm = (PowerPubManager) PublicManager.get(request);
+    Participante participante = pm.getParticipante();
+    final ResourceBundle frontendDefaultBundle = pm.getDefaultLangBundle();
+    final ResourceBundle currentLangBundle = pm.getCurrentLangBundle();
+    String logoElementClass = participante != null ? "" : "hidden";
+    String loginClass = participante != null ? "hidden" : "";
+    String secondHeader = request.getAttribute("secondHeader") != null ? "hidden" : "";
+%>
+<div class="section header issue <%= secondHeader %>">
+    <div class="grid">
+        <div class="logoElement logoHolder">
+            <a href="./?location=home" class="smallLogo">
+                <img src="img/drop.svg" alt="<%=request.getSession().getServletContext().getInitParameter("deployment_name")%>"/>
+            </a>
+            <a href="#" class="hamburger showMobileMenu"></a>
+            <ul class="menu">
+                <% if (!pm.getCurrentLocation().equals("home.jsp")) {%>
+                <li class="menuLink"><a href="./?location=home"><%= PowerUtils.localizeKey("challenges",currentLangBundle,frontendDefaultBundle) %></a></li><!--
+                    --><% }%><% if (participante != null) {%><li class="menuLink myProgress"><a href="./?location=area"><%= PowerUtils.localizeKey("my.progress",currentLangBundle,frontendDefaultBundle) %></a></li><%}%><!--
+                    --><li class="menuLink"><a href="./?location=about"><%= PowerUtils.localizeKey("about",currentLangBundle,frontendDefaultBundle) %></a></li>
+                        <% List<Locale> locales = pm.getLocales(request); if (locales.size() > 0){%><!--
+                    --><li class="menuLink languagePicker jsPicker "><a href="#"><%= pm.getCurrentLocale().getDisplayLanguage(pm.getCurrentLocale())%></a>
+                    <ul class="picker hidden">
+                        <% for(Locale locale :locales) { %>
+                            <li class="lang" data-locale="<%= locale.toString()%>"><a href="./?changeLocale=<%= locale.toString()%>"><%= locale.getDisplayLanguage(locale) %></a></li>
+                        <% }%>
+                    </ul></li><% }%>
+            </ul>
+        </div><!--
+        --><form class="logoElement loginForm <%= loginClass %>" method="post" action="./">
+                <input type="hidden" name="login_pub"><input type="hidden" name="location" value="<%= pm.getCurrentLocationName()%>">
+                <input type="submit" class="openLogin" value="sign in">
+            </form><!--
+        --><div class="logoElement userMenu <%= logoElementClass %>">
+        <div class="actions">
+            <a href="./?location=area" class="userName"><%= participante  != null ? participante.getNome() : "" %></a>
+            <a class="logout" href="?logout_pub"><%=PowerUtils.localizeKey("logout",currentLangBundle,frontendDefaultBundle)%></a>
+        </div>
+        <a class="userLogo" href="./?location=area"><img src="<%= participante != null && participante.getImagem() != null ? "./user_avatar?id="+participante.getImagem().getId() : "redesign_images/user.png" %>" alt="user" class="userImage"></a>
+    </div>
+        <a href="#" onclick="POWERController.getModal('loginPopup.jsp', { activeTab: 'login'});" class="mobileHeader <%= loginClass %>"><%=PowerUtils.localizeKey("sign.in.or.sign.up",currentLangBundle,frontendDefaultBundle)%></a>
+
+    </div>
+</div>
+
+<script>
+    POWERController.initMobileHeaderMenu(".mobileHeader", ".mobileHeaderMenu", "hidden");
+    POWERController.initLanguagePicker(".languagePicker.jsPicker", ".languagePicker .picker");
+</script>

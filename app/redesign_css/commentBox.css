@@ -1,0 +1,444 @@
+/*
+ * Baseform
+ * Copyright (C) 2018  Baseform
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
+.comments .boxComment {
+    width: calc(100% - 20px);
+    height: 50px;
+    resize: none;
+    border: 1px solid #3366CC;
+    background-color: rgba(153, 204, 255,0.2);
+    padding: 10px;
+    outline: none;
+    font-family: "Montserrat Regular", Arial;
+    font-size: 16px;
+    font-weight: normal;
+    transition: height 0.3s;
+}
+
+.comments .boxCommentTitle {
+    width: calc(100% - 20px);
+    height: 15px;
+    resize: none;
+    border: 1px solid #3366CC;
+    background-color: rgba(153, 204, 255,0.2);
+    padding: 10px;
+    outline: none;
+    font-family: "Montserrat Regular", Arial;
+    font-size: 16px;
+    font-weight: normal;
+    transition: height 0.3s;
+    margin-bottom: 5px;
+}
+
+.comments .boxComment.focus {
+    height: 150px;
+}
+
+.cmHolder .commentList .comment img.commentPhoto {
+    width: auto;
+    max-width: 100%;
+    height:auto;
+    margin: 5px 0;
+    display: block;
+    max-height: 200px;
+}
+
+.cmHolder .commentList .fileInfo {
+    font-family: "Montserrat Regular", Arial;
+    font-size: 13px;
+    color: #3366CC;
+    margin-bottom: 10px;
+    display: block;
+    text-decoration: none;
+}
+
+.comments .actions {
+    background: #3366CC;
+    width: calc(100% - 20px);
+    display: inline-block;
+    height: 20px;
+    position: relative;
+    top: -3px;
+    border: 1px solid #3366CC;
+    padding: 10px;
+}
+
+.comments .actions .sendComment {
+    float: right;
+    font-family: "Montserrat Regular", Arial;
+    font-size: 15px;
+    font-weight: normal;
+    color: white;
+    text-decoration: none;
+    position: relative;
+    padding-right: 10px;
+}
+.comments .actions .sendComment:after {
+    content: "›";
+    font-family: "Montserrat Regular", Arial;
+    font-size: 24px;
+    font-weight: normal;
+    color: white;
+    position: absolute;
+    right: 0;
+    top:0;
+    line-height: 12px;
+}
+
+.comments input[type="file"] {
+    display: none;
+}
+.comments .photoName {
+    font-family: "Montserrat Regular", Arial;
+    font-size: 15px;
+    font-weight: normal;
+    color: white;
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+    top: 2px;
+}
+.comments label {
+    background: transparent url(../img/photo_doc.png) no-repeat;
+    height: 20px;
+    width: 50px;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.comments.tip {
+    /*margin-top: 20px;*/
+    /*border-top: 1px solid #3366CC;*/
+    /*padding-top: 20px;*/
+}
+
+.cmHolder .commentList {
+    /*margin: 20px 0;*/
+    margin-top: 10px;
+}
+
+.cmHolder .commentList .comment {
+    border-top: 1px solid #99ccff;
+    padding: 10px 0;
+    list-style: none;
+}
+
+.cmHolder .commentList .comment.highlighted {
+    background: rgba(51,102,204, 0.1);
+}
+
+/*.cmHolder .commentList .comment.status0 {*/
+    /*background: rgba(238,238,238, 1);*/
+/*}*/
+
+/*.cmHolder .commentList .comment.status-1 {*/
+    /*background: rgba(240,227,227, 1);*/
+/*}*/
+
+.cmHolder .commentList .comment .status{
+    font-family: "Montserrat Bold", Arial;
+    font-size: 13px;
+    font-weight: normal;
+    color: gray;
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: 10px;
+}
+
+
+.cmHolder .commentList .comment.status30 .status {
+    color: #c0504d;
+}
+
+.cmHolder .commentList .comment.firstComment {
+    border-top: none;
+}
+
+.cmHolder .commentList .comment:last-of-type {
+    border-bottom: none;
+}
+
+.cmHolder .commentList .comment .commentName {
+    font-family: "Montserrat Regular", Arial;
+    font-size: 13px;
+    font-weight: bold;
+    color: #3366CC;
+    display: inline-block;
+    vertical-align: top;
+    line-height: 25px;
+    position: relative;
+}
+
+.cmHolder .commentList .comment .date {
+    font-family: "Montserrat Regular", Arial;
+    font-size: 13px;
+    font-weight: normal;
+    color: gray;
+    display: inline-block;
+    line-height: 25px;
+    vertical-align: top;
+    margin-left: 3px;
+}
+/*.cmHolder .commentList .comment .separator {*/
+    /*font-family: "Montserrat Regular", Arial;*/
+    /*font-size: 14px;*/
+    /*font-weight: normal;*/
+    /*color: black;*/
+    /*display: inline-block;*/
+    /*vertical-align: middle;*/
+    /*margin: 0 5px;*/
+/*}*/
+.cmHolder .commentList .comment img {
+    height: 25px;
+    display: inline-block;
+    vertical-align: top;
+    /*margin: 0 5px;*/
+}
+
+.cmHolder .commentList .comment .userImage {
+    margin: 0 4px;
+    height: 42px;
+    width: 42px;
+    border-radius: 50%;
+}
+
+.cmHolder .commentList .comment .commentInfo {
+    display: inline-block;
+    width: calc(100% - 65px);
+}
+
+.cmHolder .commentList .comment .description {
+    font-family: "Montserrat Regular", Arial;
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 22px;
+    text-decoration: none;
+    color: #3366cc;
+    display: block;
+}
+
+.cmHolder .commentList .comment .commentTitle {
+    font-family: "Montserrat Regular", Arial;
+    font-size: 13px;
+    font-weight: bold;
+    color: black;
+    display: inline-block;
+    vertical-align: top;
+    line-height: 25px;
+    position: relative;
+    margin-right: 10px;
+}
+
+.cmHolder .commentList .comment .description.noAttachment {
+    color: black;
+    pointer-events: none;
+}
+
+.cmHolder .commentList .comment .actionLink {
+    font-family: "Montserrat Regular", Arial;
+    font-size: 14px;
+    font-weight: normal;
+    margin-top: 10px;
+    line-height: 14px;
+    text-decoration: none;
+    color: #3366cc;
+    display: inline-block;
+    padding: 0 5px;
+}
+.cmHolder .commentList .comment .actionLink:first-of-type {
+    padding-left: 0;
+}
+
+.cmHolder .commentList .comment .actionLink.reply {
+    border-right: 1px solid #3366CC;
+}
+.cmHolder .commentList .comment .actionLink {
+    cursor: pointer;
+}
+
+.cmHolder .commentList .comment .actionLink.like {
+    position: relative;
+}
+
+.cmHolder .commentList .comment .actionLink.like:after {
+    content: '';
+    background-image: url(../img/like_power.png);
+    width: 18px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    line-height: 20px;
+    height: 18px;
+    position: absolute;
+    left: 100%;
+    top: -3px;
+}
+
+.cmHolder .commentList .comment .actionButtons {
+    display: inline-block;
+    width: calc(100% - 54px);
+    border:  none;
+    text-align: left;
+    margin-left: 54px;
+}
+.cmHolder .comments.tips {
+}
+.cmHolder .description {
+    font-family: "Montserrat Regular", Arial;
+    font-size: 15px;
+    font-weight: bold;
+    color: black;
+    display: inline-block;
+    vertical-align: top;
+    line-height: 25px;
+    position: relative;
+    margin-bottom: 10px;
+}
+.cmHolder .title.tip {
+    border-top: 1px solid #3366CC;
+    padding-top: 20px;
+}
+.cmHolder .commentList .replyBox {
+    padding-top: 10px;
+    padding-left: 54px;
+}
+.cmHolder .commentList .replyBox .commentList {
+    /*padding-left: 50px;*/
+}
+.cmHolder .commentListPage {
+    margin-bottom: 20px;
+}
+.cmHolder .commentList .replyBox textarea {
+    height: 30px;
+    background: white;
+    transition: height 0.3s;
+}
+.cmHolder .commentList .replyBox textarea.focus {
+    height: 40px;
+}
+
+.cmHolder .commentList .replyBox label {
+    background-size: contain;
+    height: 20px;
+    width: 30px;
+    position: relative;
+}
+
+.cmHolder .commentList .replyBox .photoName {
+    font-size: 12px;
+}
+.cmHolder .commentList .replyBox .sendComment {
+    font-size: 12px;
+}
+.cmHolder .commentList .replyBox .actions {
+    height: 10px;
+    padding-top: 5px;
+}
+
+.cmHolder .enabled_false {
+    pointer-events: none;
+}
+
+.pagination .page {
+    display: inline-block;
+    list-style: none;
+}
+
+.pagination .page a {
+    text-decoration: none;
+    font-family: "Montserrat Regular", Arial;
+    color: #3366CC;
+}
+
+.pagination .page.currentPage a {
+    font-family: "Montserrat Bold", Arial;
+}
+
+.loadMoreC {
+    display: inline-block;
+    width: calc(100% - 18px);
+    font-family: "Montserrat Regular", Arial;
+    /*background-color: rgba(56, 93, 214, 0.47);*/
+    padding: 10px 0 5px;
+    text-decoration: none;
+    margin-bottom: 10px;
+    color: #3366CC;
+}
+
+.newCommentsAlert {
+    width: calc(100% - 20px);
+    border: 1px solid #3366CC;
+    background: rgba(56, 93, 214, 0.47);
+    padding: 10px;
+}
+
+.newCommentsAlert .newCommentsCopy {
+    font-family: "Montserrat Regular", Arial;
+    color: white;
+    display: inline;
+}
+.newCommentsAlert .reloadComments, .newCommentsAlert .reloadResponses {
+    font-family: "Montserrat Regular", Arial;
+    color: white;
+    display: inline;
+}
+
+.comment .action.share {
+    width: 150px;
+    margin-left: 8px;
+    z-index: 0;
+}
+
+.comment .action.share .actionSvg {
+    background: transparent;
+}
+
+.cmHolder input::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:     #3366cc;
+}
+.cmHolder input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:     #3366cc;
+    opacity:  1;
+}
+.cmHolder input::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:     #3366cc;
+    opacity:  1;
+}
+.cmHolder input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color:     #3366cc;
+}
+.cmHolder input:-ms-input-placeholder { /* Microsoft Edge */
+    color:     #3366cc;
+}
+
+.cmHolder textarea::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:     #3366cc;
+}
+.cmHolder textarea:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:     #3366cc;
+    opacity:  1;
+}
+.cmHolder textarea::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:     #3366cc;
+    opacity:  1;
+}
+.cmHolder textarea:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color:     #3366cc;
+}
+.cmHolder textarea:-ms-input-placeholder { /* Microsoft Edge */
+    color:     #3366cc;
+}                                                                                                                                             /*</div>*/

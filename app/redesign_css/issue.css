@@ -1,0 +1,721 @@
+/*
+ * Baseform
+ * Copyright (C) 2018  Baseform
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
+.issueArea {
+    background: white;
+    padding: 30px 0;
+}
+.issueArea .intro.title {
+    border-bottom: 6px solid #3366cc;
+    margin-bottom: 14px;
+    width: 100%;
+    position: relative;
+    padding-bottom: 14px;
+}
+.issueArea .intro .title {
+    font-size: 48px;
+    color: black;
+    font-family: 'Montserrat Regular', Arial;
+    font-weight: normal;
+    width: 85%;
+    display: inline-block;
+    vertical-align: bottom;
+}
+
+.issueArea .intro .title.rtl {
+    padding-left: 15%;
+}
+
+.issueArea .intro .description {
+    font-size: 18px;
+    color: black;
+    font-family: 'Montserrat Bold', Arial;
+    font-weight: normal;
+    border-bottom: 2px solid #3366cc;
+    line-height: 24px;
+    padding-bottom: 14px;
+    margin-bottom: 25px;
+}
+
+
+
+.issueArea .content .side {
+    width: 210px;
+    display: inline-block;
+}
+
+.issueArea .contentPartial {
+    vertical-align: top;
+}
+.issueArea .contentPartial.mergedContent {
+    width: 794px;
+    display: inline-block;
+    margin-right: 20px;
+}
+.issueArea .content .side.menu {
+    width: 160px;
+}
+
+.issueArea .content .side.menu .tabs.sticky {
+    top: 97px;
+    position: fixed;
+    width: 160px;
+}
+.issueArea .content .side.info.sticky {
+    top: 97px;
+    position: fixed;
+}
+
+.issueArea .content .side.info.sticky {
+    top: 97px;
+    position: fixed;
+}
+.issueArea .content .side.info .section ul,  .issueArea .content .side.info .showMore, .issueArea .content .side.info .register{
+    display: block;
+    transition: opacity 4s ease-out;
+    opacity: 1;
+}
+
+
+.issueArea .content .side.info .section ul li:first-of-type {
+    /*margin-top: 12px;*/
+}
+
+/*.issueArea .content .side.info.sticky  .section ul,  .issueArea .content .side.info.sticky .showMore, .issueArea .content .side.info.sticky .register{*/
+    /*display: none;*/
+    /*opacity: 0;*/
+/*}*/
+.issueArea .content .side.info.collapsed .section ul,  .issueArea .content .side.info.collapsed .showMore, .issueArea .content .side.info.collapsed .register{
+    display: none;
+    opacity: 0;
+}
+.issueArea .content .side.info.sticky .sectionTitle {
+    margin-bottom: 8px;
+}
+
+.issueArea .content .mainContent {
+    margin-left: 20px;
+    width: 614px;
+    display: inline-block;
+    position: relative;
+    min-height: 50vh;
+}
+.section.maintenance {
+    padding-top: 20px;
+    font-size: 20px;
+    font-family: 'Montserrat Regular', Arial;
+    font-weight: normal;
+}
+.issueArea.about .content .mainContent {
+    width: 824px;
+    padding-top: 22px;
+}
+
+.issueArea.about .title {
+    /*padding-bottom: 30px;*/
+    font-size: 42px;
+    font-family: 'Montserrat Regular', Arial;
+    font-weight: normal;
+    vertical-align: top;
+}
+.issueArea.about .title span{
+    /*padding-bottom: 30px;*/
+    margin-left: 20px;
+    font-size: 28px;
+    font-family: 'Montserrat Regular', Arial;
+    font-weight: normal;
+}
+.issueArea.about .title img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+    position: relative;
+    top: 10px;
+}
+.issueArea .tabs .tab {
+    list-style: none;
+    font-size: 16px;
+    font-family: 'Montserrat Regular', Arial;
+    font-weight: normal;
+    color: #3366cc;
+    padding-bottom: 10px;
+    position: relative;
+}
+.issueArea .tabs .tab.active {
+    font-family: 'Montserrat Bold', Arial;
+}
+.issueArea .tabs .tab.active:before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: #3366cc;
+    border-radius: 50%;
+    left: -12px;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%); 
+    transform: translateY(-50%);
+}
+
+.issueArea .tabs .tab a {
+    text-decoration: none;
+    color: #3366cc;
+}
+
+.issueArea .tabs .tab.static {
+    border-top: 1px solid #3366cc;
+    padding-top: 10px;
+}
+
+.issueArea .tabs .tab.static .title {
+    font-family: "Montserrat Bold", Arial;
+    font-size: 16px;
+    word-wrap: break-word;
+    margin-bottom: 10px;
+    width: 80%;
+}
+
+.issueArea .tabs .tab.static .titleBadge {
+    height: 35px;
+    width: auto;
+    position: absolute;
+    top: 10px;
+    right: 0;
+}
+
+.issueArea .tabs .tab.static.rtl .titleBadge {
+    left: 0;
+    right: auto;
+}
+
+/*.issueArea .tabs .tab.static:last-of-type {*/
+    /*border-bottom: 1px solid #3366cc;*/
+/*}*/
+
+.issueArea .tabContent .title {
+    font-size: 24px;
+    font-family: 'Montserrat Bold', Arial;
+    font-weight: normal;
+    color: #3366cc;
+    margin-bottom: 10px;
+}
+.issueArea .tabContent .subTitle {
+    font-size: 18px;
+    font-family: 'Montserrat Regular', Arial;
+    margin-bottom: 20px;
+}
+.issueArea .tabContent {
+    border-bottom: 1px solid #3366cc;
+    position: relative;
+    width: 100%;
+    margin-bottom: 18px;
+    padding-bottom: 10px;
+}
+
+.issueArea .tabContent.appendable {
+    border-bottom: none;
+}
+
+.issueArea .tabContent .gotIt{
+    width: 100%;
+    border: none;
+    height: 36px;
+    background-color: #3366cc;
+    color: white;
+    font-size: 16px;
+    font-family: 'Montserrat Regular', Arial;
+    font-weight: normal;
+    line-height: 36px;
+    text-align: center;
+    margin: 26px 0;
+    display: inline-block;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.issueArea .tabContent .gotIt img {
+    display: inline-block;
+    height: 80%;
+    vertical-align: middle;
+    margin-left: 6px;
+}
+
+.issueArea .tabContent .gotIt.disabled{
+    pointer-events: none;
+    opacity: 0.2;
+}
+
+.issueArea .tabContent .gotIt.alreadyGot {
+    pointer-events: none;
+    opacity: 0.2;
+}
+
+.issueArea .tabContent.static .map {
+    max-width: 100%;
+    margin-bottom: 25px;
+}
+
+.issueArea .tabContent.static .document {
+    list-style: none;
+    border-top: 1px solid #99ccff;
+    padding: 12px 12px 12px 30px;
+    position: relative;
+}
+
+.issueArea .tabContent.static .document:before {
+    content: '';
+    width: 18px;
+    height: 24px;
+    left: 0;
+    top: 12px;
+    position: absolute;
+    background-image: url("../redesign_images/doc.png");
+}
+
+.issueArea .tabContent.static .document a {
+    font-size: 16px;
+    font-family: 'Montserrat Bold', Arial;
+    font-weight: normal;
+    color: #3366cc;
+    text-decoration: none;
+    line-height: 22px;
+}
+
+.issueArea .tabContent.static .document .fileInfo {
+    font-size: 12px;
+    font-family: 'Montserrat Regular', Arial;
+    font-weight: normal;
+    color: black;
+}
+
+.issueArea .getInvolved {
+    font-size: 30px;
+    font-family: 'Fredoka One', Arial;
+    font-weight: normal;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #3366cc;
+}
+
+.issueArea .actions {
+    padding: 12px 0;
+    border-bottom:  1px solid #3366cc;
+}
+.issueArea .tabs .tab.tabAction {
+    font-family: "Montserrat Bold", Arial;
+}
+
+.issueArea .tabs .tab.tabAction svg{
+    width: 20px;
+    height:auto;
+    margin-right: 2px;
+}
+.issueArea .tabAction .actions {
+    border-bottom: 0;
+    padding: 0;
+}
+
+.action {
+    display: inline-block;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.action .actionSvg {
+    background: white;
+    z-index: 20;
+    position: relative;
+}
+
+.action svg, .action .actionName {
+    display: inline-block;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+.action .actionName {
+    color: #3366cc;
+    font-family: 'Montserrat Bold', Arial;
+    font-size: 15px;
+    font-weight: normal;
+    margin-left: 3px;
+    text-decoration: none;
+}
+
+ .issueArea .section.smallSection {
+    border-bottom: 1px solid #3366cc;
+    padding: 12px 0;
+}
+
+.issueArea .section.events .title {
+     padding: 0;
+}
+
+.issueArea .mainContent .section.events {
+    padding: 0;
+}
+
+ .issueArea .section .sectionTitle {
+    font-family: 'Fredoka One', Arial;
+    font-weight: normal;
+    font-size: 18px;
+    margin-bottom: 12px;
+}
+
+ .issueArea .section.events .sectionTitle {
+     cursor: pointer;
+     color: #3366cc;
+}
+ .issueArea .section.surveys .sectionTitle {
+     cursor: pointer;
+     color: #3366cc;
+}
+ .issueArea .section.comments .sectionTitle {
+     cursor: pointer;
+     color: #3366cc;
+}
+ .issueArea .section.twitter .sectionTitle {
+     cursor: pointer;
+     color: #3366cc;
+}
+
+ .issueArea .section li {
+    list-style: none;
+}
+
+.issueArea .section .date {
+    font-family: 'Montserrat Regular', Arial;
+    font-size: 12px;
+    font-weight: normal;
+    color: gray;
+    display: inline;
+}
+
+
+.issueArea .section .description {
+    font-family: 'Montserrat Bold', Arial;
+    font-size: 12px;
+    font-weight: normal;
+    color: black;
+    display: block;
+    line-height: 18px;
+    margin-top: 0;
+}
+
+.issueArea .section .commentList .description {
+    font-family: 'Montserrat Regular', Arial;
+}
+
+.issueArea .section  li {
+    padding: 12px 0;
+    padding-left: 18px;
+    position: relative;
+    border-top: 1px solid #99ccff;
+}
+.issueArea .section.comments li {
+    padding-left: 0;
+}
+
+.issueArea .section .commentName {
+    color: #3366cc;
+    font-family: 'Montserrat Regular', Arial;
+    font-weight: normal;
+    font-size: 12px;
+    display: inline;
+    /*margin-right: 5px;*/
+}
+
+.issueArea .section .showMore {
+    color: #3366cc;
+    font-family: 'Montserrat Bold', Arial;
+    font-weight: normal;
+    font-size: 12px;
+    display: inline;
+    text-decoration: none;
+    margin-top: 10px;
+}
+.issueArea .section.surveys .register {
+    color: #3366cc;
+}
+.issueArea .section .register {
+    color: #3366cc;
+    font-family: 'Montserrat Bold', Arial;
+    font-weight: normal;
+    font-size: 12px;
+    display: inline;
+    text-decoration: none;
+    margin-top: 10px;
+}
+.issueArea .tabContent:last-of-type {
+    border-bottom: none;
+}
+.issueArea .tabContent .stats{
+    padding: 0;
+}
+.issueArea .tabContent .stats .stat{
+    border-top-color: #99ccff;
+}
+.issueArea .section.events .event:before {
+    content: '';
+    width: 12px;
+    height: 18px;
+    left: 0;
+    top: 12px;
+    position: absolute;
+    background-image: url("../redesign_images/event.png");
+}
+.issueArea .section.surveys .survey {
+    cursor: pointer;
+}
+.issueArea .section.surveys .survey:before {
+    content: '';
+    width: 12px;
+    height: 18px;
+    left: 0;
+    top: 12px;
+    position: absolute;
+    background-image: url("../redesign_images/survey.png");
+}
+
+.issueArea .section.comments .badge {
+    display: inline-block;
+    vertical-align: middle;
+    height:20px;
+}
+
+.issueArea .section.comments .separator {
+    font-family: 'Montserrat Regular', Arial;
+    font-size: 12px;
+    font-weight: normal;
+    color: black;
+    padding: 0 2px;
+}
+
+.issueArea .survey .submittedAt {
+    font-family: 'Montserrat Regular', Arial;
+    font-size: 16px;
+    font-weight: normal;
+    padding: 10px 0 20px;
+}
+
+.issueArea .survey .submittedAt a {
+    font-family: 'Montserrat Regular', Arial;
+    font-size: 16px;
+    font-weight: normal;
+    color: #3366CC;
+    text-decoration: none;
+}
+
+.issueArea .survey .logoutAnswer {
+    font-family: 'Montserrat Regular', Arial;
+    font-size: 16px;
+    font-weight: normal;
+    padding: 10px 0 20px;
+}
+
+.issueArea .survey .logoutAnswer a {
+    font-family: 'Montserrat Regular', Arial;
+    font-size: 16px;
+    font-weight: normal;
+    color: #3366CC;
+    text-decoration: none;
+}
+
+.issueArea .map {
+    height: 400px;
+}
+
+.issueArea .section.twitter .tweet:before {
+    content: '';
+    width: 12px;
+    height: 10px;
+    left: 1px;
+    top: 16px;
+    position: absolute;
+    background-image: url("../redesign_images/twitter.png");
+}
+
+.issueArea .appPromotion {
+    position: relative;
+    padding-top: 18px;
+}
+.issueArea .appPromotionText {
+    font-size: 12px;
+    font-family: 'Montserrat Regular', Arial;
+    width: 100%;
+    color: black;
+    padding-bottom: 20px;
+}
+
+.issueArea .appStore {
+    width: 135px;
+    height: 40px;
+    display: inline-block;
+    background-repeat: no-repeat;
+}
+
+.issueArea .appStore.ios {
+    background-image: url("../redesign_images/ios.png");
+    cursor: default;
+    opacity: 0.5;
+}
+
+.issueArea .appStore.android {
+    background-image: url("../redesign_images/android.png");
+    padding-bottom: 12px;
+}
+
+.chartClick {
+    height: 200px;
+}
+
+.showMenu {
+    position: relative;
+    text-align: left;
+    margin-right: 18px;
+    vertical-align: top;
+}
+
+.mobileMenu {
+    display: none;
+    margin-top: 10px;
+    padding: 20px 0;
+    overflow-y: auto;
+    /*max-height: 60vh;*/
+    height: 0;
+}
+
+.mobileMenu.active {
+    display: block;
+}
+
+.issueArea .mobileMenu .section {
+    border: 0;
+    padding: 5px 0;
+}
+.issueArea .mobileMenu .section .sectionTitle {
+    margin-bottom: 5px;
+}
+.issueArea .mobileMenu .appStore.android {
+    margin-bottom: 0;
+}
+.issueArea .section.events {
+    background-color: white;
+}
+.logoutLink {
+    position: absolute;
+    right:0;
+    font-family: "Montserrat Regular";
+    text-decoration: none;
+    bottom:10px;
+    color: #3366CC;
+    font-size: 24px;
+}
+@media (max-width: 1045px) {
+    /*.showMenu {*/
+        /*display: inline-block;*/
+    /*}*/
+    .issueArea .contentPartial.mergedContent {
+        width: 100%;
+        margin-right: 0;
+    }
+    .issueArea.about .content .mainContent {
+        width: 100%;
+        margin-left: 0;
+    }
+    .issueArea .contentPartial.side.info {
+        display: none;
+    }
+    .issueArea .contentPartial.side.menu {
+        width: 210px;
+    }
+    .issueArea.about .contentPartial.side.menu {
+        display: none;
+    }
+
+    .issueArea.about .showMenu {
+        display: inline-block;
+    }
+    .issueArea .contentPartial.mainContent {
+        margin: 0;
+        /*padding: 10px;*/
+        width: calc(100% - 220px);
+        margin-left: 10px;
+    }
+    .issueArea .content .side.menu .tabs.sticky {
+        width: 210px;
+    }
+    .issueArea .contentPartial.info {
+        margin: 0;
+        /*padding: 10px;*/
+    }
+    .issueArea.about .title img {
+        position: absolute;
+        visibility: hidden;
+    }
+}
+@media (max-width: 820px) {
+    .issueArea .intro .title { vertical-align:middle; font-size: 32px;    width: calc(100% - 80px);}
+    .issueArea .intro .title span { vertical-align:middle; font-size: 24px;    width: calc(100% - 80px);}
+    .issueArea.about .intro .title { vertical-align:top; }
+}
+@media (max-width: 680px) {
+    .stats:not(.full) .statsGrid {
+        width: 100%;
+    }
+    .issueArea .intro .title { font-size: 22px;}
+    .issueArea.about .title span { font-size: 18px;
+        display: block;margin-left: 0;}
+    .issueArea .intro .description { font-size: 16px;}
+    .issueArea .tabContent .title { font-size: 18px; }
+    .issueArea .tabContent.static .document a { font-size: 14px; }
+    .issueArea .contentPartial.side.menu {
+        display: none;
+    }
+    .issueArea .tabContent#map {
+        width: 90%;
+        text-align: left;
+    }
+    .issueArea .contentPartial.mainContent {    
+        width: 100%;
+        margin-left: 0;
+    }
+    .showMenu {
+        display: inline-block;
+    }
+    .issueArea .appStore.android { padding-bottom: 0}
+    .logoutLink {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 580px) {
+    .issueArea.about .intro .title {
+        font-size: 17px;
+    }
+    .issueArea.about .title span {
+        font-size: 14px;
+    }
+}
+
+
+.mobileMenu .chartClick .title {
+    color: #3366cc;
+}

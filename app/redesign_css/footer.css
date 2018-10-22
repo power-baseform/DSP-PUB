@@ -1,0 +1,124 @@
+/*
+ * Baseform
+ * Copyright (C) 2018  Baseform
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
+.footer {
+    background: #3366cc;
+    position: absolute;
+    padding: 75px 0;
+    bottom: 0;
+}
+
+.footer.fixed {
+    position: absolute;
+    bottom: 0;
+}
+.footer .line {
+    position: relative;
+}
+.footer .column {
+    width: calc((100% - 30px) / 2);
+    display: inline-block;
+    position: relative;
+    vertical-align: top;
+
+    /*top: 50%;
+    -ms-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%); 
+    transform: translateY(-50%);*/
+}
+
+.footer .footerStatsLinks {
+    color: white;
+    font-size: 13px;
+    font-family: "Montserrat Regular", Arial;
+}
+
+.footer a {
+    text-decoration: none;
+}
+
+.footer .legalLink {
+    color: white;
+    font-family: "Montserrat Bold", Arial;
+    font-size: 13px;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.footer .legalLink.first {
+    margin-top: 15px;
+}
+
+.footer .column.rigthColumn {
+    margin-left: 30px;
+}
+
+.footer .license {
+    font-size: 11px;
+    font-family: 'Montserrat Regular', Arial;
+    font-weight: normal;
+    color: white;
+    margin-top: 18px;
+}
+.footer .license .licenseName {
+    font-family: 'Montserrat Bold', Arial;
+    font-weight: normal;
+}
+
+.footer .logo {
+    color: white;
+    font-family: 'Fredoka One', Arial;
+    font-weight: normal;
+    font-size: 44px;
+    text-transform: uppercase;
+    text-decoration: none;
+    display: block;
+}
+
+.footer .copyright {
+    font-size: 11px;
+    font-family: 'Montserrat Regular', Arial;
+    font-weight: normal;
+    color: white;
+    margin-top: 18px;
+}
+
+.footer .licenseImage {
+    width: 120px;
+}
+
+.footer.fixed {
+    position: absolute;
+    bottom: 0;
+}
+
+
+@media (max-width: 958px) {
+    .footer {
+        padding: 20px 0;
+    }
+    .footer .column {
+        width: 90%;
+        margin: 20px auto;
+        display: block;
+        text-align: center;
+    }
+    .footer .column.rigthColumn {
+        margin-left: auto;
+    }
+}

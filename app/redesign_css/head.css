@@ -1,0 +1,298 @@
+/*
+ * Baseform
+ * Copyright (C) 2018  Baseform
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
+.header {
+    height: 72px;
+    color: white;
+    position: relative;
+    background: white;
+    padding: 0;
+}
+
+.header.sticky {
+    position: fixed;
+    top: 0;
+    z-index: 10;
+}
+
+.header.issue {
+    background: #3366cc;
+}
+
+.header .logo {
+    font-size: 24px;
+    color: #3366cc;
+    font-family: 'Montserrat Regular', Arial;
+    font-weight: normal;
+    font-style: normal;
+    display:  inline;
+    text-transform: uppercase;
+    max-height: 35px;
+    width: auto;
+    line-height: 72px;
+}
+
+.header .logoLink {
+    text-decoration: none;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.header .logo.main {
+    font-family: 'Fredoka One', Arial;
+}
+
+.header .logoResp {
+    display: none;
+    padding: 11.5px 0;
+}
+
+.header .menu {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 10px;
+}
+
+.header .menu .menuLink.languagePicker {
+    padding-right: 18px;
+    position: relative;
+    font-size: 12px;
+    vertical-align: middle;
+    color: rgba(255,255,255,0.6);
+    background: #99ccff;
+    padding: 5px 20px 5px 5px;
+    margin-left: 10px;
+}
+
+.header .menu .menuLink.languagePicker:before {
+    border: solid white;
+    border-width: 0 1px 1px 0;
+    display: inline-block;
+    padding: 3px;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    content: '';
+    position: absolute;
+    right: 7px;
+    top: 5px;
+}
+
+.header .menu .menuLink {
+    display: inline-block;
+    list-style: none;
+    font-size: 15px;
+    color: white;
+    text-decoration: none;
+    font-family: 'Montserrat Regular', Arial;
+    font-weight: normal;
+    margin-right: 22px;
+    position: relative;
+    vertical-align: middle;
+}
+
+.header .menu .menuLink a {
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.header .menu .menuLink.languagePicker .picker {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #99ccff;
+    color: white;
+    width: 100%;
+    list-style: none;
+    z-index: 10;
+}
+
+.header .menu .menuLink.languagePicker .picker .lang {
+    line-height: 26px;
+    cursor: pointer;
+}
+.header .menu .menuLink.languagePicker a {
+    text-transform: none;
+}
+
+.header .menu .menuLink.languagePicker .picker .lang a {
+    line-height: 26px;
+    text-transform: none;
+    color: #3366CC;
+    padding: 2px 10px;
+}
+
+.header .loginForm input[type="submit"] {
+    color: white;
+    background: #3366cc;
+    font-family: 'Montserrat Regular', Arial;
+    font-size: 16px;
+    height: 30px;
+    width: 94px;
+    outline: none;
+    border: 1px solid #3366cc;
+    -webkit-appearance: none;
+    border-radius: 0;
+}
+
+.header.issue .loginForm input[type="submit"] {
+    color: #3366cc;
+    background: white;
+    border: 1px solid white;
+}
+
+.header .mobileHeader {
+    display: none;
+}
+
+.header .logoHolder {
+    width: calc(100% - 200px);
+}
+
+.header .logoElement {
+    display: inline-block;
+}
+
+.header .loginForm  {
+    text-align: right;
+    width: 200px;
+}
+
+.header .logoHolder .smallLogo {
+    text-decoration: none;
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 20px;
+    height: 72px;
+}
+
+.header .logoHolder .smallLogo img {
+    height: 48px;
+    display: inline-block;
+    vertical-align: middle;
+    padding: 12px 0;
+}
+
+.header .userMenu .userImage {
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+    margin-left: 12px;
+    height: 42px;
+    width: 42px;
+    border-radius: 50%;
+    padding: 15px 0;
+}
+
+.header .userMenu .userName {
+    display: block;
+    vertical-align: top;
+    color: #3366cc;
+    font-size: 12px;
+    font-family: 'Montserrat Regular', Arial;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.header .logout {
+    color: #3366CC;
+    display: block;
+    font-size: 12px;
+    font-family: 'Montserrat Regular', Arial;
+    font-weight: normal;
+    text-decoration: underline;
+}
+
+.header .userMenu .actions, .header .userMenu .userLogo {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.header .userMenu {
+    text-align: right;
+    width: 200px;
+}
+
+.header.issue .userMenu .userName {
+    color: white;
+    vertical-align: middle;
+}
+
+.header.issue .userMenu .logout {
+    color: white;
+    vertical-align: middle;
+}
+
+@media (max-width: 780px) {
+    .header .logoResp {
+        display: block;
+        width: 49px;
+    }
+    .header .logo {
+        display: none;
+    }
+
+    .header .menu .menuLink.languagePicker {
+        display: none;
+    }
+}
+
+@media (max-width: 680px) {
+    .header .menu .menuLink.myProgress {
+        display: none;
+    }
+}
+
+@media (max-width: 600px) {
+    .header .menu .menuLink {
+        font-size: 11px;
+        margin-right: 10px;
+    }
+
+    .header .menu .languagePicker {
+        display: none;
+    }
+
+    .header .userMenu {
+        width: 54px;
+    }
+
+    .header.issue .userMenu {
+        width: 200px;
+    }
+
+    .header .logoHolder.loggedIn {
+        width: calc(100% - 54px);
+    }
+
+    .header .userMenu .actions {
+        display: none;
+    }
+
+    .header .logoHolder .smallLogo {
+        margin-right: 5px;
+    }
+
+    .header .menuLink.myProgress {
+        display: none;
+    }
+}
+
+
+

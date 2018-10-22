@@ -1,0 +1,211 @@
+/*
+ * Baseform
+ * Copyright (C) 2018  Baseform
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
+.HTMLContent {
+    overflow-x: hidden;
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    -webkit-transition: opacity 0.2s; /* Safari */
+    transition: opacity 0.2s;
+    opacity: 1;
+    overflow-y: hidden;
+}
+
+.HTMLContent.customTitle {
+    position: absolute;
+    background: #d1e5fd;
+    z-index: 20;
+    width: auto;
+    padding: 12px;
+    max-width:400px;
+    font-family: 'Montserrat Regular', Arial;
+    font-weight: normal;
+}
+
+.HTMLContent.customTitle *  {
+    position: relative;
+    vertical-align: middle;
+    line-height: 25px;
+}
+
+.HTMLContent.customTitle .gamificationIcon {
+    display: inline-block;
+    height: 25px;
+    margin: 0;
+    margin-left: 10px;
+}
+
+.HTMLContent.notVisible {
+    opacity: 0;
+}
+
+.HTMLContent * {
+    font-family: 'Montserrat Regular', Arial;
+    font-weight: normal;
+    position: inherit;
+}
+
+.HTMLContent strong, .HTMLContent b {
+    font-family: 'Montserrat Bold', Arial;
+    font-weight: normal;
+}
+
+.HTMLContent a {
+    color: #3366CC;
+    text-decoration: none;
+}
+
+
+.HTMLContent td {
+    vertical-align: top;
+}
+
+
+.HTMLContent p {
+    font-size: 16px;
+    color: black;
+    line-height: 22px;
+}
+
+.HTMLContent br {
+    content: "" !important;
+    display: block !important;
+    margin-bottom: 18px !important;
+}
+
+.HTMLContent h4 {
+    font-size: 16px;
+    font-family: 'Montserrat Bold', Arial;
+    font-weight: normal;
+    margin: 14px 0;
+    padding-top: 5px;
+    border-top: 1px solid #3366CC;
+}
+
+.HTMLContent.rtl ul li {
+    padding-left: 0;
+    padding-right: 12px;
+}
+
+.HTMLContent.rtl ul li:before {
+    left: auto;
+    right: 0;
+}
+
+.HTMLContent.rtl ol li {
+    padding-left: 0;
+    padding-right: 28px;
+}
+
+.HTMLContent.rtl ol li:before {
+    left: auto;
+    right: 16px;
+    content: '.' counter(num) !important;
+    direction: ltr;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    position: absolute;
+    top: 0px;
+}
+
+.HTMLContent ol li {
+    font-size: 16px;
+    position: relative;
+    line-height: 22px;
+    padding-bottom: 5px;
+    list-style: none;
+    padding-left: 12px;
+    counter-increment: num;
+}
+
+.HTMLContent ul li {
+    font-size: 16px;
+    list-style: none;
+    padding-left: 12px;
+    position: relative;
+    line-height: 22px;
+    padding-bottom: 5px;
+}
+
+.HTMLContent ul li:before {
+    content: '';
+    width: 4px;
+    height: 4px;
+    background: black;
+    border-radius: 50%;
+    left: 0px;
+    position: absolute;
+    top: 8px;
+}
+
+.HTMLContent:not(.rtl) ol li:before {
+    content: counter(num) '.';
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    left: 0px;
+    position: absolute;
+    top: 0px;
+}
+
+.HTMLContent li h4 {
+    display:  inline;
+}
+
+.HTMLContent img {
+    margin: 8px;
+    display: block;
+}
+
+.HTMLContent span {
+    font-size: 16px;
+    line-height: 22px;
+}
+
+.HTMLContent hr {
+    /*display: none;*/
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #99ccff;
+    margin: 1em 0;
+    padding: 0;
+    /*visibility: hidden;*/
+}
+
+/*.HTMLContent span strong {*/
+    /*padding: 5px;*/
+    /*border-top: 1px solid #99ccff;*/
+    /*display: inline-block;*/
+    /*width: 100%;*/
+/*}*/
+
+@media (max-width: 834px) {
+    .HTMLContent td {
+        display: table-row;
+        padding: 10px;
+    }
+}
+
+@media (max-width: 680px) {
+    .HTMLContent span, .HTMLContent p {
+        font-size: 14px;
+    }
+}

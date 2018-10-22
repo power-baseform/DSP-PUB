@@ -1,0 +1,2031 @@
+/*
+ * Baseform
+ * Copyright (C) 2018  Baseform
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
+html, body {
+    padding: 0;
+    margin: 0 auto;
+
+}
+html{
+    height: 100%;
+}
+body{
+    min-height: 100%;
+    position:relative;
+}
+
+
+* {
+    margin: 0;
+}
+
+ul li {
+    text-align: left;
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px white inset;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid #3366cc;
+    margin: 0;
+}
+
+@viewport{
+    zoom: 1.0;
+    width: extend-to-zoom;
+}
+
+#middle1 {
+    margin: 0 auto;
+    width:100%;
+    padding: 50px 0 0;
+}
+
+
+#bottom {
+    width: 100%;
+    margin: 0 auto;
+}
+
+a {
+    text-decoration: none;
+    color: #3366cc;
+}
+
+a:link {
+    color: #3366cc;
+}
+
+img {
+    border: 0;
+}
+
+.content {
+    width: 904px;
+    margin: 0 auto;
+    position: relative;
+    padding-top: 24px;
+}
+
+.blueLayer {
+    background-color: #eaeffa;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    /*z-index: 1;*/
+}
+
+#top {
+    margin: 0 auto;
+    width: 904px;
+    height: 81px;
+}
+
+td.logoMenu {
+    width:275px;
+    padding-top:3px;
+}
+
+#topLeft {
+    margin-top: 25px;
+    width: 512px;
+    float: left;
+}
+
+#topRight {
+    margin-top: 25px;
+    width: 512px;
+    float: right;
+}
+
+#topMiddle {
+    overflow: hidden;
+}
+
+#bottomMiddle {
+    padding-bottom: 35px;
+    width: 904px;
+}
+
+#processoSearch {
+    padding: 45px 0 24px 0;
+    text-align: center;
+    width: 904px;
+    margin: 0 auto;
+}
+
+.botoesMenu span {
+    color: #333366;
+}
+
+.botaoArea {
+    font-size: 14px;
+    vertical-align: top;
+}
+
+.alinhaDireita {
+    text-align: right;
+    vertical-align: bottom;
+}
+
+#topRightTop {
+    font-size: 14px;
+    float: right;
+}
+
+.museo900 {
+    font-weight: 900;
+}
+
+.museo800 {
+    font-weight: 800;
+}
+
+.museo700 {
+    font-weight: 700;
+}
+
+.museo600 {
+    font-weight: 600;
+}
+
+.museonormal{
+    font-weight: normal;
+}
+
+.museo500 {
+    font-weight: 500;
+}
+
+.museo400 {
+    font-weight: 400;
+}
+
+.light {
+    color: #3366cc;
+}
+
+.backlight {
+    background-color: #3366cc;
+    color: #fff;
+}
+
+.dark {
+    color: #333366 !important;
+}
+
+.backdark {
+    background-color: #333366;
+    color: #fff;
+}
+
+.smallFont a {
+    font-size: 12px;
+    color: #3366cc;
+    font-weight: 700;
+}
+
+.smallFont {
+    font-size: 12px;
+    color: #3366cc;
+    font-weight: 700;
+}
+
+.searchBar {
+    margin-top: 30px;
+}
+
+.searchBar1 {
+    float: left;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.searchBar1 .mySelect:last-child {
+    border-bottom: 1px solid #3366cc;
+}
+
+.searchBar1 .scrollableDiv .mySelect:last-child {
+    border-bottom: 1px solid #3366cc;
+}
+
+.searchBar2 .mySelect:last-child {
+    border-bottom: 1px solid #3366cc;
+}
+
+.searchBar2 .scrollableDiv .mySelect:last-child {
+    border-bottom: 1px solid #3366cc;
+}
+
+.subTituloTxt {
+    font-size: 24px;
+    line-height: 32px;
+    margin-left: 2px;
+    vertical-align: bottom;
+}
+
+.subTituloTxt1 {
+    font-size: 24px;
+    vertical-align: bottom;
+}
+
+.subTitulo1 {
+    vertical-align: sub;
+}
+
+.subTitulo2 {
+    vertical-align: bottom;
+    margin-left: 5px;
+}
+
+.subTitulo3 {
+    font-size: 14px;
+}
+
+.subTitulo4 {
+    font-size: 18px;
+}
+
+.processotable {
+    float: left;
+    font-size: 12px;
+    /*margin: 0 auto 35px auto;*/
+    margin: 0 0 35px 0;
+    width: 300px;
+    height: 300px;
+    border-right: 1px solid #3366cc;
+}
+
+.processolist {
+    font-size: 12px;
+    height: 65px;
+    border-bottom: 1px solid #3366cc;
+}
+
+#processoList {
+    width: 904px;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 20px 0 60px;
+}
+
+.firstPtable {
+    border-left: 1px solid #3366cc;
+}
+
+.firstP {
+    border-left: 1px solid #3366cc;
+}
+
+.firstPlist {
+    border-left: 0;
+}
+
+.pInfolist {
+    padding-top: 10px;
+    width: 68%;
+    float: left;
+}
+
+.firstBotaolist {
+    border-left: 1px solid #3366cc;
+}
+
+.pImagem {
+    margin: 0 10px 10px 10px;
+    width: 280px;
+    height: 140px;
+}
+
+.pData {
+    margin: 0 10px;
+    font-size: 14px;
+    color: #3366cc;
+    height: 18px;
+}
+
+.pDesignacaotable {
+    margin: 5px 10px;
+    font-size: 16px;
+    color: #333366;
+    line-height: 18px;
+}
+
+.pDesignacaolist {
+    margin: 3px 10px;
+    font-size: 16px;
+    color: #333366;
+    line-height: 18px;
+    display: inline-block;
+    width: 615px;
+    white-space: nowrap;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+}
+
+.pLocalizacaotable {
+    margin: 0 10px;
+    display: inline-block;
+    width: 280px;
+    white-space: nowrap;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+}
+
+.pLocalizacaolist {
+    margin: 0 10px;
+    display: inline-block;
+    width: 595px;
+    white-space: nowrap;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+    padding-top: 5px;
+}
+
+#pList {
+    width: 904px;
+    height: auto;
+    text-align: left;
+    padding: 0 0 62px 0;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.botoesBartable {
+    margin-top: 5px;
+    height: 30px;
+}
+
+.botoesBarlist {
+    margin-top: 20px;
+    height: 30px;
+    width: 32%;
+    float: left;
+}
+
+.botoestable {
+    width: 89px;
+    float: left;
+    border-right: 1px solid #3366cc;
+    padding-left: 10px;
+    color: #3366cc;
+    cursor: pointer;
+    height: 25px;
+}
+
+.botoestable img {
+    padding-top: 4px;
+}
+
+.botoeslist {
+    width: 85px;
+    float: left;
+    border-right: 1px solid #3366cc;
+    padding-left: 10px;
+    color: #3366cc;
+    cursor: pointer;
+    height: 25px;
+}
+
+.botoes {
+    cursor: pointer;
+}
+
+.infoText {
+    font-size: 16px;
+    text-align: center;
+    padding-top: 15px;
+}
+
+.infoTextSmall {
+    font-size: 16px;
+    text-align: center;
+}
+
+#filtros {
+    width: 904px;
+    margin-top: 20px;
+}
+
+.cleanInput {
+    border: 0;
+    outline: none;
+    position: relative;
+    left: 20px;
+    width: 85%;
+    color: #3366cc !important;
+}
+
+.text {
+    height: 34px;
+    left: 0;
+    line-height: 32px;
+    padding: 0;
+}
+
+.cleanInput2 {
+    border: 0 none;
+    cursor: pointer;
+    outline: medium none;
+    position: relative;
+    width: 83%;
+    color: #fff;
+    background-color: #3366cc;
+    font-size: 25px;
+}
+
+.indexSearch {
+    width: 904px;
+    margin: 0 auto;
+    padding-top: 50px;
+}
+
+.selectHeight {
+    height: 36px;
+}
+
+.inputPosition {
+    top: 6px;
+}
+
+.inputPosition2 {
+    top: 9px;
+    left: -20px;
+}
+
+.mySelect span {
+    line-height: 36px;
+    font-size: 14px;
+}
+
+.option {
+    background-color: #eaeffa;
+    color: #333366;
+}
+
+.optionLight {
+    background-color: #eaeffa;
+    color: #333366;
+}
+
+.optionDark {
+    background-color: #eaeffa;
+    color: #3366cc;
+}
+
+.optionDark:hover {
+    background-color: #3366cc;
+    color: #fff;
+}
+
+.optionWhite {
+    background-color: #ffffff;
+    color: #3366cc;
+}
+
+.optionWhite:hover {
+    background-color: #3366cc;
+    color: #fff;
+}
+
+.optionLight:hover {
+    background-color: #3366cc;
+    color: #fff;
+}
+
+.stats {
+    height: 150px;
+    padding: 34px 0 0;
+    margin: 0 auto;
+    width: 904px;
+}
+
+.selInput {
+    position: relative;
+    left: 20px;
+    border: 0;
+    outline: none;
+    line-height: 32px;
+    cursor: pointer;
+    padding: 0;
+    height: 36px;
+}
+
+.photoInput {
+    float: left;
+    cursor: pointer;
+    background: transparent url("img/photo.png") no-repeat;
+    left: 5px;
+    top: 2px;
+    position: absolute;
+}
+
+#send {
+    width:100px;
+    float:right;
+    cursor: pointer;
+}
+
+.bgLight {
+    background-color: #3366cc;
+}
+
+.bgDark {
+    background-color: #333366;
+}
+
+.inputDiv {
+    height: 36px;
+    cursor: pointer;
+}
+
+.optionSelected {
+    background-color: #3366cc;
+    color: #fff;
+}
+
+.searchSelect .optionLight:last-child {
+    border-bottom: 1px solid #3366cc;
+}
+
+#noResults {
+    padding-top: 50px;
+    font-size: 24px;
+    min-height: 330px;
+    width: 305px;
+    margin: 0 auto;
+}
+
+.loginTable {
+    margin: 0 auto;
+    text-align: left;
+    width: 904px;
+}
+
+.loginTable tr td:first-child {
+    width: 200px;
+}
+
+.loginTable tr td {
+    padding: 2px;
+}
+
+.tableForm {
+    width: 904px;
+    margin: 0 auto;
+}
+
+.tableForm tr:last-child td {
+    border-bottom: 1px solid #3366cc;
+}
+
+.tableForm1 {
+    width: 904px;
+    margin: 0 auto;
+}
+
+.tableForm1 td {
+    border-top: 1px solid #3366cc;
+}
+
+.tableForm1 tr:last-child td {
+    border-bottom: 1px solid #3366cc;
+}
+
+.comentarioArea {
+    border: 1px solid #3366cc;
+    padding: 5px;
+    margin: 10px 0;
+}
+
+.inqueritoArea {
+    border: 1px solid #3366cc;
+    padding: 5px;
+    margin: 10px 0;
+}
+
+.popTable {
+    text-align: left;
+    font-size: 16px;
+}
+
+.popTable tr td {
+    width: 300px;
+    padding: 0 18px;
+    vertical-align: top;
+}
+
+.popTable p {
+    line-height: 18px;
+    margin: 0;
+}
+
+.popTable input {
+    font-size: 18px;
+}
+
+.popOneTop input {
+    font-size: 18px;
+}
+
+.errorSp {
+    color: #cc0000;
+    font-size: 12px;
+}
+
+.seccaoProcesso {
+    text-align: left;
+    width: 904px;
+    margin: 0 auto;
+}
+
+.seccaoProcesso td:not(.titulo) {
+    padding-left: 10px;
+    border-bottom: 1px solid #3366cc;
+}
+
+table.seccaoProcesso tr:last-child td {
+    border: 0;
+}
+
+.seccaoProcessoW {
+    text-align: left;
+    width: 904px;
+    margin: 0 auto;
+}
+
+.seccaoLogin {
+    text-align: left;
+    width: 904px;
+    margin: 0 auto;
+}
+
+.estatistica {
+    text-align: center;
+    font-size: 72px;
+    color: #3366cc;
+    line-height: 1.1;
+}
+
+.estatisticaSmall {
+    text-align: center;
+    font-size: 72px;
+    color: #3366cc;
+    line-height: 1.1;
+}
+
+.btnSite {
+    background-color: #3366cc;
+    border-color: #3366cc;
+    border-style: solid;
+    border-width: 1px;
+    padding: 5px 10px;
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+    text-align: center;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+}
+
+.btnSiteSelected {
+    background-color: #fff;
+    border-color: #3366cc;
+    border-style: solid;
+    border-width: 1px;
+    padding: 5px 10px;
+    color: #3366cc;
+    font-size: 18px;
+    cursor: pointer;
+    text-align: center;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+}
+
+.btn {
+    border-color: #3366cc;
+    border-style: solid;
+    border-width: 1px;
+    padding: 5px 15px;
+    width: auto;
+    color: #3366cc;
+    font-size: 28px;
+}
+
+.btn2 {
+    background-color: #3366cc;
+    border-color: #3366cc;
+    border-style: solid;
+    border-width: 1px;
+    padding: 5px 10px;
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+    text-align: center;
+    display: inline-block;
+    font-weight: normal;
+}
+
+.btn2On {
+    background-color: #fff;
+    border-color: #3366cc;
+    border-style: solid;
+    border-width: 1px;
+    padding: 5px 10px;
+    color: #3366cc;
+    font-size: 18px;
+    cursor: pointer;
+    text-align: center;
+    display: inline-block;
+    font-weight: normal;
+}
+
+.msite {
+    text-align: left;
+    width: 904px;
+    margin: 0 auto;
+    background-color: #eaeffa;
+    height: 110px;
+}
+
+.innermsite {
+    padding: 34px 10px 34px 0;
+    float: left;
+}
+
+.allWidthBlue {
+    width: 100%;
+    background-color: #eaeffa;
+    border-bottom: 1px solid #3366cc;
+    border-top: 1px solid #3366cc;
+}
+
+.allWidthWhite {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.popUp {
+    width: 300px;
+    height: 260px;
+    background-color: #eaeffa;
+    z-index: 101;
+}
+
+.popUpList {
+    width: 904px;
+    height: 65px;
+    background-color: #eaeffa;
+    z-index: 101;
+}
+
+#empty {
+    background-color: transparent;
+    width: 100%;
+    min-height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 12;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+}
+
+.innerTable {
+    margin-top: 15px;
+    background-color: #eaeffa;
+    width: 904px;
+}
+
+.innerTable tr td:first-child {
+    border-left: 1px solid #3366cc;
+}
+
+.innerTable tr td {
+    padding: 0 10px 10px 10px;
+    border-right: 1px solid #3366cc;
+    vertical-align: top;
+}
+
+.image {
+    display: inline-block;
+    background-position: center center;
+    background-repeat: no-repeat;
+    float: left;
+    margin-bottom: 10px;
+}
+
+.image.size-fluid {
+    width: 280px;
+    height: 140px;
+}
+
+.image.scale-fill {
+    background-size: cover;
+}
+
+.separadorVertical {
+    float: left;
+    width: 1px;
+    margin-right: 10px;
+    margin-left: 10px;
+    height: 175px;
+    background-color: #3366cc;
+}
+
+.separadorVerticalRight {
+    float: right;
+    width: 1px;
+    margin-left: 10px;
+    height: 175px;
+    background-color: #3366cc;
+}
+
+.imagem {
+    width: 280px;
+    height: 140px;
+}
+
+.row {
+    overflow: hidden;
+    width: 904px;
+    padding-bottom: 20px;
+}
+
+.legenda {
+    width: 260px;
+    padding: 10px 0;
+    position: relative;
+    float: left;
+}
+
+.imgContainer {
+    width: 280px;
+    height: 175px;
+    float: left;
+}
+
+#at-cv-lightbox.at-thankyou-shown, .at-thankyou-shown .at-cv-lightbox-background {
+    display: none !important;
+}
+
+.map {
+    width: 100%;
+    min-width: 904px;
+    height: 550px;
+    z-index: 10;
+    position: relative;
+}
+
+#localLabel {
+    position: relative;
+}
+
+.tableLocal {
+    margin: 0 auto;
+    width: 904px;
+    position: relative;
+    border-collapse: separate;
+    border-spacing: 10px 0;
+}
+
+.tableLocal td {
+    width: 300px;
+}
+
+.processoDescricao {
+    margin: 0 auto;
+    width: 904px;
+}
+
+.processoDescricao td {
+    width: 280px;
+    vertical-align: top;
+    padding: 0 10px 0 10px;
+}
+
+.processoDescricaoBorder {
+    margin: 0 auto;
+    width: 904px;
+}
+
+.processoDescricaoBorder td {
+    width: 280px;
+    vertical-align: top;
+    padding: 0 10px;
+}
+
+.processoDescricaoBorder tr:last-child td {
+    border-bottom: 1px solid #3366cc;
+}
+
+#participaBox {
+    min-height: 400px;
+}
+
+.boxCommentario {
+    width: 882px;
+    height: 145px;
+    padding: 10px;
+    border-color: #3366cc;
+    border-style: solid;
+    border-width: 1px;
+    outline: 0;
+}
+
+.box {
+    border-color: #3366cc;
+    border-style: solid;
+    border-width: 1px;
+    outline: 0;
+}
+
+#popOne {
+    width: 420px;
+    height: 232px;
+    background-color: #eaeffa;
+    border: 1px solid #3366cc;
+    z-index: 1001;
+}
+
+.popOneTop {
+    height: 202px;
+}
+
+.popOneBottom {
+    /*background-color: #3366cc;*/
+    height: 30px;
+}
+
+/* SHARE THIS BUTTONS*/
+
+#fbt {
+    background: url("img/fb_btn.png") no-repeat scroll left top transparent !important;
+    padding: 0;
+    margin-right: 3px;
+    margin-left: 3px;
+    height:50px;
+    width:50px;
+    display:inline-block;
+    cursor:pointer;
+}
+
+#fbt:hover{
+    opacity: 0.7;
+}
+
+
+#twitter  {
+    background: url("img/twit_btn.png") no-repeat scroll left top transparent !important;
+    padding: 0;
+    margin-right: 3px;
+    margin-left: 3px;
+    height:50px;
+    width:50px;
+    display:inline-block;
+    cursor:pointer;
+}
+
+
+#twitter:hover{
+    opacity: 0.7;
+}
+
+#googleplus {
+    background: url("img/gg_btn.png") no-repeat scroll left top transparent !important;
+    padding: 0;
+    margin-right: 3px;
+    margin-left: 3px;
+    height:50px;
+    width:50px;
+    display:inline-block;
+    cursor:pointer;
+}
+
+#googleplus:hover{
+    opacity: 0.7;
+}
+
+#share_email {
+    background: url("img/mail_btn.png") no-repeat scroll left top transparent !important;
+    padding: 0;
+    margin-right: 3px;
+    margin-left: 3px;
+    height:50px;
+    width:50px;
+    display:inline-block;
+    cursor:pointer;
+}
+
+#share_email:hover{
+    opacity: 0.7;
+}
+
+.stButton .stLarge {
+    height: 50px !important;
+    width: 50px !important;
+}
+
+.popOneTop #txtP {
+    font-size: 14px;
+}
+
+.comentariosTable {
+    width: 904px;
+    margin: 0 auto;
+}
+
+.pop2btn {
+    float: left;
+    width: 137px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.formTable {
+    width: 904px;
+    margin: 0 auto;
+}
+
+.formTable tr td {
+    padding: 10px 5px;
+}
+
+.formTable textarea {
+    width: 872px;
+    padding: 10px;
+    border-color: #3366cc;
+    border-style: solid;
+    border-width: 1px;
+    outline: 0;
+}
+
+.formTable input[type=text]:not(.selInput2) {
+    width: 872px;
+    padding: 10px;
+    border-color: #3366cc;
+    border-style: solid;
+    border-width: 1px;
+    outline: 0;
+}
+
+.formTable .resposta {
+    padding-top: 0;
+    border: 0;
+    padding-left: 0;
+}
+
+.pergunta {
+    padding-top: 0;
+    border-top: 1px solid #3366cc;
+}
+
+.labell {
+    font-weight: bold;
+}
+
+.fileUpload {
+    position: relative;
+    overflow: hidden;
+    margin: 10px;
+}
+
+.fileUpload input.upload {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+
+#baseLayer {
+    z-index: 3333;
+}
+
+#seguidos tr:first-child td {
+    border-top: 1px solid #3366cc;
+}
+
+.resposta label {
+    position: relative;
+    top: 4px;
+}
+
+.shapeDiv {
+    position: relative;
+    margin: 0 auto;
+    width: 904px;
+    z-index: 18;
+}
+
+#shapeBtn {
+    margin: 0 auto;
+    width: 904px;
+}
+
+.buttonOl {
+    left: 700px;
+    position: relative;
+    width: 40px;
+    cursor: pointer;
+    height: 0;
+}
+
+#layerList {
+    cursor: pointer;
+    left: 19px;
+    margin: 0 auto;
+    position: absolute;
+    top: 70px;
+    width: 904px;
+}
+
+#shapeTbl {
+    position: relative;
+    left: 10px;
+}
+
+#shapeTbl tr td {
+    padding: 5px 0;
+}
+
+#actionBtns {
+    z-index: 200;
+}
+
+.shapePop {
+    border-color: #3366cc;
+    border-style: solid;
+    border-width: 1px;
+    background: #eaeffa;
+    width: 400px;
+    left: 315px;
+    top: 0;
+    position: absolute;
+}
+
+.dimmed {
+    opacity: 0.5;
+    cursor: default;
+}
+
+.captcha {
+    border-color: #3366cc;
+    background-color: #3366cc;
+    border-style: solid;
+    border-width: 1px;
+    height: 34px;
+    width: 200px;
+}
+
+.concelhos {
+    padding: 5px 10px;
+    clear: both;
+}
+
+/*CROPPED IMAGES*/
+.d {
+    width: 280px;
+    height: 140px;
+    overflow: hidden;
+    position: relative;
+}
+
+#popContainer {
+    z-index: 1000;
+    position: fixed;
+    top: 150px;
+    width: 100%;
+    background-color: #3366cc;
+    opacity: 0.9;
+    cursor: pointer;
+    padding: 15px;
+}
+
+#popCenter {
+    width: 904px;
+    top: 105px;
+    margin: 0 auto;
+    z-index: 9999;
+    clear: both;
+}
+
+#popAlerta {
+    width: 840px;
+    top: 105px;
+    color: #ffffff;
+    z-index: 9999;
+    float: left;
+}
+
+#popAlertaIcon {
+    width: 55px;
+    top: 105px;
+    z-index: 9999;
+    float: left;
+}
+
+.orange {
+    color: #e69a29 !IMPORTANT;
+}
+
+.select {
+    height: 36px;
+}
+
+.texto {
+    height: 36px;
+}
+
+.selInput2 {
+    position: relative;
+    border: 0;
+    outline: none;
+    line-height: 32px;
+    cursor: pointer;
+    padding: 0;
+    color: #FFFFFF;
+    height: 36px;
+}
+
+.innerText {
+    height: 50px;
+    float: left;
+    border: 0;
+    outline: none;
+    background: #3366cc;
+    padding: 0;
+    color: #fff;
+    width: 500px;
+    margin: 0 auto;
+}
+
+.innerText1 {
+    border: 1px solid #3366cc;
+    float: left;
+    font-size: 18px;
+}
+
+
+.innerSelect {
+    color: #3366cc;
+    float: left;
+    font-size: 18px;
+    height: 36px;
+}
+
+.searchTextoBig {
+    height: 50px;
+    border: 0;
+    outline: 0;
+    font-size: 18px;
+    font-weight: normal;
+    line-height: 50px;
+}
+
+.asd tr td {
+    border-bottom: 0 !important;
+}
+
+.texto18 {
+    font-size: 18px;
+}
+
+.texto14 {
+    font-size: 14px;
+}
+
+.texto16 {
+    font-size: 16px;
+}
+
+.texto12 {
+    font-size: 12px;
+}
+
+#lightbox {
+    position: absolute;
+    top: 150px;
+    width: 100%;
+    text-align: center;
+    line-height: 0;
+}
+
+.graphs {
+    height: 200px;
+    width: 294px;
+    float: left;
+}
+
+.graphDiv {
+    background-color: #eaeffa;
+    width: 884px;
+    margin: 10px auto;
+    height: 300px;
+    padding: 0 10px;
+}
+
+.graphDiv_bigger {
+    background-color: #eaeffa;
+    width: 884px;
+    margin: 10px auto;
+    height: 600px;
+    padding: 0 10px;
+}
+
+.graphLabel {
+    display: table;
+    margin: 0 auto;
+    padding-top: 10px;
+}
+
+.graphTitle {
+    display: table;
+    margin: 0 auto;
+    padding: 0 0 10px;
+    text-align: center;
+}
+
+.onDetalhe {
+    background-color: #eaeffa;
+}
+
+.formasLink {
+    color: #333366 !important;
+}
+
+.graphContainer {
+    /*height: 294px;*/
+    float: left;
+    position: relative;
+    top: -10px;
+}
+
+/* CHECKBOX & RADIO */
+
+input[type=radio]{
+    margin-right: 10px;
+}
+
+#panel {
+    position: relative;
+    top: -40px;
+    margin: 0 auto;
+    width: 904px;
+}
+
+.slimScrollDiv {
+    float: left;
+    /*border-bottom: 1px solid #3366cc;*/
+}
+
+
+.wsmap {
+    width: 100%;
+    min-width: 904px;
+    height: 550px;
+    z-index: 10;
+    position: relative;
+}
+
+.ol-touch{
+    position: absolute !important;
+    top:0;
+}
+
+
+.pNome {
+    font-weight: bold;
+    font-size:24px;
+    line-height: 1.2;
+}
+
+.pDescricao {
+    font-size:18px;
+}
+
+.pInfotable {
+    height: 110px;
+}
+
+.black {
+    color: #000000;
+}
+
+.issue_table {
+    float: left;
+    margin: 0 0 30px 0;
+    width: 904px;
+    padding-bottom:15px;
+    border-bottom: 2px solid #3366cc;
+}
+
+.fredoka {
+    font-weight: 400 !important;
+    font-family: 'Fredoka One', cursive;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-smooth: auto;
+}
+
+.consulta_desc {
+    padding-top:15px;
+    padding-bottom:15px;
+    border-top: 2px solid #3366cc;
+    border-bottom: 2px solid #3366cc;
+}
+
+.comment_section {
+    background-color:#CCD9F2;
+    position: relative;
+    outline: 0;
+    z-index: -1;
+    width:904px;
+    min-height:300px;
+    box-shadow: 0;
+    resize:none;
+}
+
+.send_section {
+    position: relative;
+    text-align: right;
+    background-color:#3367CC;
+    color:#FFFFFF;
+    border-right: 1px solid #3376CC;
+}
+
+.nImagem {
+    padding:10px;
+    margin: 0 10px 10px 0;
+    width: 262px;
+    height: 198px;
+    border: 1px solid #3366cc;
+}
+
+.n {
+    overflow: hidden;
+    position: relative;
+}
+
+.shareButtonTable {
+    height: 30px;
+}
+
+.botoes_table {
+    float: left;
+    cursor: pointer;
+    height: 25px;
+}
+
+.leftSelect {
+    height: 36px;
+    width: 30px;
+    float: left;
+}
+
+
+.rightSelect {
+    height: 36px;
+    width: 30px;
+    float: right;
+}
+
+.rightSelect_small {
+    height: 16px;
+    width: 15px;
+    float: right;
+}
+
+.botoestable_normal {
+    /*width: 90px;*/
+    margin-right:8px;
+    float: left;
+    cursor: pointer;
+    height: 25px;
+}
+
+.botoestable_bigger {
+    /*width: 120px;*/
+    margin-right:8px;
+    float: left;
+    cursor: pointer;
+    height: 25px;
+}
+
+.iconImg {
+    width: 24px;
+    height: 24px;
+}
+
+.info {
+    float: left;
+    font-size: 12px;
+    margin: 0 auto 35px auto;
+    width: 279px;
+    height: 150px;
+    border-right: 1px solid #3366cc;
+    padding: 0 10px;
+}
+
+.infoSmall {
+    float: left;
+    font-size: 12px;
+    margin: 0 auto 35px auto;
+    width: 279px;
+    height: 106px;
+    border-right: 1px solid #3366cc;
+    padding: 0 10px;
+}
+
+.iconImgBig {
+    width: 30px;
+    height: 30px;
+}
+.subTitulo {
+    text-align: left;
+    width: 900px;
+    margin: 0 auto;
+}
+
+.blue_button {
+    color: #3366cc;
+    border: 1px solid #3366cc;
+    width: 205px;
+    height: 34px;
+    cursor: pointer;
+}
+
+.blue_button_on {
+    color: white;
+    background-color: #e69a29;
+    border: 1px solid #e69a29;
+    width: 205px;
+    height: 34px;
+    cursor: pointer;
+}
+
+.blue_select {
+    color: white;
+    position:relative;
+    background-color: #3366cc;
+    border: 1px solid #3366cc;
+    width: 210px;
+    height: 36px;
+    cursor: pointer;
+}
+
+.boxComment, .tipComment {
+    width: 895px;
+    height: 84px;
+    background-color:#CCD9F2;
+    outline: none !important;
+    resize: none;
+    -webkit-box-shadow: none !important;
+    -moz-box-shadow: none !important;
+    box-shadow: none !important;
+}
+
+
+.seccaoDiv {
+    width: 904px;
+    margin: 0 auto;
+    padding-top: 10px;
+}
+
+div.seccaoDiv table td, div.siteTabDiv table td{
+    vertical-align: top;
+}
+
+div.seccaoDiv p, div.siteTabDiv p{
+    margin-bottom: 10px;
+}
+
+div.seccaoDiv img, div.siteTabDiv img{
+    margin-right: 24px;
+    margin-bottom: 18px;
+}
+
+div.seccaoDiv table.noborder, div.seccaoDiv table.noborder td, div.siteTabDiv table.noborder, div.siteTabDiv table.noborder td{
+    border: none;
+}
+
+div.seccaoDiv ul, div.siteTabDiv ul{
+    margin-top: 10px;
+}
+div.seccaoDiv ul li , div.siteTabDiv ul li{
+    margin-bottom: 0 !important;
+    margin-top: 0 !important;
+}
+div.seccaoDiv ol li, div.siteTabDiv ol li{
+    margin-bottom: 18px;
+}
+
+div.seccaoDiv ul, div.seccaoDiv ol, div.siteTabDiv ul, div.siteTabDiv ol{
+    padding-left: 19px;
+}
+
+div.seccaoDiv hr, div.siteTabDiv hr{
+    margin-bottom: 10px ;
+}
+
+
+.subTitle {
+    vertical-align: bottom;
+}
+
+.medium {
+    font-size: 14px;
+    margin-top: 7px;
+    line-height:1.3;
+}
+
+.big {
+    font-size: 16px;
+}
+
+.select_input {
+    position: relative;
+    border: 0;
+    padding-left: 10px;
+    padding-top:0;
+    padding-bottom:0;
+    outline: none;
+    line-height: 32px;
+    cursor: pointer;
+    color: #FFFFFF;
+    height: 36px;
+}
+
+.select_input_smaller {
+    position: relative;
+    border: 0;
+    padding-top:5px;
+    padding-left: 10px;
+    font-size:18px;
+    width:150px;
+    outline: none;
+    cursor: pointer;
+    color: #FFFFFF;
+}
+
+.rs_arrow {
+    background: transparent url("img/select_right.png") no-repeat;
+}
+
+.send_arrow {
+    background: transparent url("img/send_arrow.png") no-repeat;
+    margin-top: 7px;
+}
+
+.arrowSelect {
+    height: 36px;
+    width: 30px;
+    float: right;
+}
+
+#footer {
+    width: 100%;
+    background-color: #FBA426;
+    margin: 0 auto;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+#popLogin {
+    border:1px solid #3366cc;
+    position:absolute;
+    z-index:1000;
+    margin-left: 315px;
+    margin-top: -100px;
+}
+
+.white {
+    color: #FFFFFF !important;
+}
+
+.top {
+    height: 164px;
+    z-index: 101;
+    margin: 0 auto;
+    box-shadow: 0 10px 10px -2px lightgray;
+}
+
+.topBackground {
+    background-color: #3366CC;
+    width: 100%;
+}
+
+
+#homeTable {
+    width: 904px;
+    height: 135px;
+    text-align: left;
+}
+
+.botoesMenu {
+    font-size: 24px;
+    height:50px;
+    font-weight:400;
+    padding-top:15px;
+}
+
+.lang {
+    cursor:pointer;
+    color:#3366CC;
+}
+
+
+.subTitleTxt {
+    font-size: 42px;
+    line-height: 32px;
+    vertical-align: bottom;
+    padding-bottom:29px;
+    padding-top:50px;
+}
+
+.button {
+    border-color: #3366cc;
+    border-style: solid;
+    border-width: 1px;
+    padding: 5px 15px;
+    width: auto;
+    color: #3366cc;
+    font-size: 28px;
+}
+
+.titleTxt {
+    width: auto;
+    font-size: 24px;
+}
+
+
+.innerTxt {
+    border: 1px solid #3366cc;
+    float: left;
+    font-size: 18px;
+}
+
+.subTitleDesc {
+    font-size: 23px;
+    font-weight: 700;
+    color: #99CCFF;
+}
+
+.twitterResultTr {
+    border-top:1px solid #3366cc;
+}
+
+.twitterResultTd {
+    padding-top:10px;
+    padding-bottom:10px;
+}
+
+.tweetHeader {
+    font-size: 14px;
+    padding-bottom:10px;
+}
+
+.twitterTweet {
+
+}
+
+.twitterName {
+    font-weight:700;
+}
+
+
+.subTitleLogin {
+    float:right;
+    font-weight: 300;
+    font-size: 16px;
+}
+
+.leftSelectSmaller {
+    height: 36px;
+    width: 20px;
+    float: left;
+}
+
+#ageBracket, #gender {
+    width: 375px;
+    padding-left: 10px;
+    background-color: #3366cc;
+}
+
+
+.botaoLogin {
+    font-size: 15px;
+}
+
+.share {
+    width: 904px;
+    margin: 0 auto;
+    position:relative;
+    height: 55px;
+}
+
+.middle {
+    margin: 0 auto;
+    min-height: 900px;
+    width:100%;
+}
+
+.titulo {
+    padding-top:13px;
+    padding-bottom: 15px;
+}
+
+.mySelect {
+    position: relative;
+    z-index: 1;
+    min-height: 36px;
+    padding: 0 20px;
+    cursor: pointer;
+    text-align: left;
+    width: 240px;
+}
+
+.mySelectSmall {
+    position: relative;
+    z-index: 1;
+    min-height: 36px;
+    padding: 0 20px;
+    cursor: pointer;
+    text-align: left;
+    width: 228px;
+}
+
+.mySelectSmaller {
+    position: relative;
+    z-index: 1;
+    min-height: 36px;
+    padding: 0 20px;
+    cursor: pointer;
+    text-align: left;
+    width: 159px;
+}
+
+
+.selectPersonalInfo {
+    position: relative;
+    z-index: 1;
+    min-height: 36px;
+    padding: 0 20px;
+    cursor: pointer;
+    text-align: left;
+    width: 173px;
+}
+
+
+.tableSeccao {
+    text-align: left;
+    width: 904px;
+    margin: 0 auto;
+}
+
+.mySelectBigger {
+    position: relative;
+    z-index: 1;
+    min-height: 36px;
+    padding: 0 20px;
+    cursor: pointer;
+    text-align: left;
+
+    width: 240px;
+}
+
+.button_text {
+    padding-left:10px;
+    padding-top: 5px;
+    position: absolute;
+    font-size:18px;
+}
+
+input[type=checkbox]:not(old) {
+    width: 2em;
+    margin: 0;
+    padding: 0;
+    font-size: 1em;
+    opacity: 0;
+}
+
+input[type=checkbox]:not(old) + label {
+    margin-left: -2em;
+    line-height: 1.5em;
+}
+
+input[type=checkbox]:not(old) + label > span {
+    display: inline-block;
+    width: 0.825em;
+    height: 0.855em;
+    margin: 0.25em 0.5em 0.25em 0.25em;
+    border: 0.125em solid #3366cc;
+    border-radius: 0.25em;
+    background: rgb(255, 255, 255);
+    background-image: -moz-linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255));
+    background-image: -ms-linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255));
+    background-image: -o-linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255));
+    background-image: -webkit-linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255));
+    background-image: linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255));
+    vertical-align: bottom;
+}
+
+input[type=checkbox]:not(old) + label > span.disabledInput {
+    border: 0.125em solid #000000 !important;
+}
+
+input[type=checkbox]:not(old):checked + label > span {
+    background-image: -moz-linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255));
+    background-image: -ms-linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255));
+    background-image: -o-linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255));
+    background-image: -webkit-linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255));
+    background-image: linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255));
+}
+
+input[type=checkbox]:not(old):checked + label > span:before {
+    content: 'x';
+    display: block;
+    font-size: 1em;
+    line-height: 0.8em;
+    text-align: center;
+    font-weight: normal;
+}
+
+#sidebar {
+    position:fixed;
+    top:300px;
+    z-index:2;
+    right : 0px;
+}
+
+.seccaoDiv td,.seccaoDiv th{
+    /*padding: 3px;*/
+}
+
+input.gotit_button{
+    background-color: #3366CC;
+    color: white;
+    text-align: center;
+    width: 100%;
+    height: 34px;
+    border: 1px solid #3366CC;
+    padding: 0;
+}
+
+.labelForActionButton{
+    font-size: 14px;
+}
+
+label.disabledInput{
+    color: black;
+}
+
+input[type=checkbox]:not(old) + label.disabledInput > span{
+    border-color: black;
+}
+
+input.disabledInput > span{
+    border-color: black;
+}
+
+
+
+.rtl{
+    direction: rtl;
+}
+
+div.rtl span.button_text{
+ float: right;
+margin-right: 10px;
+    position: inherit;
+}

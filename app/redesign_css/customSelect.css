@@ -1,0 +1,117 @@
+/*
+ * Baseform
+ * Copyright (C) 2018  Baseform
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
+.customSelect {
+    width: 236px;
+    height: 26px;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+}
+.customSelect.disabled {
+    pointer-events: none;
+}
+.customSelect:after {
+    content: '';
+    height: 30px;
+    position: absolute;
+    top:2px;
+    right: 11px;
+    background: transparent url("../img/select_right.png") no-repeat;
+    background-size: cover;
+    width: 17px;
+    pointer-events: none;
+}
+.customSelect.active:after {
+    -webkit-transform: scaleY(-1);
+    -moz-transform: scaleY(-1);
+    -ms-transform: scaleY(-1);
+    -o-transform: scaleY(-1);
+    transform: scaleY(-1);
+}
+.customSelect:nth-of-type(odd) {
+    margin-right: 25px;
+}
+
+.customSelect .customSelectTitle {
+    height: 100%;
+    line-height: 26px;
+    font-family: 'Montserrat Regular', Arial;
+    font-weight: normal;
+    font-size: 18px;
+    background: #3366CC;
+    color: white;
+    width: calc(100% - 20px);
+    padding: 5px 10px;
+}
+
+.customSelect .customSelectOptions {
+    display: none;
+    position: absolute;
+    width: 234px;
+    max-height: 160px;
+    overflow-y: scroll;
+    z-index: 10;
+    border: 1px solid #3366CC;
+}
+
+.customSelect .customSelectOptions .options {
+    list-style: none;
+}
+.customSelect .customSelectOptions .option {
+    background: #eaeffa;
+    height: 36px;
+    line-height: 36px;
+    color: black;
+    padding:0;
+    border: none;
+}
+
+.customSelect .customSelectOptions .option.active {
+    background: #3366cc;
+}
+.customSelect .customSelectOptions .option:hover {
+    background: #3366cc;
+}
+
+.customSelect .customSelectOptions .option:hover a{
+    color: white;
+}
+
+.customSelect .customSelectOptions .option.active a{
+    color: white;
+}
+.customSelect .customSelectOptions .option a{
+    text-decoration: none;
+    color: black;
+    font-family: 'Montserrat Regular', Arial;
+    font-weight: normal;
+    font-size: 18px;
+    padding: 5px 10px;
+
+}
+
+.customSelect .customSelectOptions.active {
+    display: block;
+}
+
+@media (max-width: 550px) {
+    .customSelect {
+        margin-bottom: 20px;
+    }
+}

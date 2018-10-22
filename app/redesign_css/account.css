@@ -1,0 +1,609 @@
+/*
+ * Baseform
+ * Copyright (C) 2018  Baseform
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
+.section.account .title {
+    font-size: 28px;
+    padding: 40px 0 20px;
+    font-family: "Montserrat Regular", Arial;
+    font-weight: normal;
+}
+
+.section.account .subTitle {
+    font-size: 24px;
+    color: #3366cc;
+    padding: 10px 0 20px;
+    font-family: "Montserrat Regular", Arial;
+    font-weight: normal;
+}
+
+.section.account .subTitle span {
+    display: block;
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+.section.floodPrepare {
+    border-top: 1px solid #3366CC;
+    margin-top: 20px;
+}
+
+.section.floodPrepare .title {
+    font-size: 28px;
+    padding: 30px 0 20px;
+    font-family: "Montserrat Regular", Arial;
+    font-weight: normal;
+}
+
+.badgePoints {
+    font-family: "Montserrat Regular", Arial;
+    font-weight: bold;
+    font-size: 18px;
+    margin-right: 10px;
+}
+
+.badgePhrase {
+    font-family: "Montserrat Regular", Arial;
+    font-weight: bold;
+    font-size: 14px;
+    margin-left: 10px;
+}
+
+.section.floodPrepare .gamificationDetails {
+    margin: 20px 0 10px;
+    padding: 15px 0;
+    border-top: 1px solid #3366CC;
+    border-bottom: 1px solid #3366CC;
+    font-family: "Montserrat Regular", Arial;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.section.floodPrepare .chartHolder {
+    margin: 20px 0;
+}
+
+.floodPrepare .communityDimensions,  .communityDimensionsHome{
+    width: 100%;
+    margin-bottom: 30px;
+    text-align: center;
+}
+.floodPrepare .communityDimensions li, .communityDimensionsHome li {
+    font-size: 18px;
+    font-family:  'Montserrat Bold', Arial;
+    font-weight: normal;
+    color: black;
+    list-style: none;
+    padding-left: 24px;
+    position: relative;
+    display: inline-block;
+    margin: 0 10px;
+}
+
+.floodPrepare .communityDimensions li:before , .communityDimensionsHome li:before{
+    content: '';
+    position: absolute;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background-color: black;
+    left: 0;
+}
+
+.floodPrepare .communityDimensions li.red:before, .communityDimensionsHome li.red:before {
+    background-color: #ff9999;
+}
+.floodPrepare .communityDimensions li.green:before , .communityDimensionsHome li.green:before{
+    background-color: #99cc99;
+}
+.floodPrepare .communityDimensions li.blue:before , .communityDimensionsHome li.blue:before{
+    background-color: #99ccff;
+}
+
+.section.followedIssues {
+    padding-bottom: 40px;
+}
+
+.section.followedIssues .title {
+    font-size: 28px;
+    padding: 10px 0 20px;
+    font-family: "Montserrat Regular", Arial;
+    font-weight: normal;
+}
+
+.section.followedIssues .issueList .issue:first-of-type {
+    border-top: 1px solid #99ccff;
+}
+.section.followedIssues .issueList .issue {
+    border-bottom: 1px solid #99ccff;
+    padding: 10px 0;
+    list-style:  none;
+    position: relative;
+    border-top:none;
+}
+
+.section.followedIssues .issueList .issue a.title {
+    text-decoration: none;
+    color: #3366CC;
+    font-size: 18px;
+    font-family: "Montserrat Regular", Arial;
+    font-weight: bold;
+}
+
+
+.section.followedIssues .issueList .issue .date {
+    display: block;
+    font-size: 14px;
+    font-family: "Montserrat Regular", Arial;
+    font-weight: normal;
+    margin-top: 5px;
+}
+
+.section.followedIssues .issueList  .issue .remove {
+    position: absolute;
+    text-decoration: none;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+    right: 20px;
+    height: 16px;
+    width: 16px;
+    background: url('../img/deleteArrow.png');
+}
+
+.section.participations {
+    background-color: white;
+    padding-bottom: 40px;
+}
+
+.section.participations .title {
+    font-size: 28px;
+    padding: 10px 0 20px;
+    font-family: "Montserrat Regular", Arial;
+    font-weight: normal;
+}
+
+.section.participations .issueList .issue:first-of-type {
+    border-top: 1px solid #99ccff;
+}
+.section.participations .issueList .issue {
+    border-bottom: 1px solid #99ccff;
+    padding: 10px 0;
+    list-style:  none;
+    position: relative;
+}
+
+.section.participations .issueList .issue a.title {
+    text-decoration: none;
+    color: #3366CC;
+    font-size: 18px;
+    font-family: "Montserrat Regular", Arial;
+    font-weight: bold;
+}
+
+.section.participations .issueList .issue .participationList {
+    display: block;
+}
+
+.section.participations .issueList .issue .participationList .participationType {
+    display: inline-block;
+    margin-top: 5px;
+    border-top: none;
+    padding: 0;
+    position: relative;
+    margin-bottom: 0;
+}
+
+.section.participations .issueList .issue .participationList .participationType a {
+    font-size: 14px;
+    font-family: "Montserrat Regular", Arial;
+    font-weight: normal;
+    color: #3366CC;
+    text-decoration: none;
+    border-right: 1px solid black;
+    padding: 0 8px 0 6px;
+}
+.section.participations .issueList .issue .participationList .participationType:first-of-type a {
+    padding-left: 0;
+}
+.section.participations .issueList .issue .participationList .participationType:last-of-type a {
+    border-right: none;
+}
+
+
+.issueArea .content .mainContent .tabContent.section.events {
+    /*padding: 20px 0;*/
+    padding-bottom: 40px;
+    border-bottom: 1px solid #3366cc;
+}
+
+.mainContent .tabContent.section.events .title{
+    padding: 10px 0 20px;
+}
+
+.tabContent .section.events, .contentPartial .section.events {
+    background-color: white;
+    border: none;
+    padding: 12px 0;
+}
+
+.tabContent .section.events .title {
+    font-size: 24px;
+    font-family: 'Montserrat Bold', Arial;
+}
+.tabContent .section.events .issueList .issue a.title {
+    font-size: 14px;
+}
+.tabContent .section.surveyList .issueList .issue a.title {
+    font-size: 14px;
+    font-family: "Montserrat Regular", Arial;
+    cursor: pointer;
+}
+.tabContent .section.surveyList .issueList .issue {
+    border-top: 1px solid #3366CC;
+    padding: 10px;
+    padding-left: 20px;
+    margin: 0;
+    position: relative;
+}
+
+.tabContent .section.surveyList .issueList .issue:before {
+    content: '';
+    width: 12px;
+    height: 18px;
+    left: 5px;
+    top: 8px;
+    position: absolute;
+    background-image: url("../redesign_images/survey.png");
+}
+.tabContent .section.surveyList .issueList .issue:last-of-type {
+    border-bottom: 1px solid #3366CC;
+}
+.issueArea .section.surveyList {
+    border-bottom: none;
+}
+
+.tabContent .section.events .issueList .issue .details {
+    font-size: 14px;
+    width: 300px;
+}
+.tabContent .section.events .issueList .issue .participate {
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+    right: 0;
+    border-left: 1px solid #3366CC;
+    height: calc(60% - 10px);
+    padding-top: 20px;
+    padding-left: 20px;
+}
+.section.events .title {
+    font-size: 28px;
+    padding: 10px 0 20px;
+    font-family: "Montserrat Regular", Arial;
+    font-weight: normal;
+}
+
+.section.events .issueList .issue:first-of-type {
+    border-top: 1px solid #99ccff;
+}
+.section.events .issueList .issue {
+    border-bottom: 1px solid #99ccff;
+    border-top: none;
+    padding: 10px 0;
+    list-style:  none;
+    position: relative;
+}
+
+.tabContent .halfChart {
+    width: 50%;
+    display: inline-block;
+    position: relative;
+    text-align: center;
+}
+
+.tabContent .halfChart .gamificationDetails {
+    font-size: 14px;
+    font-family: "Montserrat Regular", Arial;
+    height: 50px;
+}
+
+.tabContent .communityDimensionsHome {
+    margin-top: 20px;
+}
+.photoPicker {
+    background: transparent url(../img/photo_blue.png) no-repeat;
+    height: 20px;
+    width: 250px;
+    display: block;
+    cursor: pointer;
+    font-family: "Montserrat Regular", Arial;
+    padding-left: 25px;
+    line-height: 20px;
+}
+.gamificationBadge {
+    text-align: center;
+    margin-bottom: 25px;
+}
+.gamificationBadge * {
+    display: inline-block;
+    vertical-align: middle;
+}
+.photoPicker input{
+    display: none;
+}
+.section.events .issueList .issue a.title {
+    text-decoration: none;
+    color: #3366CC;
+    font-size: 18px;
+    font-family: "Montserrat Regular", Arial;
+    font-weight: bold;
+    display: inline-block;
+    width: 80%;
+}
+
+.section.events .issueList .issue .details {
+    display: block;
+    font-size: 14px;
+    font-family: "Montserrat Regular", Arial;
+    font-weight: normal;
+    margin-top: 5px;
+}
+
+.section.events .issueList .issue .participate {
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+    right: 20px;
+    border-left: 1px solid #3366CC;
+    height: calc(60% - 10px);
+    padding-top: 10px;
+    padding-left: 20px;
+}
+.section.events .issueList .issue .participate label {
+    color: #3366CC;
+    font-size: 14px;
+    font-family: "Montserrat Regular", Arial;
+    font-weight: normal;
+}
+.section.participations .participationType {
+    list-style: none;
+    margin: 10px 0;
+}
+.section.participations .participationType .comment {
+     border: 1px solid #3366CC;
+     font-family: "Montserrat Regular", Arial;
+     font-size: 14px;
+     font-weight: normal;
+     color: black;
+     padding: 5px;
+}
+.section.participations .participationType .survey {
+    border: 1px solid #3366CC;
+    color: black;
+    padding: 5px;
+}
+
+.issueArea .tabContent.appendable .survey .content .title {
+    font-family: "Montserrat Regular", Arial;
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 22px;
+    color: black;
+    padding: 10px 0;
+    border-bottom: 1px solid #3366cc;
+}
+
+.section.participations .participationType .survey .title{
+    font-family: "Montserrat Bold", Arial;
+    font-size: 14px;
+    font-weight: normal;
+    color: #3366CC;
+    display: inline-block;
+    padding: 0;
+    cursor: pointer;
+}
+.section.participations .participationType .survey .details{
+    font-family: "Montserrat Regular", Arial;
+    font-size: 14px;
+    font-weight: normal;
+    color: #3366CC;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.survey .content .title{
+    font-family: "Montserrat Regular", Arial;
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 22px;
+    color: black;
+    padding: 10px 0;
+    border-bottom: 1px solid #3366cc;
+}
+.survey .content .answer input[type="radio"] {
+    margin-right: 5px;
+    display: inline-block;
+    vertical-align: top;
+}
+.survey .content .answer input[type="text"] {
+    width: calc(100% - 22px);
+    height: 22px;
+    padding: 5px 10px;
+    color: #3366CC;
+    border: 1px solid #3366CC;
+    background: white;
+    font-size: 18px;
+    line-height: 34px;
+    font-family: "Montserrat Regular", Arial;
+    font-weight: normal;
+    outline: none;
+}
+.survey .content .answer textarea {
+    width: calc(100% - 22px);
+    height: 100px;
+    padding: 5px 10px;
+    color: #3366CC;
+    border: 1px solid #3366CC;
+    background: white;
+    font-size: 18px;
+    line-height: 34px;
+    font-family: "Montserrat Regular", Arial;
+    font-weight: normal;
+    outline: none;
+    resize: vertical;
+}
+.survey .content .answer label {
+    font-family: "Montserrat Regular", Arial;
+    font-size: 15px;
+    font-weight: normal;
+    max-width: 90%;
+    display: inline-block;
+    line-height: 22px;
+}
+
+
+
+.survey .submitSurvey {
+    font-family: "Montserrat Regular", Arial;
+    font-size: 18px;
+    font-weight: normal;
+    line-height: 22px;
+    color: #3366cc;
+    text-decoration: none;
+}
+
+.surveyList .survey {
+
+}
+
+.survey .content .question{
+    font-family: "Montserrat Regular", Arial;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 5px;
+}
+
+.survey .content .answer{
+    padding: 10px 5px;
+}
+.survey .content .answer .answerP {
+    margin-bottom: 10px;
+}
+.survey .content .answer label {
+    font-family: "Montserrat Regular", Arial;
+    font-size: 16px;
+    font-weight: normal;
+}
+.section.participations .participationType .comment .date {
+    display: inline-block;
+}
+.section.participations .participationType .comment .status {
+    font-family: "Montserrat Bold", Arial;
+    display: inline-block;
+}
+.section.participations .participationType .comment .content {
+    margin-top: 5px;
+    word-wrap: break-word;
+}
+.notFollowing {
+    font-family: "Montserrat Regular", Arial;
+    font-size: 16px;
+    font-weight: normal;
+    margin-bottom: 20px;
+    padding: 8px 0;
+}
+.section.personalInfo .selects {
+    display: inline-block;
+    vertical-align: top;
+}
+.section.personalInfo .selects .customSelect:nth-of-type(odd) {
+    margin-right: 24px;
+}
+.section.personalInfo form {
+    border-top: 1px solid #3366CC;
+    padding-top: 20px;
+}
+.section.personalInfo.register .submitRegister {
+    top: 20px;
+    margin-bottom: 40px;
+    padding-bottom: 40px;
+    cursor: pointer;
+}
+
+@media(max-width: 1024px) {
+    .section.personalInfo .selects {
+        margin-bottom: 30px;
+    }
+    .tabContent .halfChart {
+        width: 100%;
+        display: block;
+        margin-bottom: 30px;
+    }
+}
+@media(max-width: 880px) {
+    .section.events .issueList .issue .participate label {
+        display: none;
+    }
+    .section.events .issueList .issue .participate {
+        right: 0;
+    }
+}
+@media(max-width: 720px) {
+    .section.events .issueList .issue .details {
+        max-width: 300px;
+    }
+}
+@media(max-width: 680px) {
+    .section.followedIssues .issueList .issue a.title,
+    .section.participations .issueList .issue a.title,
+    .section.events .issueList .issue a.title{
+        font-size: 14px;
+    }
+
+    .section.followedIssues .issueList .issue a.remove{
+        right: 5px;
+    }
+
+    .section.participations .issueList .issue .participationList .participationType {
+        display: block;
+        margin: 0;
+        margin-top: 5px;
+    }
+    .section.participations .issueList .issue .participationList .participationType a {
+        border-right: none;
+        padding: 0;
+    }
+}
+@media(max-width: 400px) {
+    .section.events .issueList .issue a.title {
+        display: inline-block;
+        max-width: 300px;
+        padding: 0;
+    }
+}

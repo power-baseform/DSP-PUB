@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<domains project-version="3.0.0.1">
+<domain name="baseform">
+	<property name="cayenne.DataDomain.sharedCache" value="false"/>
+
+	<map name="basedados" location="basedados.map.xml"/>
+	<map name="participantes" location="participantes.map.xml"/>
+	<map name="processos" location="processos.map.xml"/>
+
+	<node name="power"
+		 datasource="jdbc_baseform"
+		 factory="org.apache.cayenne.conf.JNDIDataSourceFactory">
+			<map-ref name="basedados"/>
+			<map-ref name="processos"/>
+			<map-ref name="participantes"/>
+	 </node>
+</domain>
+</domains>

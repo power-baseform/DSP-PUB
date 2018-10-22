@@ -1,0 +1,78 @@
+/*
+ * Baseform
+ * Copyright (C) 2018  Baseform
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
+body {
+    min-height: 100vh;
+    position: relative;
+}
+
+.section {
+    display: block;
+    width: 100%;
+}
+
+.grid .grid {
+    width: 100%;
+}
+.grid {
+    width: 1024px;
+    margin: 0 auto;
+    height: 100%;
+}
+.grid.freeGrow {
+    height: auto;
+}
+
+.hasCustomTitle {
+    overflow: visible !important;
+}
+.hasCustomTitle * {
+    pointer-events: none;
+}
+
+.hamburger {
+    text-decoration: none;
+    display: none;
+    line-height: 8px;
+    font-size: 68px;
+    color:#3366cc;
+    cursor: pointer;
+    background: url("../redesign_images/hamburguer.svg");
+    background-size:cover;
+    width: 38px;
+    height: 38px;
+}
+
+input[type="text"], input[type="password"], input[type="submit"] {
+    -webkit-appearance: none;
+    border-radius: 0;
+    padding-right: 0;
+    padding-left: 0;
+}
+
+@media (max-width: 1044px) {
+    .grid {
+        width: calc(100% - 40px);
+        margin: 0 20px;
+    }
+    .grid .grid {
+        width: 100%;
+        margin: 0 auto;
+        height: 100%;
+    }
+}

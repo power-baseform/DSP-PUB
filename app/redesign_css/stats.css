@@ -1,0 +1,333 @@
+/*
+ * Baseform
+ * Copyright (C) 2018  Baseform
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
+.section.stats {
+    background: #99ccff;
+    position: relative;
+    padding: 60px 0;
+}
+
+.section.stats * {
+    cursor: pointer;
+}
+.section.stats.full * {
+    cursor: auto;
+}
+
+.section.stats.full {
+    background: white;
+    /*min-height: calc(100vh - 379px);*/
+}
+
+.section.stats.content {
+    background: white;
+}
+
+.stats.full .title {
+    font-size: 36px;
+    font-family: 'Montserrat Regular', Arial;
+    font-weight: normal;
+    color: black;
+    /*padding: 30px 0;*/
+}
+
+.stats.full .subTitle {
+    font-size: 18px;
+    font-family: 'Montserrat Regular', Arial;
+    font-weight: normal;
+    color: black;
+    margin-bottom: 30px;
+}
+
+.stats .statsTitle {
+    font-size: 36px;
+    color: white;
+    text-transform: uppercase;
+    font-family: 'Montserrat Regular', Arial;
+    font-weight: normal;
+    margin: 0 0 48px 0;
+    width: 100%;
+    text-align: center;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.stats .stat {
+    border-top: 1px solid #3366cc;
+    width: 237px;
+    display: inline-block;
+}
+
+
+.stats .stat {
+    margin-right: 25px;
+    padding-top: 20px;
+}
+
+.stats .stat.faded {
+    opacity: 0.2;
+    /*margin-right: 0;*/
+}
+.stats .stat .viewDetails {
+    text-decoration: none;
+    font-family: 'Montserrat Regular', Arial;
+    font-weight: normal;
+    color: #3366cc;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.stats.full .stat {
+    -webkit-transition: opacity 1s; /* Safari 3.1 to 6.0 */
+    transition: opacity 1s;
+    width: 100%;
+    padding-bottom: 25px;
+    margin-right: 0;
+}
+.stats.full .stat svg * {
+    fill:#3366cc;
+}
+.stats.content .stat svg * {
+    fill:#3366cc;
+}
+
+.stats .stat.last {
+    margin-right: 0;
+}
+
+.stats.full .stat:nth-of-type(4n){
+    margin-right:0;
+}
+
+.stats .stat svg {
+    width: 72px;
+    height: 72px;
+    display: inline-block;
+    vertical-align: top;
+}
+.stats .stat svg * {
+    fill: white;
+}
+.stats.content .statsInfo {
+    width: 97px;
+}
+.stats .statsInfo {
+    display: inline-block;
+    vertical-align: top;
+    width: 120px;
+    padding: 7px;
+    margin-top: -3px;
+}
+
+.stats .statsInfo .statCount {
+    font-size: 36px;
+    font-family: 'Montserrat Bold', Arial;
+    font-weight: normal;
+    color: #3366cc;
+    margin-bottom: 5px;
+}
+
+.stats .statsInfo .statDescription {
+    font-size: 14px;
+    font-family: 'Montserrat Regular', Arial;
+    font-weight: normal;
+    color: black;
+    width: 150px;
+}
+.stats.content .statsInfo .statDescription {
+    width: 97px;
+}
+
+.graphs {
+    height: 200px;
+    width: 294px;
+    float: left;
+}
+
+.graphContainer {
+    /*height: 294px;*/
+    float: left;
+    position: relative;
+    top: 25px;
+    /*-ms-transform: translateY(-50%);*/
+    /*-webkit-transform: translateY(-50%);*/
+    /*transform: translateY(-50%);*/
+}
+.stats .statTitle {
+    display: inline-block;
+    width: 210px;
+    vertical-align: top;
+}
+.graphDiv {
+    /*background-color: #eaeffa;*/
+    /*width: 884px;*/
+    width: calc(100% - 245px);
+    display: inline-block;
+    margin: 10px auto -15px;
+    height: 300px;
+    padding: 0 10px;
+    vertical-align: top;
+}
+
+.graphDiv_bigger {
+    background-color: #eaeffa;
+    width: 884px;
+    margin: 10px auto;
+    height: 600px;
+    padding: 0 10px;
+}
+
+.stats .statsGrid.triGrid .stat{
+    width: 193px;
+    margin-right: 17px;
+}
+.stats .statsGrid.triGrid .stat.last{
+    margin-right: 0;
+}
+.graphLabel {
+    display: table;
+    margin: 0 auto;
+    padding-top: 10px;
+}
+
+.graphTitle {
+    display: table;
+    margin: 0 auto;
+    padding: 0 0 10px;
+    text-align: center;
+    font-family: "Montserrat Regular", Arial;
+    font-weight: normal;
+    font-size: 16px;
+}
+.graphShow {
+    display: inline-block;
+    width: 100%;
+}
+
+@media (max-width: 1045px) {
+    .stats .statsGrid {
+        text-align: center;
+    }
+    .stats .stat {
+        margin-bottom: 20px;
+        text-align: left;
+    }
+    .stats:not(.full) .stat {
+        width: calc((100% - 75px) / 4);
+    }
+}
+
+@media (max-width: 980px) {
+
+    .stats:not(.full) .stat svg {
+        width: 50px;
+        height: 50px;
+    }
+
+    .stats:not(.full) .statsInfo .statCount {
+        font-size: 26px;
+    }
+    .stats:not(.full) .stat:nth-of-type(odd) {
+        margin-right: 10px;
+    }
+    .stats:not(.full)  .statsGrid.triGrid .stat {
+        width: calc(33% - 10px);
+    }
+}
+
+@media (max-width: 840px) {
+    .stats:not(.full) .statsGrid {
+        text-align: left;
+        width: 100%;
+        margin: 0 auto;
+        position: relative;
+    }
+    .stats:not(.full) .stat {
+        margin-right: 0;
+        width: calc(50% - 12.5px);
+    }
+    .stats:not(.full) .stat svg {
+        width: 50px;
+        height: 50px;
+    }
+
+    .stats:not(.full).statsInfo .statCount {
+        font-size: 38px;
+    }
+    .stats:not(.full) .stat:nth-of-type(odd) {
+        margin-right: 10px;
+    }
+
+    .stats.full .statTitle {
+        margin: 0 auto;
+        display: block;
+    }
+    .stats.full .graphDiv {
+        margin: 0 auto;
+        display: block;
+        width: 80%;
+    }
+
+}
+@media (max-width: 620px) {
+    .stats:not(.full) .statsGrid {
+        width: 100%;
+    }
+    .stats:not(.full) .stat svg {
+        width: 50px;
+        height: 50px;
+    }
+
+    .stats:not(.full) .statsInfo .statCount {
+        font-size: 26px;
+    }
+    .stats:not(.full) .statsGrid {
+        text-align: center;
+    }
+}
+@media (max-width: 520px) {
+    .stats:not(.full) .statsGrid {
+        text-align: left;
+        width: 100%;
+        margin: 0 auto;
+        position: relative;
+    }
+    .stats:not(.full) .stat svg {
+        width: 72px;
+        height: 72px;
+    }
+
+    .stats:not(.full).statsInfo .statCount {
+        font-size: 38px;
+    }
+    .stats:not(.full) .stat:nth-of-type(odd) {
+        margin-right: 10px;
+    }
+    .stats:not(.full) .statsGrid {
+        width: 60%;
+        margin:0 auto;
+    }
+    .stats:not(.full)  .statsGrid.triGrid .stat {
+        margin-right: 0;
+        width: 100%;
+    }
+    .stats:not(.full) .stat{
+        margin-right: 0;
+        width: 100%;
+    }
+}

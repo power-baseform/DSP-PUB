@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data-map xmlns="http://cayenne.apache.org/schema/3.0/modelMap"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://cayenne.apache.org/schema/3.0/modelMap http://cayenne.apache.org/schema/3.0/modelMap.xsd"
+  project-version="3.0.0.1">
+	<property name="defaultPackage" value="com.baseform.apps.power.basedados"/>
+	<property name="defaultSchema" value="basedados"/>
+	<db-entity name="base_dados" schema="basedados">
+		<db-attribute name="data" type="TIMESTAMP" isMandatory="true"/>
+		<db-attribute name="data_abertura" type="TIMESTAMP"/>
+		<db-attribute name="data_fim" type="TIMESTAMP"/>
+		<db-attribute name="designacao" type="VARCHAR" isMandatory="true" length="255"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+		<db-attribute name="observacoes" type="VARCHAR" length="2000"/>
+	</db-entity>
+	<db-entity name="formulario" schema="basedados">
+		<db-attribute name="data_abertura" type="TIMESTAMP"/>
+		<db-attribute name="data_fim" type="TIMESTAMP"/>
+		<db-attribute name="fk_base_dados" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="fkprocesso" type="INTEGER"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+		<db-attribute name="info_introdutoria" type="CLOB"/>
+		<db-attribute name="item_mostrar_lista" type="VARCHAR" length="50"/>
+		<db-attribute name="nome" type="VARCHAR" isMandatory="true" length="200"/>
+		<db-attribute name="observacoes" type="VARCHAR" length="500"/>
+		<db-attribute name="repetivel" type="BOOLEAN" isMandatory="true"/>
+		<db-attribute name="script" type="CLOB"/>
+	</db-entity>
+	<db-entity name="item" schema="basedados">
+		<db-attribute name="codigo" type="VARCHAR" isMandatory="true" length="50"/>
+		<db-attribute name="editable" type="BOOLEAN" isMandatory="true"/>
+		<db-attribute name="end_inline" type="BOOLEAN" isMandatory="true"/>
+		<db-attribute name="fk_formulario" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="fk_tipo" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+		<db-attribute name="info" type="CLOB"/>
+		<db-attribute name="inline" type="BOOLEAN" isMandatory="true"/>
+		<db-attribute name="is_obrigatorio" type="BOOLEAN" isMandatory="true"/>
+		<db-attribute name="nome" type="VARCHAR" length="500"/>
+		<db-attribute name="opcoes" type="CLOB"/>
+		<db-attribute name="style_class" type="VARCHAR" length="200"/>
+		<db-attribute name="style_class_label" type="VARCHAR" length="200"/>
+	</db-entity>
+	<db-entity name="item_resposta" schema="basedados">
+		<db-attribute name="fk_item" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="fk_resposta" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+		<db-attribute name="valor" type="CLOB" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="item_resposta_ficheiro" schema="basedados">
+		<db-attribute name="fk_item_resposta" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+		<db-attribute name="mime" type="VARCHAR" length="255"/>
+		<db-attribute name="name" type="VARCHAR" length="255"/>
+		<db-attribute name="size" type="INTEGER"/>
+	</db-entity>
+	<db-entity name="resposta" schema="basedados">
+		<db-attribute name="codigo" type="INTEGER"/>
+		<db-attribute name="data_abertura" type="TIMESTAMP"/>
+		<db-attribute name="data_submissao" type="TIMESTAMP"/>
+		<db-attribute name="data_ultima_alteracao" type="TIMESTAMP"/>
+		<db-attribute name="fk_formulario" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="fkparticipante" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="t_tipo_item" schema="basedados">
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+		<db-attribute name="nome" type="VARCHAR" length="100"/>
+	</db-entity>
+	<obj-entity name="Agrupador" className="com.baseform.apps.power.basedados.Agrupador" dbEntityName="base_dados">
+		<obj-attribute name="data" type="java.util.Date" db-attribute-path="data"/>
+		<obj-attribute name="dataAbertura" type="java.util.Date" db-attribute-path="data_abertura"/>
+		<obj-attribute name="dataFim" type="java.util.Date" db-attribute-path="data_fim"/>
+		<obj-attribute name="designacao" type="java.lang.String" db-attribute-path="designacao"/>
+		<obj-attribute name="id" type="int" db-attribute-path="id"/>
+		<obj-attribute name="observacoes" type="java.lang.String" db-attribute-path="observacoes"/>
+	</obj-entity>
+	<obj-entity name="Formulario" className="com.baseform.apps.power.basedados.Formulario" dbEntityName="formulario">
+		<obj-attribute name="dataAbertura" type="java.util.Date" db-attribute-path="data_abertura"/>
+		<obj-attribute name="dataFim" type="java.util.Date" db-attribute-path="data_fim"/>
+		<obj-attribute name="id" type="java.lang.Integer" db-attribute-path="id"/>
+		<obj-attribute name="infoIntrodutoria" type="java.lang.String" db-attribute-path="info_introdutoria"/>
+		<obj-attribute name="itemMostrarLista" type="java.lang.String" db-attribute-path="item_mostrar_lista"/>
+		<obj-attribute name="nome" type="java.lang.String" db-attribute-path="nome"/>
+		<obj-attribute name="observacoes" type="java.lang.String" db-attribute-path="observacoes"/>
+		<obj-attribute name="repetivel" type="java.lang.Boolean" db-attribute-path="repetivel"/>
+		<obj-attribute name="script" type="java.lang.String" db-attribute-path="script"/>
+	</obj-entity>
+	<obj-entity name="Item" className="com.baseform.apps.power.basedados.Item" dbEntityName="item">
+		<obj-attribute name="codigo" type="java.lang.String" db-attribute-path="codigo"/>
+		<obj-attribute name="editable" type="java.lang.Boolean" db-attribute-path="editable"/>
+		<obj-attribute name="endInline" type="java.lang.Boolean" db-attribute-path="end_inline"/>
+		<obj-attribute name="id" type="java.lang.Integer" db-attribute-path="id"/>
+		<obj-attribute name="info" type="java.lang.String" db-attribute-path="info"/>
+		<obj-attribute name="inline" type="java.lang.Boolean" db-attribute-path="inline"/>
+		<obj-attribute name="isObrigatorio" type="java.lang.Boolean" db-attribute-path="is_obrigatorio"/>
+		<obj-attribute name="nome" type="java.lang.String" db-attribute-path="nome"/>
+		<obj-attribute name="opcoes" type="java.lang.String" db-attribute-path="opcoes"/>
+		<obj-attribute name="styleClass" type="java.lang.String" db-attribute-path="style_class"/>
+		<obj-attribute name="styleClassLabel" type="java.lang.String" db-attribute-path="style_class_label"/>
+	</obj-entity>
+	<obj-entity name="ItemResposta" className="com.baseform.apps.power.basedados.ItemResposta" dbEntityName="item_resposta">
+		<obj-attribute name="id" type="java.lang.Integer" db-attribute-path="id"/>
+		<obj-attribute name="valor" type="java.lang.String" db-attribute-path="valor"/>
+	</obj-entity>
+	<obj-entity name="ItemRespostaFicheiro" className="com.baseform.apps.power.basedados.ItemRespostaFicheiro" dbEntityName="item_resposta_ficheiro">
+		<obj-attribute name="id" type="java.lang.Integer" db-attribute-path="id"/>
+		<obj-attribute name="mime" type="java.lang.String" db-attribute-path="mime"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="name"/>
+		<obj-attribute name="size" type="java.lang.Integer" db-attribute-path="size"/>
+	</obj-entity>
+	<obj-entity name="Resposta" className="com.baseform.apps.power.basedados.Resposta" dbEntityName="resposta">
+		<obj-attribute name="codigo" type="java.lang.Integer" db-attribute-path="codigo"/>
+		<obj-attribute name="dataAbertura" type="java.util.Date" db-attribute-path="data_abertura"/>
+		<obj-attribute name="dataSubmissao" type="java.util.Date" db-attribute-path="data_submissao"/>
+		<obj-attribute name="dataUltimaAlteracao" type="java.util.Date" db-attribute-path="data_ultima_alteracao"/>
+		<obj-attribute name="id" type="java.lang.Integer" db-attribute-path="id"/>
+	</obj-entity>
+	<obj-entity name="TTipoItem" className="com.baseform.apps.power.basedados.TTipoItem" dbEntityName="t_tipo_item">
+		<obj-attribute name="id" type="java.lang.Integer" db-attribute-path="id"/>
+		<obj-attribute name="nome" type="java.lang.String" db-attribute-path="nome"/>
+	</obj-entity>
+	<db-relationship name="formularios" source="base_dados" target="formulario" toMany="true">
+		<db-attribute-pair source="id" target="fk_base_dados"/>
+	</db-relationship>
+	<db-relationship name="base_dados" source="formulario" target="base_dados" toMany="false">
+		<db-attribute-pair source="fk_base_dados" target="id"/>
+	</db-relationship>
+	<db-relationship name="items" source="formulario" target="item" toMany="true">
+		<db-attribute-pair source="id" target="fk_formulario"/>
+	</db-relationship>
+	<db-relationship name="processo" source="formulario" target="processo" toMany="false">
+		<db-attribute-pair source="fkprocesso" target="pkid"/>
+	</db-relationship>
+	<db-relationship name="respostas" source="formulario" target="resposta" toMany="true">
+		<db-attribute-pair source="id" target="fk_formulario"/>
+	</db-relationship>
+	<db-relationship name="formulario" source="item" target="formulario" toMany="false">
+		<db-attribute-pair source="fk_formulario" target="id"/>
+	</db-relationship>
+	<db-relationship name="respostas" source="item" target="item_resposta" toMany="true">
+		<db-attribute-pair source="id" target="fk_item"/>
+	</db-relationship>
+	<db-relationship name="tipo" source="item" target="t_tipo_item" toMany="false">
+		<db-attribute-pair source="fk_tipo" target="id"/>
+	</db-relationship>
+	<db-relationship name="ficheiros" source="item_resposta" target="item_resposta_ficheiro" toMany="true">
+		<db-attribute-pair source="id" target="fk_item_resposta"/>
+	</db-relationship>
+	<db-relationship name="item" source="item_resposta" target="item" toMany="false">
+		<db-attribute-pair source="fk_item" target="id"/>
+	</db-relationship>
+	<db-relationship name="resposta" source="item_resposta" target="resposta" toMany="false">
+		<db-attribute-pair source="fk_resposta" target="id"/>
+	</db-relationship>
+	<db-relationship name="item_resposta" source="item_resposta_ficheiro" target="item_resposta" toMany="false">
+		<db-attribute-pair source="fk_item_resposta" target="id"/>
+	</db-relationship>
+	<db-relationship name="formulario" source="resposta" target="formulario" toMany="false">
+		<db-attribute-pair source="fk_formulario" target="id"/>
+	</db-relationship>
+	<db-relationship name="participante" source="resposta" target="participante" toMany="false">
+		<db-attribute-pair source="fkparticipante" target="pkid"/>
+	</db-relationship>
+	<db-relationship name="resposta_items" source="resposta" target="item_resposta" toMany="true">
+		<db-attribute-pair source="id" target="fk_resposta"/>
+	</db-relationship>
+	<db-relationship name="items" source="t_tipo_item" target="item" toMany="true">
+		<db-attribute-pair source="id" target="fk_tipo"/>
+	</db-relationship>
+	<obj-relationship name="formularios" source="Agrupador" target="Formulario" deleteRule="Cascade" db-relationship-path="formularios"/>
+	<obj-relationship name="baseDados" source="Formulario" target="Agrupador" db-relationship-path="base_dados"/>
+	<obj-relationship name="items" source="Formulario" target="Item" deleteRule="Cascade" db-relationship-path="items"/>
+	<obj-relationship name="processo" source="Formulario" target="Processo" db-relationship-path="processo"/>
+	<obj-relationship name="respostas" source="Formulario" target="Resposta" deleteRule="Cascade" db-relationship-path="respostas"/>
+	<obj-relationship name="formulario" source="Item" target="Formulario" deleteRule="Nullify" db-relationship-path="formulario"/>
+	<obj-relationship name="respostas" source="Item" target="ItemResposta" db-relationship-path="respostas"/>
+	<obj-relationship name="tipo" source="Item" target="TTipoItem" deleteRule="Nullify" db-relationship-path="tipo"/>
+	<obj-relationship name="ficheiros" source="ItemResposta" target="ItemRespostaFicheiro" deleteRule="Cascade" db-relationship-path="ficheiros"/>
+	<obj-relationship name="item" source="ItemResposta" target="Item" deleteRule="Nullify" db-relationship-path="item"/>
+	<obj-relationship name="resposta" source="ItemResposta" target="Resposta" deleteRule="Nullify" db-relationship-path="resposta"/>
+	<obj-relationship name="itemResposta" source="ItemRespostaFicheiro" target="ItemResposta" deleteRule="Nullify" db-relationship-path="item_resposta"/>
+	<obj-relationship name="formulario" source="Resposta" target="Formulario" deleteRule="Nullify" db-relationship-path="formulario"/>
+	<obj-relationship name="participante" source="Resposta" target="Participante" deleteRule="Nullify" db-relationship-path="participante"/>
+	<obj-relationship name="respostaItems" source="Resposta" target="ItemResposta" deleteRule="Cascade" db-relationship-path="resposta_items"/>
+	<obj-relationship name="items" source="TTipoItem" target="Item" deleteRule="Deny" db-relationship-path="items"/>
+</data-map>
