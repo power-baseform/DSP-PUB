@@ -1,6 +1,6 @@
 # About
 
-The PUB is the front end of the DSP – a public-facing website – and is made available to the city pilots (Beta release) for the purpose of publishing project data and interacting with the project’s intended audience.
+The PUB is the front end of the DSP – a public-facing website – and is made available for the four key demonstration cities as well as a best practice version on top. for the purpose of publishing project data and interacting with the project’s intended audience. All the content of the PUB tier is managed by HUB backend, complemented by user generated content.
 
 # Background
 
