@@ -558,9 +558,9 @@ POWERController.prototype.initStickyInfo = function() {
         if (!info.hasClass("sticky")) {
             view.infoTop = info.offset().top;
         }
-        if (($(window).scrollTop() + $(".section.header").innerHeight() + 14 + $(".intro.title").innerHeight()) >= view.infoTop) {
+        if (($(window).scrollTop() + $(".section.header").innerHeight() + 20 + $(".intro.title").innerHeight()) >= view.infoTop) {
             // if (!menu.hasClass("sticky")) {
-            info.css({top: $(".section.header").innerHeight() + 14 + $(".intro.title").innerHeight()});
+            info.css({top: $(".section.header").innerHeight() + 20+ $(".intro.title").innerHeight()});
             info.addClass("sticky");
             // }
         } else {
@@ -583,8 +583,8 @@ POWERController.prototype.initStickyMenu =  function (menuClass){
 
     this.menuTop = menu.offset().top;
 
-    if (($(window).scrollTop() + $(".section.header").innerHeight() + 14 + $(".intro.title").innerHeight()) >= this.menuTop) {
-        menu.css({top: $(".section.header").innerHeight() + 14 + $(".intro.title").innerHeight()});
+    if (($(window).scrollTop() + $(".section.header").innerHeight() + 25 + $(".intro.title").innerHeight()) >= this.menuTop) {
+        menu.css({top: $(".section.header").innerHeight() + 25 + $(".intro.title").innerHeight()});
         menu.addClass("sticky");
     }
 
@@ -593,9 +593,9 @@ POWERController.prototype.initStickyMenu =  function (menuClass){
         if (!menu.hasClass("sticky")) {
             view.menuTop = menu.offset().top;
         }
-        if (($(window).scrollTop() + $(".section.header").innerHeight() + 14 + + $(".intro.title").innerHeight()) >= view.menuTop) {
+        if (($(window).scrollTop() + $(".section.header").innerHeight() + 25 + + $(".intro.title").innerHeight()) >= view.menuTop) {
             // if (!menu.hasClass("sticky")) {
-                menu.css({top: $(".section.header").innerHeight() + 14 + $(".intro.title").innerHeight()});
+                menu.css({top: $(".section.header").innerHeight() + 25 + $(".intro.title").innerHeight()});
                 menu.addClass("sticky");
             // }
         } else {
@@ -607,8 +607,8 @@ POWERController.prototype.initStickyMenu =  function (menuClass){
 
     this.resizeEvents.bar = function(e) {
         view.menuTop = menu.offset().top;
-        if (($(window).scrollTop() + $(".section.header").innerHeight() + 14 + + $(".intro.title").innerHeight()) >= view.menuTop) {
-            menu.css({top: $(".section.header").innerHeight() + 14 + $(".intro.title").innerHeight()});
+        if (($(window).scrollTop() + $(".section.header").innerHeight() + 25 + + $(".intro.title").innerHeight()) >= view.menuTop) {
+            menu.css({top: $(".section.header").innerHeight() + 25 + $(".intro.title").innerHeight()});
             menu.addClass("sticky");
         } else {
             menu.css({top: $(".section.header").innerHeight() + $(".intro.title").innerHeight()});
@@ -625,8 +625,8 @@ POWERController.prototype.initStickyMenuSingle =  function (menuClass){
 
     this.menuTop = menu.offset().top;
 
-    if (($(window).scrollTop() + $(".section.header").innerHeight() + 14 + $(".intro.title").innerHeight()) >= this.menuTop) {
-        menu.css({top: $(".section.header").innerHeight() + 14 + $(".intro.title").innerHeight()});
+    if (($(window).scrollTop() + $(".section.header").innerHeight() + 20 + $(".intro.title").innerHeight()) >= this.menuTop) {
+        menu.css({top: $(".section.header").innerHeight() + 20 + $(".intro.title").innerHeight()});
         menu.addClass("sticky");
     }
 
@@ -634,9 +634,9 @@ POWERController.prototype.initStickyMenuSingle =  function (menuClass){
         if (!menu.hasClass("sticky")) {
             view.menuTop = menu.offset().top;
         }
-        if (($(window).scrollTop() + $(".section.header").innerHeight() + 14 + + $(".intro.title").innerHeight()) >= view.menuTop) {
+        if (($(window).scrollTop() + $(".section.header").innerHeight() + 20 + + $(".intro.title").innerHeight()) >= view.menuTop) {
             // if (!menu.hasClass("sticky")) {
-            menu.css({top: $(".section.header").innerHeight() + 14 + $(".intro.title").innerHeight()});
+            menu.css({top: $(".section.header").innerHeight() + 20 + $(".intro.title").innerHeight()});
             menu.addClass("sticky");
             // }
         } else {

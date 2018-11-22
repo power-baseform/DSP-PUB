@@ -85,7 +85,7 @@
 <h3 class="notFollowing"><%=PowerUtils.localizeKey("msg.comment.closed",currentLangBundle,frontendDefaultBundle)%></h3>
 <% }%>
 <% for (String s : contents.keySet()) {
-    List<RParticipanteComentario> commentList = processo.getCommentsAndTipsPaginated(0, currentPage * pm.pagination, s, ts, participante, response);
+    List<RParticipanteComentario> commentList = processo.getCommentsAndTips(ts, participante, response);
     if (commentList.size() == 0 && !open) continue; %>
 
 <% if(open) {%>
@@ -127,11 +127,7 @@
                 <% if (comment.getTitle().length() > 0) {%> <p class="commentTitle"><%= comment.getTitle() %></p><!--
                 --><% }%><p class="commentName"><%= comment.getParticipante().getSafeNome()%></p><!--
                 --><tags:userImgTag participant="<%=comment.getParticipante()%>"/><span class="date"><%= df.format(comment.getData()) %></span><!--
-                --><div class="action share" data-extra="&cId=<%= comment.getId() %>">
-                <svg class="actionSvg" enable-background="new 0 0 24 24" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="m19.801 15.601c-1.182 0-2.248.489-3.011 1.274l-8.445-4.223c.033-.213.056-.43.056-.651 0-.223-.022-.439-.056-.652l8.445-4.223c.764.785 1.829 1.274 3.011 1.274 2.319 0 4.199-1.88 4.199-4.2s-1.88-4.2-4.199-4.2c-2.32 0-4.2 1.881-4.2 4.2 0 .223.022.439.056.652l-8.446 4.223c-.763-.785-1.829-1.274-3.011-1.274-2.319 0-4.2 1.88-4.2 4.2 0 2.319 1.881 4.199 4.2 4.199 1.182 0 2.248-.489 3.011-1.274l8.445 4.223c-.033.213-.056.43-.056.652 0 2.319 1.88 4.199 4.2 4.199s4.2-1.88 4.2-4.199c0-2.321-1.88-4.2-4.199-4.2z" fill="#36c"/></svg>
-                <a href="#" class="actionName <%= pm.isRtl() %>"><%= PowerUtils.localizeKey("share",currentLangBundle,frontendDefaultBundle,true) %></a>
-                <jsp:include page="sharePopup.jsp" />
-            </div>
+                -->
                 <a download href="#" target="blank" class="description noAttachment"><%= comment.getComentario()%></a>
                 <% if (comment.getFicheiro() != null && comment.getFicheiro().getSize() != null) {%>
                 <% if (comment.getFicheiro().getMime().contains("image")) { %>
@@ -152,7 +148,11 @@
             --><div class="actionButtons">
             <% if (open) {%><a id="reply_<%= comment.getId() %>" data-id="<%= comment.getId() %>" data-count="<%= comment.getApprovedResponse().size() %>" class="actionLink reply"><%=PowerUtils.localizeKey("action.comment",currentLangBundle,frontendDefaultBundle)%> (<%= comment.getApprovedResponse().size()%>)</a><%}%><!--
             --><a id="like_<%= comment.getId() %>" class="actionLink like  enabled_<%= open %>" <% if (open && participante != null) {%>onclick="like(<%= comment.getId() %>)"<% }%>><%= comment.getLikes() %></a><!--
-            -->
+            --><div class="action share" data-extra="&cId=<%= comment.getId() %>">
+            <svg class="actionSvg" enable-background="new 0 0 24 24" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="m19.801 15.601c-1.182 0-2.248.489-3.011 1.274l-8.445-4.223c.033-.213.056-.43.056-.651 0-.223-.022-.439-.056-.652l8.445-4.223c.764.785 1.829 1.274 3.011 1.274 2.319 0 4.199-1.88 4.199-4.2s-1.88-4.2-4.199-4.2c-2.32 0-4.2 1.881-4.2 4.2 0 .223.022.439.056.652l-8.446 4.223c-.763-.785-1.829-1.274-3.011-1.274-2.319 0-4.2 1.88-4.2 4.2 0 2.319 1.881 4.199 4.2 4.199 1.182 0 2.248-.489 3.011-1.274l8.445 4.223c-.033.213-.056.43-.056.652 0 2.319 1.88 4.199 4.2 4.199s4.2-1.88 4.2-4.199c0-2.321-1.88-4.2-4.199-4.2z" fill="#36c"/></svg>
+            <a href="#" class="actionName <%= pm.isRtl() %>"><%= PowerUtils.localizeKey("share",currentLangBundle,frontendDefaultBundle,true) %></a>
+            <jsp:include page="sharePopup.jsp" />
+            </div>
         </div>
             <% }%>
             <div class="comments replyBox hidden">
@@ -183,12 +183,7 @@
                         <div class="commentInfo">
                             <% if (reply.getTitle().length() > 0) {%> <p class="commentTitle"><%= reply.getTitle() %></p><!--
                             --><% }%><p class="commentName"><%= reply.getParticipante().getSafeNome()%></p><!--
-                        --><tags:userImgTag participant="<%=reply.getParticipante()%>"/><span class="date"><%= df.format(reply.getData()) %></span><!--
-                        --><div class="action share" data-extra="&cId=<%= comment.getId() %>&rId=<%= reply.getId() %>">
-                                <svg class="actionSvg" enable-background="new 0 0 24 24" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="m19.801 15.601c-1.182 0-2.248.489-3.011 1.274l-8.445-4.223c.033-.213.056-.43.056-.651 0-.223-.022-.439-.056-.652l8.445-4.223c.764.785 1.829 1.274 3.011 1.274 2.319 0 4.199-1.88 4.199-4.2s-1.88-4.2-4.199-4.2c-2.32 0-4.2 1.881-4.2 4.2 0 .223.022.439.056.652l-8.446 4.223c-.763-.785-1.829-1.274-3.011-1.274-2.319 0-4.2 1.88-4.2 4.2 0 2.319 1.881 4.199 4.2 4.199 1.182 0 2.248-.489 3.011-1.274l8.445 4.223c-.033.213-.056.43-.056.652 0 2.319 1.88 4.199 4.2 4.199s4.2-1.88 4.2-4.199c0-2.321-1.88-4.2-4.199-4.2z" fill="#36c"/></svg>
-                                <a href="#" class="actionName <%= pm.isRtl() %>"><%= PowerUtils.localizeKey("share",currentLangBundle,frontendDefaultBundle,true) %></a>
-                                <jsp:include page="sharePopup.jsp" />
-                            </div>
+                        --><tags:userImgTag participant="<%=reply.getParticipante()%>"/><span class="date"><%= df.format(reply.getData()) %></span>
                             <a download href="#" target="blank" class="description noAttachment"><%= reply.getComentario()%></a>
                             <% if (reply.getFicheiro() != null && reply.getFicheiro().getSize() != null) {%>
                             <% if (reply.getFicheiro().getMime().contains("image")) { %>
@@ -207,7 +202,12 @@
                             <% }%>
                         </div><% if (reply.getStatus() == RParticipanteComentario.APPROVED) { %><!--
                 --><div class="actionButtons">
-                        <a id="like_<%= reply.getId() %>" class="actionLink like enabled_<%= open %>" <% if (open && participante != null) {%>onclick="like(<%= reply.getId() %>)"<% }%>><%= reply.getLikes() %></a>
+                        <a id="like_<%= reply.getId() %>" class="actionLink like enabled_<%= open %>" <% if (open && participante != null) {%>onclick="like(<%= reply.getId() %>)"<% }%>><%= reply.getLikes() %></a><!--
+                        --><div class="action share" data-extra="&cId=<%= comment.getId() %>&rId=<%= reply.getId() %>">
+                        <svg class="actionSvg" enable-background="new 0 0 24 24" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="m19.801 15.601c-1.182 0-2.248.489-3.011 1.274l-8.445-4.223c.033-.213.056-.43.056-.651 0-.223-.022-.439-.056-.652l8.445-4.223c.764.785 1.829 1.274 3.011 1.274 2.319 0 4.199-1.88 4.199-4.2s-1.88-4.2-4.199-4.2c-2.32 0-4.2 1.881-4.2 4.2 0 .223.022.439.056.652l-8.446 4.223c-.763-.785-1.829-1.274-3.011-1.274-2.319 0-4.2 1.88-4.2 4.2 0 2.319 1.881 4.199 4.2 4.199 1.182 0 2.248-.489 3.011-1.274l8.445 4.223c-.033.213-.056.43-.056.652 0 2.319 1.88 4.199 4.2 4.199s4.2-1.88 4.2-4.199c0-2.321-1.88-4.2-4.199-4.2z" fill="#36c"/></svg>
+                        <a href="#" class="actionName <%= pm.isRtl() %>"><%= PowerUtils.localizeKey("share",currentLangBundle,frontendDefaultBundle,true) %></a>
+                        <jsp:include page="sharePopup.jsp" />
+                    </div>
                     </div>
                         <% }%>
                     </li>
@@ -220,9 +220,6 @@
         </li>
         <% }%>
     </ul>
-    <% if (commentsSize > pm.pagination)  {%>
-    <a href="#" class="loadMoreC loadMoreComments" data-page="<%= currentPage + 1 %>" data-type="<%= s %>">Load More...</a>
-    <% }%>
 </div>
 <%}%>
 <%!

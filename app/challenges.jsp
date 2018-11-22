@@ -44,7 +44,7 @@
         <div class="challengesGrid"><!--
             <% for (Processo challenge : list) { %>
             --><a href="./?location=challenge&loadP=<%=challenge.getId()%>" class="challenge">
-            <div class="challengeImage" style="background-image: url('<%=challenge.getThumbnail() != null ? "thumb?size=small&id="+challenge.getThumbnail().getId():"/redesign_images/imgMap.png"%>');"></div><!--
+            <div class="challengeImage" style="background-image: url('<%=challenge.getThumbnail() != null ? "thumb?size=small&id="+challenge.getThumbnail().getId():"/redesign_images/imgMap.jpg"%>');"></div><!--
                     --><div class="challengeDescription">
             <%= challenge.getTitulo() %>
             <%--<p class="challengeDate">Discuss until <span class="date"><%= df.format(challenge.getDataFim()) %></span></p>--%>

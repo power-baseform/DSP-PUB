@@ -22,6 +22,7 @@
   --%>
 
 <% PowerPubManager pm = (PowerPubManager) PublicManager.get(request); %>
+<% if (!pm.isMobileRequest()) {%>
 <link href="redesign_css/footer.css" rel="stylesheet" type="text/css">
 <div class="section footer">
     <div class="grid freeGrow">
@@ -41,8 +42,9 @@
         </div>
         </div>
     </div>
-    <a href="#" id="googleLoginHidden" style="display: none;"></a>
 </div>
+<% }%>
+<a href="#" id="googleLoginHidden" style="display: none;"></a>
 
 <script>
     $(window).on("load", function(e) {
@@ -55,10 +57,12 @@
             'theme': 'dark'
         });
 
-        window.POWER = new PowerApi();
+        if (<%= !pm.getSystemId(request).equalsIgnoreCase(pm.BEST_PRACTICES_ID)%>)
+            window.POWER = new PowerApi();
     });
 
     function googleLogin(googleUser) {
+        console.log("teste");
         if (<%= pm.getParticipante() == null%>) {
             $.get("loginGoogle.jsp", {token: googleUser.getAuthResponse().id_token }).done(function(data){
                 if (JSON.parse(data.trim()).success)

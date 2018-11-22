@@ -65,95 +65,103 @@
         commentList = processo.getNewApprovedCommentsAndTipsPaginated(type, ts);
 %>
 <% for (RParticipanteComentario comment : commentList) {  %>
-    <li class="comment status<%= comment.getStatus() %>" data-id="<%= comment.getId() %>">
-        <img src="<%= comment.getParticipante() != null && comment.getParticipante().getImagem() != null ? "./user_avatar?id="+comment.getParticipante().getImagem().getId() : "redesign_images/user.png" %>" alt="user" class="userImage">
-        <div class="commentInfo">
-            <p class="commentName"><%= comment.getParticipante().getNome()%></p><!--
-                --><tags:userImgTag participant="<%=comment.getParticipante()%>"/><span class="date"><%= df.format(comment.getData()) %></span>
-            <a download href="#" target="blank" class="description noAttachment"><%= comment.getComentario()%></a>
-            <% if (comment.getFicheiro() != null && comment.getFicheiro().getSize() != null) {%>
-            <% if (comment.getFicheiro().getMime().contains("image")) { %>
-            <img src="/comment?id=<%= comment.getFicheiro().getId() %>" class="commentPhoto">
-            <% }%>
-            <a href="/comment?id=<%= comment.getFicheiro().getId()%>" target="blank" class="fileInfo"><%= comment.getFicheiro().getNomeFicheiro()%> - <%= "[" + ((comment.getFicheiro().getSize() / 1048576f) >= 1.0 ? rounder.format(comment.getFicheiro().getSize() / 1048576f) + "Mb]" : rounder.format(comment.getFicheiro().getSize() / 1024f) + "Kb]")%></a>
-            <% }%>            <% if (comment.getStatus() != RParticipanteComentario.APPROVED) { %>
-            <span class="status">
-            <% if (comment.getStatus() == RParticipanteComentario.PENDING_APPROVAL) {%>
-                <%=PowerUtils.localizeKey("pending.approval",currentLangBundle,frontendDefaultBundle)%>
-            <% } else {%>
-                <%=PowerUtils.localizeKey("removed",currentLangBundle,frontendDefaultBundle)%>
-            <% }%>
-            </span>
-            <% }%>
-        </div><% if (comment.getStatus() == RParticipanteComentario.APPROVED) { %><!--
-        --><div class="actionButtons">
-        <% if (open) {%><a id="reply_<%= comment.getId() %>" data-id="<%= comment.getId() %>" data-count="<%= comment.getApprovedResponse().size() %>" class="actionLink reply"><%=PowerUtils.localizeKey("action.comment",currentLangBundle,frontendDefaultBundle)%> (<%= comment.getApprovedResponse().size()%>)</a><%}%><!--
-                        --><a id="like_<%= comment.getId() %>" class="actionLink like  enabled_<%= open %>" <% if (open && participante != null) {%>onclick="like(<%= comment.getId() %>)"<% }%>><%=PowerUtils.localizeKey("like",currentLangBundle,frontendDefaultBundle)%> (<%= comment.getLikes() %>)</a><!--
-                        --><a id="dislike_<%= comment.getId() %>" class="actionLink enabled_<%= open %>" <% if (open && participante != null) {%>onclick="dislike(<%= comment.getId() %>)"<% }%>><%=PowerUtils.localizeKey("dislike",currentLangBundle,frontendDefaultBundle)%> (<%= comment.getDislikes() %>)</a>
-    </div>
+<li class="comment  status<%= comment.getStatus() %>" data-id="<%= comment.getId() %>">
+    <img src="<%= comment.getParticipante() != null && comment.getParticipante().getImagem() != null ? "./user_avatar?id="+comment.getParticipante().getImagem().getId() : "redesign_images/user.png" %>" alt="user" class="userImage">
+    <div class="commentInfo">
+        <% if (comment.getTitle().length() > 0) {%> <p class="commentTitle"><%= comment.getTitle() %></p><!--
+                --><% }%><p class="commentName"><%= comment.getParticipante().getSafeNome()%></p><!--
+                --><tags:userImgTag participant="<%=comment.getParticipante()%>"/><span class="date"><%= df.format(comment.getData()) %></span><!--
+                -->
+        <a download href="#" target="blank" class="description noAttachment"><%= comment.getComentario()%></a>
+        <% if (comment.getFicheiro() != null && comment.getFicheiro().getSize() != null) {%>
+        <% if (comment.getFicheiro().getMime().contains("image")) { %>
+        <img src="/comment?id=<%= comment.getFicheiro().getId() %>" class="commentPhoto">
         <% }%>
-        <div class="comments replyBox hidden">
-            <% if (true) { %>
-                <form action="./?<%=RequestParameters.COMENTAR%>=<%= comment.getId() %>" enctype="multipart/form-data" method="post" accept-charset="utf-8" autocomplete="off">
-                    <input type="hidden" name="process" class="pId" value="<%=processo.getId()%>"/>
-                    <input type="hidden" name="responseTo" class="cId" value="<%=comment.getId()%>"/>
-                    <input type="hidden" name="loginEmail"/>
-                    <input type="hidden" name="loginPassword"/>
-                    <input type="hidden" name="isReply" value="true"/>
-                    <textarea class="boxComment" name="<%=RequestParameters.COMENTARIO%>" placeholder="<%=PowerUtils.localizeKey("write.comment",currentLangBundle,frontendDefaultBundle)%>"></textarea><!--
+        <a href="/comment?id=<%= comment.getFicheiro().getId()%>" target="blank" class="fileInfo"><%= comment.getFicheiro().getNomeFicheiro()%> - <%= "[" + ((comment.getFicheiro().getSize() / 1048576f) >= 1.0 ? rounder.format(comment.getFicheiro().getSize() / 1048576f) + "Mb]" : rounder.format(comment.getFicheiro().getSize() / 1024f) + "Kb]")%></a>
+        <% }%>
+        <% if (comment.getStatus() != RParticipanteComentario.APPROVED) { %>
+        <span class="status">
+                    <% if (comment.getStatus() == RParticipanteComentario.PENDING_APPROVAL) {%>
+                        <%=PowerUtils.localizeKey("pending.approval",currentLangBundle,frontendDefaultBundle)%>
+                    <% } else {%>
+                        <%=PowerUtils.localizeKey("removed",currentLangBundle,frontendDefaultBundle)%>
+                    <% }%>
+                    </span>
+        <% }%>
+    </div><% if (comment.getStatus() == RParticipanteComentario.APPROVED) { %><!--
+            --><div class="actionButtons">
+    <% if (open) {%><a id="reply_<%= comment.getId() %>" data-id="<%= comment.getId() %>" data-count="<%= comment.getApprovedResponse().size() %>" class="actionLink reply"><%=PowerUtils.localizeKey("action.comment",currentLangBundle,frontendDefaultBundle)%> (<%= comment.getApprovedResponse().size()%>)</a><%}%><!--
+            --><a id="like_<%= comment.getId() %>" class="actionLink like  enabled_<%= open %>" <% if (open && participante != null) {%>onclick="like(<%= comment.getId() %>)"<% }%>><%= comment.getLikes() %></a><!--
+            --><div class="action share" data-extra="&cId=<%= comment.getId() %>">
+    <svg class="actionSvg" enable-background="new 0 0 24 24" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="m19.801 15.601c-1.182 0-2.248.489-3.011 1.274l-8.445-4.223c.033-.213.056-.43.056-.651 0-.223-.022-.439-.056-.652l8.445-4.223c.764.785 1.829 1.274 3.011 1.274 2.319 0 4.199-1.88 4.199-4.2s-1.88-4.2-4.199-4.2c-2.32 0-4.2 1.881-4.2 4.2 0 .223.022.439.056.652l-8.446 4.223c-.763-.785-1.829-1.274-3.011-1.274-2.319 0-4.2 1.88-4.2 4.2 0 2.319 1.881 4.199 4.2 4.199 1.182 0 2.248-.489 3.011-1.274l8.445 4.223c-.033.213-.056.43-.056.652 0 2.319 1.88 4.199 4.2 4.199s4.2-1.88 4.2-4.199c0-2.321-1.88-4.2-4.199-4.2z" fill="#36c"/></svg>
+    <a href="#" class="actionName <%= pm.isRtl() %>"><%= PowerUtils.localizeKey("share",currentLangBundle,frontendDefaultBundle,true) %></a>
+    <jsp:include page="sharePopup.jsp" />
+</div>
+</div>
+    <% }%>
+    <div class="comments replyBox hidden">
+        <% if (true) {%>
+        <form action="./?<%=RequestParameters.COMENTAR%>=<%= comment.getId() %>" enctype="multipart/form-data" method="post" accept-charset="utf-8" autocomplete="off">
+            <input type="hidden" name="process" class="pId" value="<%=processo.getId()%>"/>
+            <input type="hidden" name="responseTo" class="cId" value="<%=comment.getId()%>"/>
+            <input type="hidden" name="loginEmail"/>
+            <input type="hidden" name="loginPassword"/>
+            <input type="hidden" name="isReply" value="true"/>
+            <input type="text" name="title" class="boxCommentTitle" placeholder="<%=PowerUtils.localizeKey("write.comment.title",currentLangBundle,frontendDefaultBundle)%>">
+            <textarea class="boxComment" name="<%=RequestParameters.COMENTARIO%>" placeholder="<%=PowerUtils.localizeKey("write.comment",currentLangBundle,frontendDefaultBundle)%>"></textarea><!--
                     --><div class="actions">
-                    <label><input  type="file" name="photo" accept="image/*"  onchange="$(this).closest('form').find('.photoName').html($(this).val().replace('C:\\fakepath\\',''));"/></label>
-                    <span  class="photoName"> </span>
-                    <a href="#" title="<tags:gamificationPointsForActionTag issue="<%=processo%>" action="<%=action%>"/>" class="sendComment" data-participante="<%= participante != null %>"><%=PowerUtils.localizeKey("post",currentLangBundle,frontendDefaultBundle)%></a>
-                </div>
-                </form>
-            <% }%>
-            <% Integer responsePage = rT != null && rT.equals(comment.getId()) ? rP : 0;
-                List<RParticipanteComentario> replies = comment.getResponsePaginated(responsePage, pm.pagination, participante, response, ts);%>
-                <div class="newResponses newCommentsAlert hidden">
-                    <h3 class="newCommentsCopy">You have <span class="count"></span> new replies.</h3>
-                    <a class="reloadResponses page" data-page="1" data-id="<%= comment.getId()%>" href="#">click here to load them.</a>
-                </div>
-            <ul class="commentList appendResponses">
-                <%  new Ordering(RParticipanteComentario.DATA_PROPERTY, SortOrder.DESCENDING_INSENSITIVE).orderList(replies);
-                    Integer k = 0;
-                    for (RParticipanteComentario reply : replies) {  %>
-                <li class="comment status<%= reply.getStatus() %> <% if (participante != null && k == 0) { %>firstComment<% }k++;%>"  data-id="<%= reply.getId()%>">
-                    <img src="<%= reply.getParticipante() != null && reply.getParticipante().getImagem() != null ? "./user_avatar?id="+reply.getParticipante().getImagem().getId() : "redesign_images/user.png" %>" alt="user" class="userImage">
-                    <div class="commentInfo">
-                        <p class="commentName"><%= reply.getParticipante().getNome()%></p><!--
+            <label><input  type="file" name="photo" accept="image/*"  onchange="$(this).closest('form').find('.photoName').html($(this).val().replace('C:\\fakepath\\',''));"/></label>
+            <span class="photoName"> </span>
+            <a href="#" class="sendComment" data-participante="<%= participante != null %>"><%=PowerUtils.localizeKey("submit",currentLangBundle,frontendDefaultBundle)%></a>
+        </div>
+        </form>
+        <% }%>
+        <ul class="commentList appendResponses">
+            <% Integer responsePage = 0;
+                List<RParticipanteComentario> replies = comment.getResponsePaginated(responsePage, pm.pagination, participante, response, ts);
+                new Ordering(RParticipanteComentario.DATA_PROPERTY, SortOrder.DESCENDING_INSENSITIVE).orderList(replies);
+                Integer k = 0;
+                for (RParticipanteComentario reply : replies) {  %>
+            <li class="comment status<%= reply.getStatus() %> <% if (participante != null && k == 0) { %>firstComment<% }k++;%>"  data-id="<%= reply.getId()%>">
+                <img src="<%= reply.getParticipante() != null && reply.getParticipante().getImagem() != null ? "./user_avatar?id="+reply.getParticipante().getImagem().getId() : "redesign_images/user.png" %>" alt="user" class="userImage">
+                <div class="commentInfo">
+                    <% if (reply.getTitle().length() > 0) {%> <p class="commentTitle"><%= reply.getTitle() %></p><!--
+                            --><% }%><p class="commentName"><%= reply.getParticipante().getSafeNome()%></p><!--
                         --><tags:userImgTag participant="<%=reply.getParticipante()%>"/><span class="date"><%= df.format(reply.getData()) %></span>
-                        <a download href="#" target="blank" class="description noAttachment"><%= reply.getComentario()%></a>
-                        <% if (reply.getFicheiro() != null && reply.getFicheiro().getSize() != null) {%>
-                        <% if (reply.getFicheiro().getMime().contains("image")) { %>
-                        <img src="/comment?id=<%= reply.getFicheiro().getId() %>" class="commentPhoto">
-                        <% }%>
-                        <a href="/comment?id=<%= reply.getFicheiro().getId()%>" target="blank" class="fileInfo"><%= reply.getFicheiro().getNomeFicheiro()%> - <%= "[" + ((reply.getFicheiro().getSize() / 1048576f) >= 1.0 ? rounder.format(reply.getFicheiro().getSize() / 1048576f) + "Mb]" : rounder.format(reply.getFicheiro().getSize() / 1024f) + "Kb]")%></a>
-                        <% }%>
-                        <% if (reply.getStatus() != RParticipanteComentario.APPROVED) { %>
-                                    <span class="status">
+                    <a download href="#" target="blank" class="description noAttachment"><%= reply.getComentario()%></a>
+                    <% if (reply.getFicheiro() != null && reply.getFicheiro().getSize() != null) {%>
+                    <% if (reply.getFicheiro().getMime().contains("image")) { %>
+                    <img src="/comment?id=<%= reply.getFicheiro().getId() %>" class="commentPhoto">
+                    <% }%>
+                    <a href="/comment?id=<%= reply.getFicheiro().getId()%>" target="blank" class="fileInfo"><%= reply.getFicheiro().getNomeFicheiro()%> - <%= "[" + ((reply.getFicheiro().getSize() / 1048576f) >= 1.0 ? rounder.format(reply.getFicheiro().getSize() / 1048576f) + "Mb]" : rounder.format(reply.getFicheiro().getSize() / 1024f) + "Kb]")%></a>
+                    <% }%>
+                    <% if (reply.getStatus() != RParticipanteComentario.APPROVED) { %>
+                    <span class="status">
                             <% if (reply.getStatus() == RParticipanteComentario.PENDING_APPROVAL) {%>
                                 <%=PowerUtils.localizeKey("pending.approval",currentLangBundle,frontendDefaultBundle)%>
                             <% } else {%>
                                 <%=PowerUtils.localizeKey("removed",currentLangBundle,frontendDefaultBundle)%>
                             <% }%>
                             </span>
-                        <% }%>
-                    </div><% if (reply.getStatus() == RParticipanteComentario.APPROVED) { %><!--
-                --><div class="actionButtons">
-                    <a title="<tags:gamificationPointsForActionTag issue="<%=processo%>" action="<%=Processo.GAMIFICATION_ACTIONS.LIKE%>"/>" id="like_<%= reply.getId() %>" class="actionLink like enabled_<%= open %>" <% if (open && participante != null) {%>onclick="like(<%= reply.getId() %>)"<% }%>><%=PowerUtils.localizeKey("like",currentLangBundle,frontendDefaultBundle)%> (<%= reply.getLikes() %>)</a><!--
-                        --><a title="<tags:gamificationPointsForActionTag issue="<%=processo%>" action="<%=Processo.GAMIFICATION_ACTIONS.DISLIKE%>"/>" id="dislike_<%= reply.getId() %>" class="actionLink enabled_<%= open %>" <% if (open && participante != null) {%>onclick="dislike(<%= reply.getId() %>)"<% }%>><%=PowerUtils.localizeKey("dislike",currentLangBundle,frontendDefaultBundle)%> (<%= reply.getDislikes() %>)</a>
-                </div>
                     <% }%>
-                </li>
-                <% } %>
-                <% if (replies.size() == pm.pagination) { %>
-                    <a href="#" class="loadMoreC loadMoreResponses" data-id="<%= comment.getId() %>" data-page="<%= responsePage + 1 %>">Load More...</a>
+                </div><% if (reply.getStatus() == RParticipanteComentario.APPROVED) { %><!--
+                --><div class="actionButtons">
+                <a id="like_<%= reply.getId() %>" class="actionLink like enabled_<%= open %>" <% if (open && participante != null) {%>onclick="like(<%= reply.getId() %>)"<% }%>><%= reply.getLikes() %></a><!--
+                        --><div class="action share" data-extra="&cId=<%= comment.getId() %>&rId=<%= reply.getId() %>">
+                <svg class="actionSvg" enable-background="new 0 0 24 24" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="m19.801 15.601c-1.182 0-2.248.489-3.011 1.274l-8.445-4.223c.033-.213.056-.43.056-.651 0-.223-.022-.439-.056-.652l8.445-4.223c.764.785 1.829 1.274 3.011 1.274 2.319 0 4.199-1.88 4.199-4.2s-1.88-4.2-4.199-4.2c-2.32 0-4.2 1.881-4.2 4.2 0 .223.022.439.056.652l-8.446 4.223c-.763-.785-1.829-1.274-3.011-1.274-2.319 0-4.2 1.88-4.2 4.2 0 2.319 1.881 4.199 4.2 4.199 1.182 0 2.248-.489 3.011-1.274l8.445 4.223c-.033.213-.056.43-.056.652 0 2.319 1.88 4.199 4.2 4.199s4.2-1.88 4.2-4.199c0-2.321-1.88-4.2-4.199-4.2z" fill="#36c"/></svg>
+                <a href="#" class="actionName <%= pm.isRtl() %>"><%= PowerUtils.localizeKey("share",currentLangBundle,frontendDefaultBundle,true) %></a>
+                <jsp:include page="sharePopup.jsp" />
+            </div>
+            </div>
                 <% }%>
-
-            </ul>
-        </div>
-    </li>
+            </li>
+            <% } %>
+            <% if (replies.size() == pm.pagination) { %>
+            <a href="#" class="loadMoreC loadMoreResponses" data-id="<%= comment.getId() %>" data-page="<%= responsePage + 1 %>">Load More...</a>
+            <% } %>
+        </ul>
+    </div>
+</li>
     <% }%>
 
 <%--<% if (size != 0)  {%>--%>

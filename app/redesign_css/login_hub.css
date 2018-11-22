@@ -16,6 +16,40 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+.fbLogin {
+    display: inline-block;
+    border: 1px solid #99ccff;
+    background: #99ccff;
+    color: #1A3264;
+    margin: 0 auto;
+    padding: 8px 15px;
+    text-decoration: none;
+    font-family: "Montserrat Regular", Arial;
+    text-align: center;
+    font-size: 18px;
+}
+
+.socialLogin {
+    color: white;
+    font-family: "Montserrat Regular", Arial;
+    margin: 16px 0;
+    text-align: center;
+}
+
+.googleLogin {
+    display: inline-block;
+    padding: 8px 15px;
+    border: 1px solid #99ccff;
+    background: #99ccff;
+    color: #1A3264;
+    margin: 0 auto;
+    text-decoration: none;
+    font-family: "Montserrat Regular", Arial;
+    text-align: center;
+    margin-left: 10px;
+    font-size: 18px;
+}
+
 .section.loginHead .title {
     font-family: 'Montserrat Regular', Arial;
     font-weight: normal;
@@ -26,7 +60,7 @@
     padding: 58px 0 30px 0;
 }
 
-.section.login, .section.register{
+.section:not(.tabContent).login, .section:not(.tabContent).register{
     padding: 20px 0;
 }
 
@@ -38,7 +72,7 @@
 
 
 
-.section.login input[type="text"], .section.register input[type="text"], .section.login input[type="password"], .section.register input[type="password"] {
+.section.login input[type="email"], .section.login input[type="text"], .section.register input[type="text"], .section.login input[type="password"], .section.register input[type="password"] {
     width: 485px;
     border: 1px solid #3366CC;
     background-color: white;
@@ -109,7 +143,7 @@
     width: 200px;
 }
 
-.section.login .title, .section.register .title, .section.register .subTitle {
+.section.login:not(.tabContent) .title, .section.register:not(.tabContent) .title, .section.register:not(.tabContent) .subTitle {
     font-family: "Montserrat Regular", Arial;
     font-size: 20px;
     margin-bottom: 10px;
@@ -255,7 +289,7 @@
 }
 
 @media (max-width: 530px) {
-    .section.login input[type="text"], .section.register input[type="text"] {
+    .section.login input[type="email"], .section.login input[type="text"], .section.register input[type="text"] {
         width: calc(100% - 15px);
     }
     .section.login input[type="password"], .section.register input[type="password"] {

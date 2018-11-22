@@ -85,7 +85,7 @@
     <div class="grid">
         <div class="intro title sticky">
             <a href="#" class="hamburger showMenu"></a><!--
-            --><h3 class="title"><img src="<%= participante != null && participante.getImagem() != null ? "./user_avatar?id="+participante.getImagem().getId() : "redesign_images/user.png" %>" class="userImage"/><%=pm.getParticipante().getNome()%><span><%=participante.getEmail()%></span></h3>
+            --><h3 class="title"><img src="<%= participante != null && participante.getImagem() != null ? "./user_avatar?id="+participante.getImagem().getId() : "redesign_images/user.png" %>" class="userImage"/><%=pm.getParticipante().getNome()%></h3>
             <div class="mobileMenu">
                 <ul class="tabs">
                     <% if (!isBP) {%><li class="tab"><a href="#areaTitle" class="<%= pm.isRtl() %>"><%=PowerUtils.getTitleForUserGamificationChart(pm.getCurrentLocale(),curr_syst,pm.getDc(request))%></a></li><%}%>
@@ -93,10 +93,14 @@
                     <li class="tab"><a href="#participations" class="<%= pm.isRtl() %>"><%=PowerUtils.localizeKey("participations",currentLangBundle,frontendDefaultBundle)%></a></li>
                     <li class="tab"><a href="#events" class="<%= pm.isRtl() %>"><%=PowerUtils.localizeKey("events",currentLangBundle,frontendDefaultBundle)%></a></li>
                     <li class="tab"><a href="#changeinfo" class="<%= pm.isRtl() %>"><%=PowerUtils.localizeKey("change.info",currentLangBundle,frontendDefaultBundle)%></a></li>
-                    <li class="tab"><a href="#changeLanguage" class="<%= pm.isRtl() %>"><%=PowerUtils.localizeKey("change.language",currentLangBundle,frontendDefaultBundle)%></a></li>
+                    <% if (pm.isMobileRequest()) {%>
+                        <li class="tab"><a href="#changeLanguage" class="<%= pm.isRtl() %>"><%=PowerUtils.localizeKey("change.language",currentLangBundle,frontendDefaultBundle)%></a></li>
+                    <% }%>
                 </ul>
             </div>
-            <a href="./?logout_pub" class="logoutLink logout"><%=PowerUtils.localizeKey("logout",currentLangBundle,frontendDefaultBundle)%></a>
+            <% if (pm.isMobileRequest()) {%>
+                <a href="./?logout_pub" class="logoutLink logout"><%=PowerUtils.localizeKey("logout",currentLangBundle,frontendDefaultBundle)%></a>
+            <% }%>
         </div>
         <div class="content">
             <div class="contentPartial side menu">
@@ -110,7 +114,9 @@
                     <li class="tab"><a href="#participations" class="<%= pm.isRtl() %>"><%=PowerUtils.localizeKey("participations",currentLangBundle,frontendDefaultBundle)%></a></li>
                     <li class="tab"><a href="#events" class="<%= pm.isRtl() %>"><%=PowerUtils.localizeKey("events",currentLangBundle,frontendDefaultBundle)%></a></li>
                     <li class="tab"><a href="#changeinfo" class="<%= pm.isRtl() %>"><%=PowerUtils.localizeKey("change.info",currentLangBundle,frontendDefaultBundle)%></a></li>
-                    <li class="tab"><a href="#changeLanguage" class="<%= pm.isRtl() %>"><%=PowerUtils.localizeKey("change.language",currentLangBundle,frontendDefaultBundle)%></a></li>
+                    <% if (pm.isMobileRequest()) {%>
+                        <li class="tab"><a href="#changeLanguage" class="<%= pm.isRtl() %>"><%=PowerUtils.localizeKey("change.language",currentLangBundle,frontendDefaultBundle)%></a></li>
+                    <% } %>
                 </ul>
             </div><!--
             --><div class="contentPartial mainContent">
@@ -308,22 +314,25 @@
                     </form>
                     <a class="submitRegister submit <%= pm.isRtl() %>" onclick="$('#fprof').submit();"><%=PowerUtils.localizeKey("alter.data", currentLangBundle, frontendDefaultBundle)%> ></a>
                 </div>
-                <div id="changeLanguage" class="tabContent section language" style="height: 200px;">
-                    <div class="title <%= pm.isRtl() %>"><%=PowerUtils.localizeKey("change.language",currentLangBundle,frontendDefaultBundle)%></div>
-                    <div class="customSelect">
-                        <div class="customSelectTitle"><%= pm.getCurrentLocale().getDisplayLanguage(pm.getCurrentLocale()) %></div>
-                        <input type="hidden" name="currentLocale" class="tId" value=""/>
-                        <div class="customSelectOptions">
-                            <ul class="options">
-                                <%
-                                    List<Locale> locales = pm.getLocales(request);
-                                    for(Locale locale :locales) { %>
-                                    <li class="option changeLocale" ><a href="#" data-locale="./?changeLocale=<%= locale.toString()%>"><%= locale.getDisplayLanguage(locale) %></a></li>
-                                <%}%>
-                            </ul>
+                <% if (pm.isMobileRequest()) {%>
+                    <div id="changeLanguage" class="tabContent section language" style="height: 200px;">
+                        <div class="title <%= pm.isRtl() %>"><%=PowerUtils.localizeKey("change.language",currentLangBundle,frontendDefaultBundle)%></div>
+                        <div class="customSelect">
+                            <div class="customSelectTitle"><%= pm.getCurrentLocale().getDisplayLanguage(pm.getCurrentLocale()) %></div>
+                            <input type="hidden" name="currentLocale" class="tId" value=""/>
+                            <div class="customSelectOptions">
+                                <ul class="options">
+                                    <%
+                                        List<Locale> locales = pm.getLocales(request);
+                                        for(Locale locale :locales) {
+                                            if (!pm.systemHasLocale(request, locale)) continue;%>
+                                        <li class="option changeLocale" ><a href="#" data-locale="./?changeLocale=<%= locale.toString()%>"><%= locale.getDisplayLanguage(locale) %></a></li>
+                                    <%}%>
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                </div>
+                <% }%>
             </div>
         </div>
     </div>

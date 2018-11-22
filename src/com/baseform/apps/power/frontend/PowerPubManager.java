@@ -761,12 +761,9 @@ public class PowerPubManager extends PublicManager {
     }
 
     public void createCommentFromApp(SmartRequest smartRequest) throws IOException {
-        String challengeId = smartRequest.getParameter("challenge");
-        String title = smartRequest.getParameter("title");
-        String body = smartRequest.getParameter("body");
-        String photo = smartRequest.getParameter("photo");
-        String mime = smartRequest.getParameter("mime");
-        String attachment = smartRequest.getParameter("attachment");
+        String challengeId = smartRequest.getParameter("challenge").trim();
+        String title = smartRequest.getParameter("title").trim();
+        String body = smartRequest.getParameter("body").trim();
 
         ObjectContext dc = getDc(smartRequest);
         Processo processo = DataObjectUtils.objectForPK(dc, Processo.class, challengeId);
@@ -790,10 +787,13 @@ public class PowerPubManager extends PublicManager {
                 : smartRequest.getServletContext().getRealPath("/")+smartRequest.getSession().getServletContext().getInitParameter("docs");
 
 
-        if ((photo != null && photo.length() > 0) || (attachment != null && attachment.length() > 0)) {
-            byte[] decodedImg = org.apache.commons.codec.binary.Base64.decodeBase64(photo != null ? photo : attachment);
+        if (smartRequest.getFiles().size() > 0) {
+            FileItem photo = smartRequest.getFiles().get("photo");
+            if (photo == null) return;
 
-            String fileName = "attachment.jpg";
+            byte[] decodedImg = photo.get();
+
+            String fileName = photo.getName();
 
             File tempFile = File.createTempFile(FilenameUtils.getBaseName(fileName) + System.currentTimeMillis(), FilenameUtils.getExtension(fileName).isEmpty() ? "" : "." + FilenameUtils.getExtension(fileName));
             InputStream is = new FileInputStream(tempFile);
@@ -820,7 +820,7 @@ public class PowerPubManager extends PublicManager {
             ComentarioFicheiro comentarioFicheiro = new ComentarioFicheiro();
             comentarioFicheiro.setNomeFicheiro(fileName);
             comentarioFicheiro.setComentario(rpc);
-            comentarioFicheiro.setMime(mime);
+            comentarioFicheiro.setMime(photo.getContentType());
             comentarioFicheiro.setSize(decodedImg.length);
             comentarioFicheiro.getObjectContext().commitChanges();
 

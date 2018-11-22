@@ -27,7 +27,7 @@
 
     if (request.getParameter("mobileReq") != null) pm.setMobileRequest();
     if (pm.getCurrentLocationName()==null || (pm.getCurrentLocationName().equals("login") && pm.getParticipante() != null && pm.isMobileRequest())) {
-        response.sendRedirect(config.getServletContext().getInitParameter("server_href") + "?location=home");
+        response.sendRedirect("./?location=home");
         return;
     }
 
@@ -63,9 +63,7 @@
         <%}%>
     <% } %>
     <jsp:include page="<%=currentLocation%>" flush="true" />
-    <% if (!pm.isMobileRequest()) {%>
-        <jsp:include page="footer.jspf" flush="true"/>
-    <% }%>
+    <jsp:include page="footer.jspf" flush="true"/>
 </div>
 <script>
     $(window).load(function(e) {

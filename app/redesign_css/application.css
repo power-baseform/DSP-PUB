@@ -58,7 +58,7 @@ body {
     height: 38px;
 }
 
-input[type="text"], input[type="password"], input[type="submit"] {
+input[type="email"], input[type="text"], input[type="password"], input[type="submit"] {
     -webkit-appearance: none;
     border-radius: 0;
     padding-right: 0;

@@ -82,8 +82,34 @@
     transform: translateY(-50%);
 }
 
+.home .logoImage {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.home .logoText {
+    display: inline-block;
+    vertical-align: middle;
+    color: white;
+    font-family: "Montserrat Light";
+    margin-left: 10px;
+    margin-top: 15px;
+    font-size: 18px;
+    text-align: left;
+}
+
+.home .logoText .logoCity {
+    font-size: 48px;
+    font-family: "Montserrat Bold";
+}
+
+.home .logoText .logoWc {
+    text-transform: uppercase;
+    margin-top: 5px;
+}
+
 .home .hashtag {
-    margin: 35px 0 20px 0;
+    margin: 20px 0;
     color: #99ccff;
     font-family: 'Fredoka One', Arial;
     font-size: 28px;
@@ -119,12 +145,11 @@
 
 .home .rigthColumn {
     margin-left: 30px;
-    margin-top: 35px;
 }
 
 .home .registerForm .getInvolved {
     color: white;
-    font-size: 24px;
+    font-size: 36px;
     font-family: 'Fredoka One', Arial;
     width: 100%;
     text-align: center;
@@ -362,8 +387,6 @@
 .home .appStore.ios {
     background-image: url("../redesign_images/ios.png");
     margin-left: 12px;
-    cursor: default;
-    opacity: 0.5;
 }
 
 .home .appStore.android {
@@ -419,7 +442,7 @@
         float: none;
     }
     .logoImage {
-        width: 60%;
+        /*width: 60%;*/
     }
     .home .registerForm.register {
         display: none;
@@ -489,6 +512,18 @@
     .home .hashtag {
         font-size: 18px;
         margin: 10px 0;
+    }
+    .logoImage {
+        width: 15vw;
+        margin-bottom: 1vw;
+    }
+    .home .logoText {
+        margin-top: 8px;
+        margin-bottom: 1vw;
+        font-size: 3vw;
+    }
+    .home .logoText .logoCity {
+        font-size: 7.5vw;
     }
     .home .mainText {
         font-size: 13px;

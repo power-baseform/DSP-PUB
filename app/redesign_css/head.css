@@ -41,7 +41,6 @@
     font-weight: normal;
     font-style: normal;
     display:  inline;
-    text-transform: uppercase;
     max-height: 35px;
     width: auto;
     line-height: 72px;
@@ -55,6 +54,7 @@
 
 .header .logo.main {
     font-family: 'Fredoka One', Arial;
+    text-transform: uppercase;
 }
 
 .header .logoResp {
@@ -242,7 +242,6 @@
 @media (max-width: 780px) {
     .header .logoResp {
         display: block;
-        width: 49px;
     }
     .header .logo {
         display: none;

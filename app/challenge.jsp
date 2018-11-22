@@ -107,7 +107,7 @@
     <img src="<%=config.getServletContext().getInitParameter("server_href")%><%=processo.getThumbnail() != null && !processo.getThumbnail().isNew()? "/thumb?size=med&id="+processo.getThumbnail().getId():"/img/default_img.png"%>" alt="<%= processo.getTitulo() %>"/>
 </div>
 <% if (!pm.isMobileRequest()) {%>
-<div class="section home issue afterHeader" style="background-image: url(<%=processo.getThumbnail() != null ? "thumb?size=med&id="+processo.getThumbnail().getId() :"/redesign_images/imgMap.png"%>)"></div>
+<div class="section home issue afterHeader" style="background-image: url(<%=processo.getThumbnail() != null ? "thumb?size=med&id="+processo.getThumbnail().getId() :"/redesign_images/imgMap.jpg"%>)"></div>
 <% } %>
 <div class="utils" data-status="<%= participante != null %>" data-id="<%= processo.getId() %>"
      data-loadP="<%= RequestParameters.LOAD_P %>" data-follow="<%=PowerUtils.localizeKey( "follow",currentLangBundle,frontendDefaultBundle,true)%>"
@@ -121,6 +121,12 @@
         <div class="intro title">
             <a href="#" class="hamburger showMenu"></a><!--
             --><h3 class="title <%= pm.isRtl() %>"><%= processo.getTitulo() %></h3>
+            <% if (pm.getSystemId(request).equals(PowerPubManager.BEST_PRACTICES_ID) && processo.getType().equals("community")){
+                CommunityProcesso communityOrigin = processo.getCommunityOrigin();
+                if (communityOrigin != null && communityOrigin.getParticipante() != null) {%>
+                    <h4 class="author">Author <span class="authorName"><%= communityOrigin.getParticipante().getSafeNome() %></span></h4>
+                <%}
+             }%>
             <div class="mobileMenu"></div>
         </div>
         <div class="content">
@@ -243,7 +249,7 @@
                             <p class="commentName"><%= comentario.getParticipante().getNome()%></p>
                             <tags:userImgTag participant="<%=comentario.getParticipante()%>"/>
                             <p class="date"><%= df.format(comentario.getData())%></p>
-                            <p class="description <%= pm.isRtl() %>"><%= comentario.getComentario()%></p>
+                            <p class="description <%= pm.isRtl() %>"><%= comentario.getSmallComentario()%></p>
                         </li>
                         <% }}%>
                     </ul>
@@ -308,7 +314,7 @@
                     <div class="appPromotion">
                         <p class="appPromotionText"><%= PowerUtils.localizeKey("download.app",currentLangBundle,frontendDefaultBundle,true) %></p>
                         <a target="_blank" href="<%=application.getInitParameter("androidAppLink")%>" class="appStore android"></a>
-                        <a href="#" class="appStore ios" title="Available Soon"></a>
+                        <a target="_blank" href="<%=application.getInitParameter("iosAppLink")%>" class="appStore ios"></a>
                     </div>
                 <% }%>
             </div>
@@ -340,7 +346,7 @@
             POWERController.initBoxGrow();
             POWERController.initShowMap(".showMap");
             POWERController.setLinkGrabber(".HTMLContent:not(.noClean) *");
-            POWERController.clearParams();
+            //POWERController.clearParams();
             POWERController.initChartClick(".chartClick");
         } catch (err) {
             POWERController.cleanHTMLContent(".HTMLContent:not(.noClean) *");

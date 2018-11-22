@@ -33,6 +33,8 @@
     final ResourceBundle frontendDefaultBundle = pm.getDefaultLangBundle();
     final ResourceBundle currentLangBundle = pm.getCurrentLangBundle();
 
+    final String userAgent = request.getHeader("User-Agent");
+
 %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <link href="redesign_css/login_hub.css" rel="stylesheet" type="text/css">
@@ -48,9 +50,10 @@
         <h4 class="title"><%=PowerUtils.localizeKey("login", currentLangBundle, frontendDefaultBundle)%>
         </h4>
         <form class="loginForm" id="f" method="post" action="./?login_pub">
-            <input type="text" name="<%= Participante.EMAIL_PROPERTY %>" placeholder="<%= PowerUtils.localizeKey("email",currentLangBundle,frontendDefaultBundle) %>"><!--
-            --><input type="password" name="<%= RequestParameters.PWD %>" placeholder="<%=  PowerUtils.localizeKey("password",currentLangBundle,frontendDefaultBundle) %>">
+            <input type="email" value="<%= request.getParameter(Participante.EMAIL_PROPERTY) != null ? request.getParameter(Participante.EMAIL_PROPERTY) : "" %>" name="<%= Participante.EMAIL_PROPERTY %>" placeholder="<%= PowerUtils.localizeKey("email",currentLangBundle,frontendDefaultBundle) %>"><!--
+            --><input type="password"  value="<%= request.getParameter(RequestParameters.PWD) != null ? request.getParameter(RequestParameters.PWD) : ""%>" name="<%= RequestParameters.PWD %>" placeholder="<%=  PowerUtils.localizeKey("password",currentLangBundle,frontendDefaultBundle) %>">
            <a class="submit" onclick="$('#f').submit();"><%=PowerUtils.localizeKey("login",currentLangBundle,frontendDefaultBundle)%> ></a>
+            <a href="#" class="fbLogin">Facebook</a><!----><% if (!userAgent.equals("POWER Android")) {%><a href="#" class="googleLogin" id="googleLogin">Google</a><% }%>
         </form>
         <form accept-charset="utf-8" id="fr" method="post" action="?<%=RequestParameters.REQUEST_PWD%>">
             <a href="#" class="forgotPassword">
@@ -89,7 +92,13 @@
 
 
 <script type="text/javascript">
-    POWERController.forgotPassword();
-    POWERController.initCustomSelects();
-    POWERController.initLegalCheckbox(".legal-checkbox.log");
+    $(window).load(function(e) {
+        POWERController.forgotPassword();
+        POWERController.initCustomSelects();
+        POWERController.initLegalCheckbox(".legal-checkbox.log");
+
+        $("#googleLogin").on("click", function(e) {
+            $("#googleLoginHidden").children().trigger("click")
+        });
+    });
 </script>

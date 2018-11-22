@@ -74,7 +74,7 @@ public abstract class PublicManager {
 
     private boolean mobileRequest;
     private boolean failedLogin;
-
+    List<Locale> locales;
 
     protected PublicManager(HttpServletRequest request) {
         curr_locale = PowerUtils.getDefaultLocale();
@@ -255,15 +255,47 @@ public abstract class PublicManager {
     public abstract ResourceBundle getDefaultLangBundle();
 
     public List<Locale> getLocales(HttpServletRequest request) {
-        List<Locale> locales = new ArrayList<>(PowerUtils.getAvailableLocales(request));
-        locales.remove(getCurrentLocale());
+        if (locales != null && locales.size() > 0) return locales;
 
+        locales = new ArrayList<>(PowerUtils.getAvailableLocales(request));
+
+        String current_system = request.getServletContext().getInitParameter("current_system");
+        SelectQuery selectQuery1 = new SelectQuery(SystemLanguages.class, ExpressionFactory.matchExp(SystemLanguages.SYSTEM_ID_PROPERTY, current_system));
+        List<SystemLanguages> list1 = getDc(request).performQuery(selectQuery1);
+
+        List<String> strLocales = new ArrayList<>();
+        for (SystemLanguages systemLanguages : list1) {
+            strLocales.add(systemLanguages.getLanguage().getLocale());
+        }
+
+        List<Locale> toRemove = new ArrayList<>();
+
+        for (Locale locale : locales) {
+            if (!strLocales.contains(locale.toString())) toRemove.add(locale);
+        }
+
+        locales.remove(getCurrentLocale());
+        locales.removeAll(toRemove);
         locales.sort(Comparator.comparing(o -> o.getDisplayLanguage(o)));
 
         return locales;
     }
 
 
+    public boolean systemHasLocale(HttpServletRequest request, Locale locale) {
+        String current_system = request.getServletContext().getInitParameter("current_system");
+
+        SelectQuery selectQuery = new SelectQuery(Languages.class, ExpressionFactory.matchExp(Languages.LOCALE_PROPERTY, locale.toString()));
+        List<Languages> list = getDc(request).performQuery(selectQuery);
+
+        if (list.size() == 0) return false;
+        Languages lang = list.get(0);
+
+        SelectQuery selectQuery1 = new SelectQuery(SystemLanguages.class, ExpressionFactory.matchExp(SystemLanguages.LANGUAGE_PROPERTY, lang).andExp(ExpressionFactory.matchExp(SystemLanguages.SYSTEM_ID_PROPERTY, current_system)));
+        List list1 = getDc(request).performQuery(selectQuery1);
+
+        return list1.size() > 0;
+    }
 
     public void process(HttpServletRequest request, HttpServletResponse response){
         errors = "";
@@ -279,10 +311,12 @@ public abstract class PublicManager {
 
         if (request.getParameter(RequestParameters.LOGOUT) != null) {
             final String currLoc = getCurrentLocale().getLanguage();
+
+            String url = "./?location=home&" + RequestParameters.CHANGE_LOCALE + "=" + currLoc;
+            if (isMobileRequest()) url += "&mobileReq=true";
+
             request.getSession().invalidate();
             try {
-                String url = "./?location=home&" + RequestParameters.CHANGE_LOCALE + "=" + currLoc;
-                if (isMobileRequest()) url += "&mobileReq=true";
                 response.sendRedirect(url);
                 return;
             } catch (Exception ignored) {
@@ -877,41 +911,46 @@ public abstract class PublicManager {
                 if (request.getParameter(Participante.GENDER_PROPERTY) != null && !request.getParameter(Participante.GENDER_PROPERTY).equals("--"))
                     participante.writeProperty(Participante.GENDER_PROPERTY, request.getParameter(Participante.GENDER_PROPERTY));
 
-                if (mobile) {
+                boolean sendEmail = PowerUtils.sendConfirmationEmail(request.getSession().getServletContext().getInitParameter("current_system"), getDc(request));
+                if (mobile || !sendEmail) {
                     participante.writeProperty(Participante.CHECK_KEY_PROPERTY, null);
                 }
 
+                if (!sendEmail) participante.setActivo(true);
+
                 getDc(request).commitChanges();
-                try {
-                    String host = request.getSession().getServletContext().getInitParameter("smtp_server");
-                    String smtp_server_port = request.getSession().getServletContext().getInitParameter("smtp_port");
+                if (sendEmail) {
+                    try {
+                        String host = request.getSession().getServletContext().getInitParameter("smtp_server");
+                        String smtp_server_port = request.getSession().getServletContext().getInitParameter("smtp_port");
 
-                    final String tempSMTP_SSL = request.getSession().getServletContext().getInitParameter("smtp_use_ssl");
-                    boolean smtp_ssl = false;
-                    if (tempSMTP_SSL != null)
-                        smtp_ssl = Boolean.parseBoolean(tempSMTP_SSL);
+                        final String tempSMTP_SSL = request.getSession().getServletContext().getInitParameter("smtp_use_ssl");
+                        boolean smtp_ssl = false;
+                        if (tempSMTP_SSL != null)
+                            smtp_ssl = Boolean.parseBoolean(tempSMTP_SSL);
 
-                    String username = request.getSession().getServletContext().getInitParameter("smtp_username");
-                    String password = request.getSession().getServletContext().getInitParameter("smtp_password");
+                        String username = request.getSession().getServletContext().getInitParameter("smtp_username");
+                        String password = request.getSession().getServletContext().getInitParameter("smtp_password");
 
-                    String from = request.getSession().getServletContext().getInitParameter("from");
+                        String from = request.getSession().getServletContext().getInitParameter("from");
 
-                    String link = request.getSession().getServletContext().getInitParameter("server_href") + "/?location=activate&rreg&c=" + DataObjectUtils.pkForObject(participante) + "&ck=" + participante.getCheckKey();
-                    String[] deployment = {request.getSession().getServletContext().getInitParameter("deployment_name")};
+                        String link = request.getSession().getServletContext().getInitParameter("server_href") + "/?location=activate&rreg&c=" + DataObjectUtils.pkForObject(participante) + "&ck=" + participante.getCheckKey();
+                        String[] deployment = {request.getSession().getServletContext().getInitParameter("deployment_name")};
 
-                    String subject = PowerUtils.localizeKey("power.registry", getCurrentLangBundle(),getDefaultLangBundle());
-                    String msgEmail = PowerUtils.localizeKey("msg.welcome.power", getCurrentLangBundle(),getDefaultLangBundle(), deployment) + "\n" +
-                            "\n" + PowerUtils.localizeKey("msg.activate.account", getCurrentLangBundle(),getDefaultLangBundle()) + " <a href=\"" + link + "\">" + link + "</a>. " + "\n";
+                        String subject = PowerUtils.localizeKey("power.registry", getCurrentLangBundle(), getDefaultLangBundle());
+                        String msgEmail = PowerUtils.localizeKey("msg.welcome.power", getCurrentLangBundle(), getDefaultLangBundle(), deployment) + "\n" +
+                                "\n" + PowerUtils.localizeKey("msg.activate.account", getCurrentLangBundle(), getDefaultLangBundle()) + " <a href=\"" + link + "\">" + link + "</a>. " + "\n";
 
-                    if (mobile) {
-                        msgEmail = PowerUtils.localizeKey("msg.welcome.power", getCurrentLangBundle(),getDefaultLangBundle(), deployment) + "\n";
+                        if (mobile) {
+                            msgEmail = PowerUtils.localizeKey("msg.welcome.power", getCurrentLangBundle(), getDefaultLangBundle(), deployment) + "\n";
+                        }
+
+                        PowerUtils.sendEmail(host, smtp_ssl, smtp_server_port, username, password, from, subject, msgEmail, participante.readProperty(Participante.EMAIL_PROPERTY).toString());
+                    } catch (Exception e) {
+                        PowerUtils.logErr(e, getClass(), participante);
+                        errors = PowerUtils.localizeKey("msg.registry.error", getCurrentLangBundle(), getDefaultLangBundle());
+                        getDc(request).deleteObject(participante);
                     }
-
-                    PowerUtils.sendEmail(host, smtp_ssl, smtp_server_port, username, password, from, subject, msgEmail, participante.readProperty(Participante.EMAIL_PROPERTY).toString());
-                } catch (Exception e) {
-                    PowerUtils.logErr(e, getClass(), participante);
-                    errors = PowerUtils.localizeKey("msg.registry.error", getCurrentLangBundle(),getDefaultLangBundle());
-                    getDc(request).deleteObject(participante);
                 }
 
 

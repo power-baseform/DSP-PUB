@@ -42,7 +42,7 @@
     response.setStatus(200);
 
     if (api.equals("challenges")) {
-        List<Processo> issueList = dataContext.performQuery(new SelectQuery(Processo.class, ExpressionFactory.matchExp(Processo.SISTEMA_PROPERTY, current_system)));
+        List<Processo> issueList = dataContext.performQuery(new SelectQuery(Processo.class, ExpressionFactory.matchExp(Processo.SISTEMA_PROPERTY, current_system).andExp(ExpressionFactory.matchExp(Processo.PUBLICADO_PROPERTY, true))));
         for (Processo processo : issueList) {
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("id", processo.getId());

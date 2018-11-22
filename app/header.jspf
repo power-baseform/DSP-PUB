@@ -66,13 +66,13 @@
     <script src="redesign_js/api.js"></script>
     <script src="redesign_js/PowerSocial.js"></script>
 
-    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script type="text/javascript" src="redesign_js/jquery.js"></script>
 
     <script>
         window.translations = new Translations(<%= powerPubManager.getTranslations() %>, "<%= powerPubManager.getCurrentLocale().getLanguage() %>");
         window.POWERController = new POWERController("<%=request.getSession().getServletContext().getInitParameter("analytics_tracking")%>","<%=request.getSession().getServletContext().getInitParameter("fb_appid")%>", <%= powerPubManager.getParticipante() != null%>);
 
-        <% if (powerPubManager.getFailedLogin()) { %>
+        <% if (powerPubManager.getFailedLogin() && !powerPubManager.isMobileRequest()) { %>
             POWERController.getModal('loginPopup.jsp', { activeTab: 'login'});
         <% }%>
     </script>

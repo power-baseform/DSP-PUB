@@ -58,7 +58,11 @@
         <div class="blueOverlay"></div>
         <div class="line <%= lineWithChart %>">
             <div class="column">
-                <img data-alternative="img/<%=request.getSession().getServletContext().getInitParameter("deployment_name").replace(" ","%20")%>.png" src="img/<%=request.getSession().getServletContext().getInitParameter("deployment_name")%>.svg" alt="<%=request.getSession().getServletContext().getInitParameter("deployment_name")%>" class="logoImage"/>
+                <img data-alternative="img/<%=request.getSession().getServletContext().getInitParameter("deployment_name").replace(" ","%20")%>.png" src="img/drop.svg" alt="<%=request.getSession().getServletContext().getInitParameter("deployment_name")%>" class="logoImage"/>
+                <div class="logoText">
+                    <h3 class="logoCity"><%= request.getSession().getServletContext().getInitParameter("deployment_name") %></h3>
+                    <h4 class="logoWc">Water Community</h4>
+                </div>
                 <h3 class="hashtag <%= pm.isRtl() %>"><%= PowerUtils.getTitle(pm.getCurrentLocale(),currentSystem, pm.getDc(request)) %></h3>
                 <div class="mainText HTMLContent noClean <%= pm.isRtl() %>">
                     <%= PowerUtils.getIssueListDescription(pm.getCurrentLocale(),pm.getSystemId(request), pm.getDc(request)) %>
@@ -67,7 +71,7 @@
                 <div class="appPromotion hidden">
                     <p class="appPromotionText"><%=PowerUtils.localizeKey("access.or.download",currentLangBundle,frontendDefaultBundle)%></p>
                     <a target="_blank" href="<%=application.getInitParameter("androidAppLink")%>" class="appStore android"></a>
-                    <a href="#" class="appStore ios" title="Available Soon"></a>
+                    <a target="_blank" href="<%=application.getInitParameter("iosAppLink")%>" class="appStore ios"></a>
                 </div>
             </div><!--
         --><div class="column rigthColumn">
@@ -142,7 +146,7 @@
                 <div class="appPromotion">
                     <p class="appPromotionText"><%=PowerUtils.localizeKey("access.or.download",currentLangBundle,frontendDefaultBundle)%></p>
                     <a target="_blank" href="<%=application.getInitParameter("androidAppLink")%>" class="appStore android"></a>
-                    <a href="#" class="appStore ios" title="Available Soon"></a>
+                    <a target="_blank" href="<%=application.getInitParameter("iosAppLink")%>" class="appStore ios"></a>
                 </div>
             <% }%>
         </div>
@@ -155,7 +159,7 @@
         <div class="challengesGrid"><!--
             <% for (Processo challenge : list) { %>
             --><a href="./?location=challenge&loadP=<%=challenge.getId()%>" class="challenge">
-            <div class="challengeImage" style="background-image: url('<%=challenge.getThumbnail() != null ? "thumb?size=small&id="+challenge.getThumbnail().getId():"/redesign_images/imgMap.png"%>');"></div><!--
+            <div class="challengeImage" style="background-image: url('<%=challenge.getThumbnail() != null ? "thumb?size=small&id="+challenge.getThumbnail().getId():"/redesign_images/imgMap.jpg"%>');"></div><!--
                     --><div class="challengeDescription <%= pm.isRtl() %>">
             <%= challenge.getTitulo() %>
             <%--<p class="challengeDate">Discuss until <span class="date"><%= df.format(challenge.getDataFim()) %></span></p>--%>

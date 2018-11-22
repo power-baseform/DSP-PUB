@@ -32,9 +32,24 @@
     color: black;
     font-family: 'Montserrat Regular', Arial;
     font-weight: normal;
-    width: 85%;
+    width: 100%;
     display: inline-block;
     vertical-align: bottom;
+}
+
+.issueArea .intro .author {
+    font-size: 12px;
+    text-transform: uppercase;
+    color: black;
+    font-family: 'Montserrat Regular', Arial;
+    font-weight: normal;
+    padding-top: 8px;
+}
+
+.issueArea .intro .author .authorName {
+    text-transform: initial;
+    font-size: 18px;
+    padding-left: 4px;
 }
 
 .issueArea .intro .title.rtl {
@@ -93,7 +108,7 @@
 
 
 .issueArea .content .side.info .section ul li:first-of-type {
-    /*margin-top: 12px;*/
+    margin-top: 8px;
 }
 
 /*.issueArea .content .side.info.sticky  .section ul,  .issueArea .content .side.info.sticky .showMore, .issueArea .content .side.info.sticky .register{*/
@@ -104,8 +119,9 @@
     display: none;
     opacity: 0;
 }
-.issueArea .content .side.info.sticky .sectionTitle {
-    margin-bottom: 8px;
+
+.issueArea .content .side.info .sectionTitle {
+    margin-bottom: 0;
 }
 
 .issueArea .content .mainContent {
@@ -123,7 +139,6 @@
 }
 .issueArea.about .content .mainContent {
     width: 824px;
-    padding-top: 22px;
 }
 
 .issueArea.about .title {
@@ -168,10 +183,7 @@
     border-radius: 50%;
     left: -12px;
     position: absolute;
-    top: 50%;
-    -ms-transform: translateY(-50%);
-    -webkit-transform: translateY(-50%); 
-    transform: translateY(-50%);
+    top: 4px;
 }
 
 .issueArea .tabs .tab a {
@@ -226,7 +238,7 @@
     position: relative;
     width: 100%;
     margin-bottom: 18px;
-    padding-bottom: 10px;
+    padding-bottom: 24px;
 }
 
 .issueArea .tabContent.appendable {
@@ -244,7 +256,7 @@
     font-weight: normal;
     line-height: 36px;
     text-align: center;
-    margin: 26px 0;
+    margin-top: 24px;
     display: inline-block;
     text-decoration: none;
     text-transform: uppercase;
@@ -314,8 +326,9 @@
 }
 
 .issueArea .actions {
-    padding: 12px 0;
-    border-bottom:  1px solid #3366cc;
+    padding: 8px 0;
+    border-bottom: 1px solid #3366cc;
+    height: 24px;
 }
 .issueArea .tabs .tab.tabAction {
     font-family: "Montserrat Bold", Arial;
@@ -361,7 +374,7 @@
 
  .issueArea .section.smallSection {
     border-bottom: 1px solid #3366cc;
-    padding: 12px 0;
+    padding:12px 0;
 }
 
 .issueArea .section.events .title {
@@ -573,8 +586,6 @@
 
 .issueArea .appStore.ios {
     background-image: url("../redesign_images/ios.png");
-    cursor: default;
-    opacity: 0.5;
 }
 
 .issueArea .appStore.android {

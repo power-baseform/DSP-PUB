@@ -120,13 +120,15 @@
 
 .section.followedIssues .title {
     font-size: 28px;
-    padding: 10px 0 20px;
     font-family: "Montserrat Regular", Arial;
     font-weight: normal;
 }
 
 .section.followedIssues .issueList .issue:first-of-type {
     border-top: 1px solid #99ccff;
+}
+.section.followedIssues .issueList .issue:last-of-type {
+    border-bottom: none;
 }
 .section.followedIssues .issueList .issue {
     border-bottom: 1px solid #99ccff;
@@ -175,13 +177,16 @@
 
 .section.participations .title {
     font-size: 28px;
-    padding: 10px 0 20px;
     font-family: "Montserrat Regular", Arial;
     font-weight: normal;
 }
 
 .section.participations .issueList .issue:first-of-type {
     border-top: 1px solid #99ccff;
+}
+
+.section.participations .issueList .issue:last-of-type {
+    border-bottom: none;
 }
 .section.participations .issueList .issue {
     border-bottom: 1px solid #99ccff;
@@ -230,12 +235,10 @@
 
 .issueArea .content .mainContent .tabContent.section.events {
     /*padding: 20px 0;*/
-    padding-bottom: 40px;
     border-bottom: 1px solid #3366cc;
 }
 
 .mainContent .tabContent.section.events .title{
-    padding: 10px 0 20px;
 }
 
 .tabContent .section.events, .contentPartial .section.events {
